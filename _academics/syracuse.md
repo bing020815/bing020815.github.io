@@ -1,3 +1,9 @@
+---
+layout: academics
+title: "Syracuse University"
+date: 2020-06-11
+---
+
 # Syracuse-University
 Master of Science, Applied Data Science Portfolio
 
