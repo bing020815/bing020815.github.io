@@ -1,2 +1,3 @@
 name: BING-JE WU, Data Science Enthusiastic Learner
 markdown: kramdown
+permalink: /blog/:year/:month/:day/:title
