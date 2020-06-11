@@ -31,7 +31,7 @@ As a Syracuse University student in the Applied Data Science program, I have com
 
 
 ## Curriculum
-<div class='table'>
+<div class='curriculm_table'>
 <table>
 <thead>
 <tr>
@@ -87,44 +87,45 @@ As a Syracuse University student in the Applied Data Science program, I have com
 
 
 ## Course Details
-* <span id="ist687">IST 687 - Introduction to Data Science</span>
-	- Identify problems and organize data at various stages of a project life cycle to Scripting code for data management using R and Rstudio
-	- Project: <a href="https://github.com/bing020815/Syracuse-University/tree/master/IST687/Project">Google Play Store Apps</a>
+<ul>
+<span id="ist687">IST 687 - Introduction to Data Science</span>
+	<li> Identify problems and organize data at various stages of a project life cycle to Scripting code for data management using R and Rstudio</li>
+	<li> Project: <a href="https://github.com/bing020815/Syracuse-University/tree/master/IST687/Project">Google Play Store Apps</a></li>
 
-* <span id="mbc638">MBC 638 - Data Analysis and Decision Making</span>
-	- Identify problems and implement DMAIC method and the appropriate statistical tools for a given set of conditions in order to acquire knowledge and making decisions in today’s business
-	- Project: <a href="https://github.com/bing020815/Syracuse-University/tree/master/MBC638/Project">Health Condition Improvement Project</a>
+<span id="mbc638">MBC 638 - Data Analysis and Decision Making</span>
+	<li> Identify problems and implement DMAIC method and the appropriate statistical tools for a given set of conditions in order to acquire knowledge and making decisions in today’s business</li>
+	<li> Project: <a href="https://github.com/bing020815/Syracuse-University/tree/master/MBC638/Project">Health Condition Improvement Project</a></li>
 
-* <span id="ist659">IST 659 - Data Administration Concepts and Database Management</span>
-	- Examine data structures, file organizations, concepts, and principles of database management systems (DBMS) as well as data analysis, database design, data modeling, database management, and database implementation
-	- Hierarchical, network, and relational data models; entity-relationship modeling; basics of Structured Query Language (SQL); data normalization; and database design
+<span id="ist659">IST 659 - Data Administration Concepts and Database Management</span>
+	<li> Examine data structures, file organizations, concepts, and principles of database management systems (DBMS) as well as data analysis, database design, data modeling, database management, and database implementation</li>
+	<li> Hierarchical, network, and relational data models; entity-relationship modeling; basics of Structured Query Language (SQL); data normalization; and database design</li>
 
-* <span id="ist707">IST 707 - Data Analytics</span>
-	- Employ data storytelling and apply data mining concepts, algorithms and evaluation methods for technical designs and solutions
-	- Project: <a href="https://github.com/bing020815/Syracuse-University/tree/master/IST707/Project">Student Performance</a>
+<span id="ist707">IST 707 - Data Analytics</span>
+	<li> Employ data storytelling and apply data mining concepts, algorithms and evaluation methods for technical designs and solutions</li>
+	<li> Project: <a href="https://github.com/bing020815/Syracuse-University/tree/master/IST707/Project">Student Performance</a></li>
 
-* <span id="ist718">IST 718 - Big Data Analytics</span>
-	- Develop analytical processing tools and techniques for information professionals using Python, Spark, and TensorFlow
+<span id="ist718">IST 718 - Big Data Analytics</span>
+	<li> Develop analytical processing tools and techniques for information professionals using Python, Spark, and TensorFlow</li>
 
-* <span id="ist652">IST 652 - Scripting for Data Analysis</span>
-	- Scripting for the data science pipeline. Acquiring, accessing, and transforming data in the forms of structured, semistructured, and unstructured data.
-	- Project: <a href="https://github.com/bing020815/Syracuse-University/tree/master/IST652/Project">Pokémon</a>
+<span id="ist652">IST 652 - Scripting for Data Analysis</span>
+	<li> Scripting for the data science pipeline. Acquiring, accessing, and transforming data in the forms of structured, semistructured, and unstructured data.</li>
+	<li> Project: <a href="https://github.com/bing020815/Syracuse-University/tree/master/IST652/Project">Pokémon</a></li>
 
-* <span id="ist772">IST 772 - Quantitative Reasoning for Data Science</span>
-	- The principles of correct interpretation of statistical evidence on bivariate Pearson correlation, Analysis of Variance, Least Squares Multiple Regression, and Binomial Logistic Regression 
-	- The foundations of statistical inference with a focus on the connections among traditional frequentist inference methods and Bayesian inference
+<span id="ist772">IST 772 - Quantitative Reasoning for Data Science</span>
+	<li> The principles of correct interpretation of statistical evidence on bivariate Pearson correlation, Analysis of Variance, Least Squares Multiple Regression, and Binomial Logistic Regression </li>
+	<li> The foundations of statistical inference with a focus on the connections among traditional frequentist inference methods and Bayesian inference</li>
 
-* <span id="ist769">IST 769 - Advanced Database Administration Concepts and Database Management</span>
-	- Knowledge of the strengths and weaknesses of various database systems in the relational, Hadoop, and noSQL spaces for big data challenges
+<span id="ist769">IST 769 - Advanced Database Administration Concepts and Database Management</span>
+	<li> Knowledge of the strengths and weaknesses of various database systems in the relational, Hadoop, and noSQL spaces for big data challenges</li>
 
-* <span id="ist664">IST 664 - Natural Language Processing</span>
-	- Linguistic and computational aspects of natural language processing technologies.
+<span id="ist664">IST 664 - Natural Language Processing</span>
+	<li> Linguistic and computational aspects of natural language processing technologies.</li>
 
-* <span id="ist736">IST 736 - Text Mining</span>
-	- Concepts and methods for knowledge discovery from large amounts of text data and the application of text mining techniques for business intelligence, digital humanities, and social behavior analysis
-	- Project: <a href="https://github.com/bing020815/text_prediction_application">Text Prediction From Review</a>
-	- <a href="https://pdht24snt663m2h7.anvil.app/OT4EUOR5JVBBGOHFV533U2KM">Web Application</a>
-
+<span id="ist736">IST 736 - Text Mining</span>
+	<li> Concepts and methods for knowledge discovery from large amounts of text data and the application of text mining techniques for business intelligence, digital humanities, and social behavior analysis</li>
+	<li> Project: <a href="https://github.com/bing020815/text_prediction_application">Text Prediction From Review</a></li>
+	<li> <a href="https://pdht24snt663m2h7.anvil.app/OT4EUOR5JVBBGOHFV533U2KM">Web Application</a></li>
+</ul>
 
 
 [<p align='center'>Top</p>](#syracuse-university)
