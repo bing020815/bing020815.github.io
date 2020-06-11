@@ -3,9 +3,17 @@ layout: default
 title: Bing-Je Wu's Academics
 ---
 	<h1>{{ page.title }}</h1>
+	<ul class="academics">
+
+	  {% for academic in site.academics %}
+	    <li><span>{{ academic.date | date_to_string }}</span> » <a href="{{ academic.url }}" title="{{ academic.title }}">{{ academic.title }}</a></li>
+	  {% endfor %}
+	</ul>
+
+	<h1>{{ page.title }}</h1>
 	<ul class="posts">
 
-	  {% for post in site.academics %}
+	  {% for post in site.posts %}
 	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
 	  {% endfor %}
 	</ul>
