@@ -19,8 +19,8 @@ Master of Science, Applied Data Science Portfolio
 
 <a href="mailto: bwu117@syr.edu"><img src="../img/icon_email.svg" width="20px" align="top" title="Email"></a> |
 <a href="https://www.linkedin.com/in/bing-je-wu"><img src="../img/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a> |
-<a href="https://www.dropbox.com/s/peyg5ew762tll89/Resume.pdf?dl=0"><../img src="images/icon_resume.png" width="20px" align="top" title="Resume"></a> |
-<a href="https://youtu.be/GuLTMSD3SVM"><img src="images/icon_presentation.svg" width="20px" align="top" title="Pesentation"></a>
+<a href="https://www.dropbox.com/s/peyg5ew762tll89/Resume.pdf?dl=0"><img src="../img/icon_resume.png" width="20px" align="top" title="Resume"></a> |
+<a href="https://youtu.be/GuLTMSD3SVM"><img src="../img/icon_presentation.svg" width="20px" align="top" title="Pesentation"></a>
 
  
 My name is Bing-Je Wu. I am a passionate and resourceful data science practitioner with various background in Mathematics and Industrial Engineering. I have extensive knowledge of advanced statistics, data analysis, machine learning algorithms, and data mining techniques. Experienced with several statistical tools, BI tools, programming languages, database softwares, and ERP systems, such as Minitab, Excel, Tableau, R, Python, Microsoft Access, Microsoft SQL Server, Hadoop, MongoDB, Redis, Cassandra and Kafka.  
@@ -31,6 +31,7 @@ As a Syracuse University student in the Applied Data Science program, I have com
 
 
 ## Curriculum
+<div class='table'>
 <table>
 <thead>
 <tr>
@@ -81,7 +82,7 @@ As a Syracuse University student in the Applied Data Science program, I have com
 </tbody>
 </table>
 
-  
+</div>
   
 
 
