@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "Launches Site"
 date: 2020-06-11
 ---
