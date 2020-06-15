@@ -7,9 +7,9 @@ date: 2020-06-12
 <div id='post-topic'>
 <p>The basic data science lifecycle consists of four parts, `Gathering Data`, `Cleaning/Formatting Data`, `Analysis`, and 'Conclusion'. Each parts are equally important and crucial. 
 Here is a diagram of basic data science lifecycle:<br>
-<img src="img/post/DS_lifecycle.png" title="Basic Data Science Lifecycle", style="width: 90%">
+<img src="../img/post/DS_lifecycle.png" title="Basic Data Science Lifecycle", style="width: 90%">
 </p>
-</div>>
+</div>
   
 
 <div id='gathering-data'>
