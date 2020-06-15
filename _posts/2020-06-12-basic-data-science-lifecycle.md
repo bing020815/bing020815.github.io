@@ -7,7 +7,7 @@ date: 2020-06-12
 <div id='post-topic'>
 <p>The basic data science lifecycle consists of four parts, `Gathering Data`, `Cleaning/Formatting Data`, `Analysis`, and 'Conclusion'. Each parts are equally important and crucial. 
 Here is a diagram of basic data science lifecycle:<br>
-<img src="../img/post/DS_lifecycle.png" title="Basic Data Science Lifecycle", style="width: 90%">
+<img src="/assets/images/post/DS_lifecycle.png" title="Basic Data Science Lifecycle"  style="width: 90%">
 </p>
 </div>
   
@@ -16,13 +16,13 @@ Here is a diagram of basic data science lifecycle:<br>
 <h2>Gathering Data</h2> 
 There are two kinds of data when we talk about data collection:
 <ul>
-	<li>Observational data</li>&gt;
-	<li>Experimental data</li>&gt;
+	<li>Observational data</li>
+	<li>Experimental data</li>
 </ul>
 <p>The data format can also be categorized into two:</p>
 <ul style="list-style: circle;">
-	<li>Structured data</li>&gt;
-	<li>Unstructured data</li>&gt;
+	<li>Structured data</li>
+	<li>Unstructured data</li>
 </ul>
 <p><b>Observational data</b> data usually are collected from Surveys, Interviews, Phone Calls or Websites throguh a API. It can be both structured and unstructured type of data. <b>Experimental data</b>, on the other hand, are different. It is usually in a structured format to contain the experiment records for both Control Group and Treatment Group for statistic analysis.</p>
 <p>Because data are messy, we can easily collect the dirty data without cautious design. An intellectual collecting method can help eliminate the risk of dirty data. It can reduce the bias, have the data that can represent population, have good data to avoid GIGO.</p>
