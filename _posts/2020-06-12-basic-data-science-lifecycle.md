@@ -2,6 +2,7 @@
 layout: post
 title: "Basic Data Science Lifecycle"
 date: 2020-06-12
+theme: minimal
 ---
 
 <div id='post-topic'>

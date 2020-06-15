@@ -2,6 +2,7 @@
 layout: post
 title: "Github Filing Rules for text application"
 date: 2020-06-15
+theme: minima
 ---
 
 # Github Filing Rules
