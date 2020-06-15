@@ -37,7 +37,9 @@ body {
   font-kerning: normal;
   display: flex;
   min-height: 100vh;
-  flex-direction: column; }
+  flex-direction: column; 
+  margin: 60px auto;
+  width: 70%;}
 
 /**
  * Set `margin-bottom` to maintain vertical rhythm
@@ -59,7 +61,6 @@ main {
  * Images
  */
 img {
-  max-width: 100%;
   vertical-align: middle; }
 
 /**
