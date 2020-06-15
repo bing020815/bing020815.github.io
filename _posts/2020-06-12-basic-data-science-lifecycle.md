@@ -6,14 +6,16 @@ date: 2020-06-12
 
 <div id='post-topic'>
 <p>The basic data science lifecycle consists of four parts, `Gathering Data`, `Cleaning/Formatting Data`, `Analysis`, and 'Conclusion'. Each parts are equally important and crucial. 
-Here is a diagram of basic data science lifecycle:<br>
+Here is a diagram of basic data science lifecycle:<br>  
+
 <img src="{{site.baseurl}}/assets/images/post/DS_lifecycle.png" title="Basic Data Science Lifecycle"  style="width: 90%">
 </p>
 </div>
   
 
 <div id='gathering-data'>
-<h2>Gathering Data</h2> 
+Gathering Data
+-----------------------------------------------------
 There are two kinds of data when we talk about data collection:
 <ul>
 	<li>Observational data</li>
@@ -32,7 +34,8 @@ There are two kinds of data when we talk about data collection:
   
 
 <div id='cleaning-data'>
-<h2>Cleaning/Formatting Data</h2>
+Cleaning/Formatting Data
+-----------------------------------------------------
 <p>To clean and format data, some of steps need to be doned, such as <b>data cleansing</b>, <b>data wrangling</b>. Ususally, there is a pipeline will be built to contain the process of <b>data cleansing</b>, <b>data wrangling</b>. <b>Data cleansing</b> includes the job of dealing with missing values, duplicates and inaccurate data, such as typo. <b>Data wrangling</b> involves <i>transforming data</i>, such as converting the data into the same unit or the same format, and <i>mapping data</i>. It includes the <i>Normalization</i>, <i>Standardization</i> and <i>Transformation</i>. </p>
 
 <p>Normalization is to bound values between to numbers, such as 0 and 1. The classic examples of normalization have "min-max scaler" and "z-score scaler" </p>
@@ -45,12 +48,13 @@ There are two kinds of data when we talk about data collection:
 </div>  
 
 <div id='analysis'>
-<h2>Analysis</h2>
+Analysis
+-----------------------------------------------------
 <p>This part is to build models and perform analysis based on the models performance and results. There are two type of models, <b>Supervised</b> and <b>unsupervised.</b> When we build a model, first thing to check is to see if data have label or not. If it does not have label, several ways to do here such as using clustering technique, unsupervised learning, to have cluster label or getting labels by hand. The purpose of supervised learning is to do modeling and classification tasks. The classic supervised learning algorithm are "logistics", "SVM", "Naive Bayes", "Decision Tree" and "KNN" The purpose of supervised learning is to do discovery. The example of unsupervised learning algorithms are "K-Means", "PCA", "Topic Modeling", and "Asscoiation Rule"</p> 
 
-<p>The last step of analysis is to evaluate models. Having the correct evaluation metric is important. The classic evaluation metric for classification tasks are Accuracy, Precision, Recall/Sensitivity and F1-score derived from confusion matrix. Some may use ROC curve as the evaluation metric as well.
-</ul>
-<p>Explanation of the metric terms:</p>
+The last step of analysis is to evaluate models. Having the correct evaluation metric is important. The classic evaluation metric for classification tasks are Accuracy, Precision, Recall/Sensitivity and F1-score derived from confusion matrix. Some may use ROC curve as the evaluation metric as well.
+
+Explanation of the metric terms:
 <ul >
 	<li>Accuracy Rate</li>
 		<ul style="list-style: circle;">
@@ -75,14 +79,14 @@ There are two kinds of data when we talk about data collection:
 		</ul>
 </ul>
 
-<p>The choice of the evaluation metric depends on the business objective. </p>
+The choice of the evaluation metric depends on the business objective.
 </div>
 
 
-<div id='conclusion'>
-<h2>Conclusion</h2>
-<p>The last part of basic data science life cycle is to bring the conclusion on the table. Usually a report should have the introduction of the data and process, the methods implemented during process, results that are written for both technical person and non-technical person, and colcusion for non-technical audience only to complet a story. </p>
-</div>
+Conclusion
+-----------------------------------------------------
+The last part of basic data science life cycle is to bring the conclusion on the table. Usually a report should have the introduction of the data and process, the methods implemented during process, results that are written for both technical person and non-technical person, and colcusion for non-technical audience only to complet a story.
+
 
 <a href="#post-topic"><p align='center' style="color:#455bff">Top</p></a>
 
