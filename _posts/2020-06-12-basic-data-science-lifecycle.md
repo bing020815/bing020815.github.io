@@ -7,7 +7,7 @@ date: 2020-06-12
 <div id='post-topic'>
 <p>The basic data science lifecycle consists of four parts, `Gathering Data`, `Cleaning/Formatting Data`, `Analysis`, and 'Conclusion'. Each parts are equally important and crucial. 
 Here is a diagram of basic data science lifecycle:<br>
-<img src="/assets/images/post/DS_lifecycle.png" title="Basic Data Science Lifecycle"  style="width: 90%">
+<img src="{{site.baseurl}}/assets/images/post/DS_lifecycle.png" title="Basic Data Science Lifecycle"  style="width: 90%">
 </p>
 </div>
   
@@ -19,11 +19,13 @@ There are two kinds of data when we talk about data collection:
 	<li>Observational data</li>
 	<li>Experimental data</li>
 </ul>
+	
 <p>The data format can also be categorized into two:</p>
 <ul style="list-style: circle;">
 	<li>Structured data</li>
 	<li>Unstructured data</li>
 </ul>
+
 <p><b>Observational data</b> data usually are collected from Surveys, Interviews, Phone Calls or Websites throguh a API. It can be both structured and unstructured type of data. <b>Experimental data</b>, on the other hand, are different. It is usually in a structured format to contain the experiment records for both Control Group and Treatment Group for statistic analysis.</p>
 <p>Because data are messy, we can easily collect the dirty data without cautious design. An intellectual collecting method can help eliminate the risk of dirty data. It can reduce the bias, have the data that can represent population, have good data to avoid GIGO.</p>
 </div>
@@ -31,8 +33,7 @@ There are two kinds of data when we talk about data collection:
 
 <div id='cleaning-data'>
 <h2>Cleaning/Formatting Data</h2>
-<p>To clean and format data, some of steps need to be doned, such as <b>data cleansing</b>, <b>data wrangling</b>. Ususally, there is a pipeline will be built to contain the process of <b>data cleansing</b>, <b>data wrangling</b>
-</div>. <b>Data cleansing</b> includes the job of dealing with missing values, duplicates and inaccurate data, such as typo. <b>Data wrangling</b> involves <i>transforming data</i>>, such as converting the data into the same unit or the same format, and <i>mapping data</i>. It includes the <i>Normalization</i>, <i>Standardization</i> and <i>Transformation</i>. </p>
+<p>To clean and format data, some of steps need to be doned, such as <b>data cleansing</b>, <b>data wrangling</b>. Ususally, there is a pipeline will be built to contain the process of <b>data cleansing</b>, <b>data wrangling</b>. <b>Data cleansing</b> includes the job of dealing with missing values, duplicates and inaccurate data, such as typo. <b>Data wrangling</b> involves <i>transforming data</i>, such as converting the data into the same unit or the same format, and <i>mapping data</i>. It includes the <i>Normalization</i>, <i>Standardization</i> and <i>Transformation</i>. </p>
 
 <p>Normalization is to bound values between to numbers, such as 0 and 1. The classic examples of normalization have "min-max scaler" and "z-score scaler" </p>
 
@@ -41,7 +42,7 @@ There are two kinds of data when we talk about data collection:
 <p>Transformation is to apply math functions or other functions on data. The math functions are "log", "sqare root" or "box-cox". Other user-defined functions can be used to achieve feature engineering.</p>
 
 <p>The last step in this part is to have <b>visualization</b>. <b>visualization</b> is important. Human can interpret data through visualization and they are eye-catching for both technical person and non-technical person.</p>
-  
+</div>  
 
 <div id='analysis'>
 <h2>Analysis</h2>
@@ -73,7 +74,8 @@ There are two kinds of data when we talk about data collection:
 			<li>A plot of the True Positive Rate on the y-axis versus the False Positive rate on the x-axis for every possible classification threshold</li>
 		</ul>
 </ul>
-The choose of the evaluation metric depends on the business objective. </p>
+
+<p>The choice of the evaluation metric depends on the business objective. </p>
 </div>
 
 
