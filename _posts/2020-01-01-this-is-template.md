@@ -5,12 +5,22 @@ date: 2020-01-01
 theme: minimal
 mathjax: true
 ---
+## images
 <div id='top'>
+  <p align="center"><img src="{{site.baseurl}}/assets/images/post/bjw.png" title=""></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Description of picture</p>
 </div>
 
-## images
+## codes 
+{% highlight ruby %}
+# code put here
+print('hellow world')
+{% endhighlight %}
 
-<img src="{{site.baseurl}}/assets/images/post/bjw.png" title="Picture" class="align-center">
+```
+ouput here:
+helloworld
+```
 
 ## Math equation
 
@@ -30,6 +40,17 @@ $$
   \text{this is text}
 \end{align}
 $$
+
+<p align="center">$
+\begin{equation}
+       y_i^{(\lambda)}= 
+        \begin{cases}
+            \frac{y_i^{\lambda}-1}{\lambda} & \text{if $\lambda \neq 0 $,} \\
+            \ln y_i & \text{if $\lambda = 0$}
+        \end{cases}
+    \end{equation}
+$</p>
+
 
 ## More example
 

@@ -1,15 +1,28 @@
 ---
 layout: post
-title: "title is here"
+title: "kmarkdown reference"
 date: 2020-01-01
 theme: minimal
 mathjax: true
 ---
+## images
 <div id='top'>
+  <p align="center"><img src="{{site.baseurl}}/assets/images/post/bjw.png" title=""></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Description of picture</p>
 </div>
-<img src="{{site.baseurl}}/assets/images/post/picture_name.png" title="Picture"  style="width: 90%">
 
+## codes 
+{% highlight ruby %}
+# code put here
+print('hellow world')
+{% endhighlight %}
 
+```
+ouput here:
+helloworld
+```
+
+## Math equation
 
 $ \frac{a}{b}-math-equation-with-one-dollar \pi $  
 $$ math-equation-with-two-dollars-\frac{a}{b} $$
@@ -28,7 +41,18 @@ $$
 \end{align}
 $$
 
-## more example
+<p align="center">$
+\begin{equation}
+       y_i^{(\lambda)}= 
+        \begin{cases}
+            \frac{y_i^{\lambda}-1}{\lambda} & \text{if $\lambda \neq 0 $,} \\
+            \ln y_i & \text{if $\lambda = 0$}
+        \end{cases}
+    \end{equation}
+$</p>
+
+
+## More example
 
 $$
 \frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} \equiv 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}} {1+\frac{e^{-8\pi}} {1+\cdots} } } }
