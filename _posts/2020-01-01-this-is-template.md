@@ -1,15 +1,18 @@
 ---
 layout: post
-title: "title is here"
+title: "kmarkdown reference"
 date: 2020-01-01
 theme: minimal
 mathjax: true
 ---
 <div id='top'>
 </div>
-<img src="{{site.baseurl}}/assets/images/post/picture_name.png" title="Picture"  style="width: 90%">
 
+## images
 
+<img src="{{site.baseurl}}/assets/images/post/bjw.png" title="Picture"  style="width: 90%">
+
+## Math equation
 
 $ \frac{a}{b}-math-equation-with-one-dollar \pi $  
 $$ math-equation-with-two-dollars-\frac{a}{b} $$
@@ -28,7 +31,7 @@ $$
 \end{align}
 $$
 
-## more example
+## More example
 
 $$
 \frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} \equiv 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}} {1+\frac{e^{-8\pi}} {1+\cdots} } } }
