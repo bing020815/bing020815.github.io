@@ -10,7 +10,7 @@ mathjax: true
 
 ## images
 
-<img src="{{site.baseurl}}/assets/images/post/bjw.png" title="Picture"  style="width: 90%">
+<img src="{{site.baseurl}}/assets/images/post/bjw.png" title="Picture" class="align-center">
 
 ## Math equation
 
