@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "title is here"
-date: 20XX-XX-XX
+date: 2020-01-01
 theme: minimal
 mathjax: true
 ---
@@ -9,8 +9,15 @@ mathjax: true
 </div>
 <img src="{{site.baseurl}}/assets/images/post/picture_name.png" title="Picture"  style="width: 90%">
 
-$$ math equation in the center /frac{a}{b} $$
-$ math equation /pi $  
+
+
+$ \frac{a}{b} math equation \pi $  
+$$ math equation in-the-center-\frac{a}{b} $$
+
+$% \f is defined as f(#1) using the macro
+\f{x} = \int_{-\infty}^\infty
+    \hat \f\xi\,e^{2 \pi i \xi x}
+    \,d\xi$
 
 This is a demo of all styled elements in Jekyll Now. 
 

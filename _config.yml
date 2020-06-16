@@ -1,11 +1,13 @@
 # Build settings
 name: BING-JE WU, Data Science Enthusiastic Learner
 markdown: kramdown
+kramdown:
+    math_engine: katex
 permalink: /blog/:year/:month/:day/:title
 theme: minima
 plugins:
   - jekyll-feed
-  
+  - jekyll-spaceship
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
@@ -17,3 +19,26 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+# Where things are
+
+# https://github.com/jeffreytse/jekyll-spaceship
+jekyll-spaceship:
+  processors:
+    - table-processor
+    - mathjax-processor
+    - plantuml-processor
+    - polyfill-processor
+    - video-processor
+    - emoji-processor
+    - element-processor
+  mathjax-processor:
+    src:  //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+    config:
+      tex2jax:
+        inlineMath:
+          - ['$','$']
+          - ['\(','\)']
+  plantuml-processor:
+    src: http://www.plantuml.com/plantuml/png/
+  emoji-processor:
+    src: https://github.githubassets.com/images/icons/emoji/
