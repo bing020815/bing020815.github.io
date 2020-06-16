@@ -12,8 +12,9 @@ mathjax: true
 </div>
 
 ## codes 
-{% highlight ruby %}
+{% highlight python %}
 # code put here
+import numpy as np
 print('hellow world')
 {% endhighlight %}
 
@@ -208,7 +209,7 @@ Syntax highlighting can be used by wrapping your code in a liquid tag like so:
 
 {{ "{% highlight javascript " }}%}  
 /* Some pointless Javascript */
-var rawr = ["r", "a", "w", "r"];
+var rawr = ["r", "a", "w", "r"];  
 {{ "{% endhighlight " }}%}  
 
 creates...

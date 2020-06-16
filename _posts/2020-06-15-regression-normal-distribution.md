@@ -6,8 +6,8 @@ theme: minimal
 mathjax: true
 ---
 <div id='top'>
-  <p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/Gaussian.png" title=""></p>
-  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Typical Normal (Gaussian) Distribution</p>
+  <p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/gaussian.png" title=""></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Typical Normal (Gaussian) Distribution; <a href="https://blogs.sas.com/content/iml/2019/07/22/extreme-value-normal-data.html">Source</a></p>
 </div>
 
 
@@ -23,7 +23,7 @@ The variable that should be normally distributed is `prediction error`.
 If the `prediction error` is <u>normal distribution with the mean of zero</u>, the siginificant factors conlcuded from the regression is reliable. However, if te the `distribution of error` significantly <u>deviates from the mean of zero and not being normally distributed</u>, the factors that we choose to be significant may not actually be significant enough to contribute to the output `y`.  
 
 To select the significant predicting factors, after we have constructed a model and prediction, we should plot a chart to see the distribution of prediction error.  
-{% highlight ruby %}
+{% highlight python %}
 # create a normal distributed data and non-normal data
 import numpy as np
 from scipy import stats
@@ -38,7 +38,7 @@ To test normality of data, we can plot distribution plot, QQ-plot or using [Shap
 __(1). Distribution plot:__  
     Simply plot the distribution curve and see whether the plot follows bell **curve shape**. Non-normal sample is clearly left tailed.
 
-{% highlight ruby %}
+{% highlight python %}
 import seaborn as sns
 import matplotlib.pyplot as plt
 sns.distplot(sample_normal)
@@ -59,7 +59,7 @@ __(2). Shapiro-Wilk test:__
 
 **PS**: If sample size is greater than 5000, you should use test statistics instead of p-value as the indicator to decide.
 
-{% highlight ruby %}
+{% highlight python %}
 # null hypothesis: the data was drawn from a normal distribution
 test1= stats.shapiro(sample_normal)
 test2 = stats.shapiro(sample_nonnormal)
@@ -80,7 +80,7 @@ Reject H0: the data was not drawn from a normal distribution
 __(3). QQ-plot:__ 
     Very popular plot to see whether the distribution of data follow normal distribution.
 
-{% highlight ruby %}
+{% highlight python %}
 import statsmodels.api as sm
 fig = sm.qqplot(sample_normal,line='s')
 plt.title('Distribution of Normally distributed sample')
@@ -117,7 +117,7 @@ Below is the mathematic formula for __Box-Cox transformation__. Lambda value wil
     \end{equation}
 $</p>
 
-{% highlight ruby %}
+{% highlight python %}
 #transform the data using box-cox transformation
 sample_transformed, lambd = stats.boxcox(sample_nonnormal)
 #plot the distribution curve and QQ-plot for transformed data
