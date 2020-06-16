@@ -6,7 +6,7 @@ theme: minimal
 mathjax: true
 ---
 <div id='top'>
-  <p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/gaussian.png" title=""></p>
+  <p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/Gaussian.png" title=""></p>
   <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Typical Normal (Gaussian) Distribution</p>
 </div>
 
