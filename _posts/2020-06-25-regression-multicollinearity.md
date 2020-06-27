@@ -7,7 +7,7 @@ mathjax: true
 ---
 <div id='top'>
   <p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/Multicollinearity.png" title=""></p>
-  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Multicollinearity Exampletr; <a href="https://www.theanalysisfactor.com/multicollinearity-explained-visually/">Source</a></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Multicollinearity Example; <a href="https://www.theanalysisfactor.com/multicollinearity-explained-visually/">Source</a></p>
 </div>
 
 
