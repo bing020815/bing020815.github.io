@@ -153,9 +153,9 @@ plt.show();
 
 <p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/corr.png" title=""></p>
 
-Heatmap helps select variables for a regression model by looking at the `correlation matrix`, The correlation value between the pairs of <u>dependent variable</u> and <u>independent variable</u> could be the good indicator for choosing the predictors of a regression model.
+Heatmap helps select variables for a regression model by looking at the `correlation matrix`. The higher absolute values of correlation between the pairs of <u>dependent variable</u> and <u>independent variable</u> could be the good indicator for choosing the predictors of a regression model.
 
-Usually, to identify the `multicollinearity` issue, we will check if a pair of <u>independent variables</u> to see if its correlation exceeds **0.8**. Here, the correlation matrix shows no strong sign of `multicollinearity` issue <u>between idependent variables</u> on this dataset.
+Usually, to identify the `multicollinearity` issue, we will check a pair of <u>independent variables</u> to see if its correlation exceeds **0.8**. Here, the correlation matrix shows no strong sign of `multicollinearity` issue <u>between idependent variables</u> on this dataset.
 
 __(2). Variance Inglation Factor (VIF):__   
 
@@ -198,7 +198,7 @@ calc_vif(X)
 
 <p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/VIF1.png" title=""></p>
 
-If VIF value is <u>higher than 10</u>, it is usually considered having high correlation with other independent variables, meaning it can be predicted by other independent variables in the dataset.
+If VIF value is <u>higher than 10</u>, it is usually considered as having high correlation with other independent variables, meaning it can be predicted by other independent variables in the dataset.
 
 __PS__: Although __correlation matrix__ and __scatter plots__ can also be used to find multicollinearity, their findings only show the bivariate relationship between the independent variables. VIF is preferred as it can show <u>the correlation of a variable with a group of other variables</u>.
 
@@ -221,7 +221,7 @@ calc_vif(X)
 
 <p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/VIF2.png" title=""></p>
 
-By removing the 'NOX','RM','PTRATIO','TAX' columns, the VIF has been decreased.
+By removing the 'NOX','RM','PTRATIO','TAX' columns, the VIF has been reduced.
 
 __(2). Variable Transformation:__   
 
@@ -236,7 +236,7 @@ calc_vif(X)
 
 <p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/VIF3.png" title=""></p>
 
-Here we can see the numbers has been decresed below 10 by having variable transformation.
+Here we can see the numbers are below 10 with variable transformation.
 
 __(3). Principal Component Analysis:__ 
 
