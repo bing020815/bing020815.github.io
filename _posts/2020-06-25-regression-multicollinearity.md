@@ -196,7 +196,7 @@ X = df.iloc[:,:-1]
 calc_vif(X)
 {% endhighlight %}
 
-<p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/VIF1.png" title=""></p>
+<p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/VIF1.PNG" title=""></p>
 
 If VIF value is <u>higher than 10</u>, it is usually considered as having high correlation with other independent variables, meaning it can be predicted by other independent variables in the dataset.
 
@@ -219,7 +219,7 @@ X = df.drop(['NOX','RM','PTRATIO','TAX','MEDV'],axis=1)
 calc_vif(X)
 {% endhighlight %}
 
-<p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/VIF2.png" title=""></p>
+<p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/VIF2.PNG" title=""></p>
 
 By removing the 'NOX','RM','PTRATIO','TAX' columns, the VIF has been reduced.
 
@@ -234,7 +234,7 @@ X = df2.drop(['INDUS','B','AGE', 'NOX','RM','PTRATIO','TAX','MEDV'],axis=1)
 calc_vif(X)
 {% endhighlight %}
 
-<p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/VIF3.png" title=""></p>
+<p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/VIF3.PNG" title=""></p>
 
 Here we can see the numbers are below 10 with variable transformation.
 
@@ -269,7 +269,7 @@ calc_vif(X)
 504   -15.013089   -11.431990  ...    -1.518889    -0.129497
 505   -26.854324   -12.550401  ...    -1.397484    -0.122386
 ```
-<p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/VIF4.png" title=""></p>
+<p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/VIF4.PNG" title=""></p>
 
 
 The PCA analysis seems to work very well on solving multi-collineartiy issue but model interpretation will be lost. And, when out of sample data is used to for predicting, the PCA transformation needs to be implemented again. Thus, we should try our best to reduce the correlation by selecting the right variables and transform them if needed.
@@ -284,9 +284,9 @@ The PCA analysis seems to work very well on solving multi-collineartiy issue but
 2. If multicollinearity is not present in the features you are interested in, then multicollinearity may not be a problem.
 
 
-Reference: 
-[https://towardsdatascience.com/multi-collinearity-in-regression-fe7a2c1467ea](https://towardsdatascience.com/is-normal-distribution-necessary-in-regression-how-to-track-and-fix-it-494105bc50dd)
-[What is Multicollinearity?](https://www.analyticsvidhya.com/blog/2020/03/what-is-multicollinearity/)
+Reference:   
+[Multicollinearity in Regression](https://towardsdatascience.com/multi-collinearity-in-regression-fe7a2c1467ea)  
+[What is Multicollinearity?](https://www.analyticsvidhya.com/blog/2020/03/what-is-multicollinearity/)  
 
 
 <p align="center"><a href="#top">Top</a></p>
