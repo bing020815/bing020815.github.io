@@ -1,9 +1,10 @@
 ---
 layout: post
-title: "kmarkdown reference"
+title: "Template for kmarkdown reference"
 date: 2020-01-01
 theme: minimal
 mathjax: true
+categories: [Life, Python, Math, Database, Data-science, Others]
 ---
 ## images
 <div id='top'>

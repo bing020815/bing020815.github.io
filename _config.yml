@@ -1,7 +1,7 @@
 # Build settings
 name: BING-JE WU, Data Science Enthusiastic Learner
 markdown: kramdown
-permalink: /blog/:year/:month/:day/:title
+permalink: /blog/:categories/:year/:month/:day/:title/
 theme: minima
 plugins:
   - jekyll-feed

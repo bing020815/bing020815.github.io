@@ -4,6 +4,7 @@ title: "Regression: Normal Distribution"
 date: 2020-06-15
 theme: minimal
 mathjax: true
+categories: [Math, Data-science]
 ---
 <div id='top'>
   <p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/gaussian.png" title=""></p>

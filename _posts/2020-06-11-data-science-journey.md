@@ -2,6 +2,7 @@
 layout: post
 title: "Launches Site"
 date: 2020-06-11
+categories: Life
 ---
 
 Finally got around to putting my old website together into GitHub. I can now use Markdown and HTML to author my posts and update my site. 

@@ -4,6 +4,7 @@ title: "Statistics Summary Part 1"
 date: 2020-06-26
 theme: minimal
 mathjax: true
+categories: Math
 ---
 <div id='top'>
   <p align="center"><img src="{{site.baseurl}}/assets/images/post/statistics/statistics101.png" title=""></p>

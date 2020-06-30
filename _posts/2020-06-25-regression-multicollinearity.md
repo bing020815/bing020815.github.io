@@ -4,6 +4,7 @@ title: "Regression: Multicollinearity"
 date: 2020-06-25
 theme: minimal
 mathjax: true
+categories: [Math, Data-science]
 ---
 <div id='top'>
   <p align="center"><img src="{{site.baseurl}}/assets/images/post/regression/Multicollinearity.png" title=""></p>

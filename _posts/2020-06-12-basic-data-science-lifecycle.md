@@ -4,6 +4,7 @@ title: "Basic Data Science Lifecycle"
 date: 2020-06-12
 theme: minimal
 mathjax: true
+categories: Data-science
 ---
 <div id='top'>
 </div>
