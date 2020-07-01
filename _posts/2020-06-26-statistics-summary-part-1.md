@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Statistics Summary Part 1"
+title: "Statistics Summary Part 1: Statistics Basic"
 date: 2020-06-26
 theme: minimal
 mathjax: true
