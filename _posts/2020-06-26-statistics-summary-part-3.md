@@ -121,7 +121,7 @@ Assume the two population are independent.
 t-statistic:
 
 <p style="display: inline; margin-right: 10%; margin-left: 10%">$
-t = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{S_1^2}{n_1} + \frac{s_2^2}{n_2} }}
+t = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2} }}
 $</p>
 <p style="display: inline;">Degree of freedom(df)= $ (n_1-1) + (n_2-1) = n_1 + n_2 -2$</p>
 <p style="font-size: 0.8em; color: grey; font-style: italic; margin-left: 10%;">Formula for continuous data</p>
@@ -142,7 +142,7 @@ Hypothesis:
 <p align="center">(Because we are only asking if a restricted calorie diet increases lifespan)</p>
 
 The t-statistics is:  
-<p align="center">$t = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{S_1^2}{n_1} + \frac{s_2^2}{n_2} }} = \frac{700-668}{\sqrt{\frac{21^2}{12} + \frac{30^2}{6} }} = 2.342$</p>
+<p align="center">$t = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2} }} = \frac{700-668}{\sqrt{\frac{21^2}{12} + \frac{30^2}{6} }} = 2.342$</p>
 And the degrees of freedom are:  
 <p align="center">$(n_1-1) + (n_2-1) = n_1 + n_2 -2 = 12+6-2 = 16$</p>
 

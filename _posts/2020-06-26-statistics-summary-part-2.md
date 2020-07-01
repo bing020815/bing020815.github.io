@@ -98,7 +98,7 @@ Assume the two population are independent.
 z-statistic:
 
 <p style="display: inline; margin-right: 10%; margin-left: 10%">$
-z = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} }}
+z = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2} }}
 $</p>
 <p style="font-size: 0.8em; color: grey; font-style: italic; margin-left: 10%;">Formula for continuous data</p>
 
@@ -119,7 +119,7 @@ Hypothesis:
 <p align="center">(Because we want to see if two groups are different)</p>
 
 The z-statistics is:  
-<p align="center">$z = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} }} = \frac{128.2-126.5}{\sqrt{\frac{17.5^2}{1623} + \frac{20.1^2}{1911} }} \approx 2.688$</p>
+<p align="center">$z = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2} }} = \frac{128.2-126.5}{\sqrt{\frac{17.5^2}{1623} + \frac{20.1^2}{1911} }} \approx 2.688$</p>
 
 By looking at the z-score table above, $p(z \leq -2.688) \approx 0.0038$. The p-value, $2 \times p(z \leq -2.688) \approx 0.0076$, less than `0.05` threshold, so, we can reject $H_0$ and coclude that there is no statistically significant difference in mean systolic blood pressures between men and women.
 
