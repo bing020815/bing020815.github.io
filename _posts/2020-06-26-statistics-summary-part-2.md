@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Statistics Summary Part 2: Z-Test"
-date: 2020-06-26
+date: 2020-06-27
 theme: minimal
 mathjax: true
 categories: Math

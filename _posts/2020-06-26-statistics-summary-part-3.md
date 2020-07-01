@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Statistics Summary Part 3: T-Test"
-date: 2020-06-26
+date: 2020-06-29
 theme: minimal
 mathjax: true
 categories: Math
