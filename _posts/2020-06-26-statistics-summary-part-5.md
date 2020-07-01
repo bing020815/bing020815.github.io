@@ -31,7 +31,7 @@ Joint probability is a statistical measure that calculates the likelihood of two
 
 <ul style="list-style: none;">
   <li>The formula for Joint Probability is:</li>
-  <li style="display: inline; margin-right: 10%">$P(A \text{ or } B) = P(A \cup B)= P(A) + P(B) - P(A \cap B)$</li>
+  <li style="display: inline; margin-right: 10%">$P(A \text{ and } B) = P(A \cap B)= P(A) \times P(B)$</li>
   <li style="display: inline; ">$\text{when events A and B are independent}$</li>
 </ul>
 
@@ -46,7 +46,7 @@ Union of Events. The union of events A and B, denoted $A \cup B$, is the collect
 
 <ul style="list-style: none;">
   <li>The formula for Union of Events is:</li>
-  <li style="display: inline; margin-right: 10%">$P(A \text{ and } B) = P(A \cap B)= P(A) \times P(B)$</li>
+  <li style="display: inline; margin-right: 10%">$P(A \text{ or } B) = P(A \cup B)= P(A) + P(B) - P(A \cap B)$</li>
 </ul>
 
 <br>
