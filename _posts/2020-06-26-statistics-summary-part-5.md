@@ -64,7 +64,7 @@ For example: Event A is that it is raining outside, and it has a 0.3 (30%) chanc
   <li>The formula for Conditional Probability is:</li>
   <br>
   <li style="display: inline; margin-right: 10%;">$P(A|B) = \frac{P(A \text{ and } B)}{P(B)} = \frac{P(B|A) \times P(A)}{P(B)}$</li>
-  <li style="display: inline;">$Posterior = \frac{Prior \times Likelihood}{\text{Marginal Probability of Evidence}}$</li>
+  <li style="display: inline;">$Posterior = \frac{Likelihood \times Prior}{\text{Marginal Probability of Evidence}}$</li>
   <li><p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Bayes' Theorem</p></li>
   <li>Graphical:</li>
   <li><p align="center"><img src="{{site.baseurl}}/assets/images/post/statistics/conditional-prob.png" title=""></p></li>
