@@ -11,7 +11,7 @@ categories: Math
   <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Covariance vs Correlation Coefficient</p>
 </div>
 
-Before starting to talk about the `covariance` and `correlation coefficient`, the types of Relationships, `positive relationship` and `negative relationship`, must be mentioned in the beginning.
+Before starting to talk about the `covariance` and `correlation coefficient`, the types of relationships, `positive relationship` and `negative relationship`, must be mentioned in the beginning.
 
 ## Types of Relationships
 ### Positive Relationship:
@@ -39,7 +39,7 @@ The value of the covariance is not standardized. It has no boundaries, ranging f
   <li><br>  </li>
   <li style="display: inline; margin-right: 10%">$
   S_{xy} = \frac{\Sigma{ (x_i - \bar{x})(y_i - \bar{y}) }}{n-1}
-$</li>
+  $</li>
   <li style="display: inline; ">$\text{where $\bar{x}$ and $\bar{y}$ are the mean of the x and y variables; $n$ is the total number of paired observations for variable x and variable y}$</li> 
 </ul>
 
@@ -54,10 +54,10 @@ Correlation coefficients are standardized. Its values are ranging from 1 to nega
 
 <ul style="list-style: none;">
   <li>The formula for Correlation Coefficient:</li>
-  <li><br>  </li>
+  <li><br> </li>
   <li style="display: inline; margin-right: 10%">$
   r_{xy} = \frac{ S_{xy} }{ S_x S_y }
-$</li>
+  $</li>
   <li style="display: inline; ">$\text{where $S_x$ and $S_y$ are the standard deviation of the x and y variables; $S_{xy}$ is the covariance of the x and y variables}$</li> 
 </ul>
 
@@ -104,13 +104,13 @@ Covariance calculation table:
   <li>Covariance:</li>
   <li><p align="center">$
   cov(x,y) = S_{xy} = \frac{\Sigma{ (x_i - \bar{x})(y_i - \bar{y}) }}{n-1} = \frac{255}{7} \approx 36.43
-$</p></li>
-  <li><p align="center">There is a positive relationship between temperature and ice cream sales. But, we don not know how strong the relationship is.</p></li>
+  $</p></li>
+  <li><p align="center">There is a positive relationship between temperature and ice cream sales. But, we do not know how strong the relationship is.</p></li>
   <li><br></li>
   <li>Correlation Coefficient:</li>
   <li><p align="center">$
   cor(x,y) = r_{xy} = \frac{ S_{xy} }{ S_x S_y } = \frac{ 36.43 }{ (7.19)(5.13) } \approx 0.99
-$</p></li>
+  $</p></li>
   <li><p align="center">The correlation coefficient is close to 1, indicating that there is a <b>strong positive relationship</b> between temperature and ice cream sales.</p></li>
 </ul>
 
