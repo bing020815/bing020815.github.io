@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pyhon Baisc: *args and **kwargs"
+title: "Python Baisc: *args and **kwargs"
 date: 2020-08-15
 theme: minimal
 mathjax: true

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pyhon Baisc: List Comprehension"
+title: "Python Baisc: List Comprehension"
 date: 2020-08-13
 theme: minimal
 mathjax: true

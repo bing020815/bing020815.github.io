@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pyhon Baisc: PYTHON FOR EVERYBODY"
+title: "Python Baisc: PYTHON FOR EVERYBODY"
 date: 2020-08-03
 theme: minimal
 mathjax: true

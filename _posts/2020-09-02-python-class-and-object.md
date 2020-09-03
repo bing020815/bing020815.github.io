@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pyhon Baisc: Class and Objects"
+title: "Python Baisc: Class and Objects"
 date: 2020-09-02
 theme: minimal
 mathjax: true
