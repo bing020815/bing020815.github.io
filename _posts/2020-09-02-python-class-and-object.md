@@ -1,18 +1,18 @@
 ---
 layout: post
-title: "Python Baisc: Class and Objects"
+title: "Python Baisc: Classes and Objects"
 date: 2020-09-02
 theme: minimal
 mathjax: true
 categories: Python
 ---
 <div id='top'>
-  <p align="center"><img src="{{site.baseurl}}/assets/images/post/python/class-objects.png" title=""></p>
-  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Class and Objects</p>
+  <p align="center"><img src="{{site.baseurl}}/assets/images/post/python/classes-objects.png" title=""></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Classes and Objects</p>
 </div>
 
 ## Table of contents:  
-* [Class And Objects](#class-and-objects) 
+* [Classes And Objects](#classes-and-objects) 
 * [Basic Python Class](#basic-python-class) 
 * [Object Methods](#object-methods) 
 	+ [Getter, Deletor and Setter](#getter-deletor-and-setter)
@@ -25,7 +25,7 @@ categories: Python
 
 <br>
 
-## Class And Objects
+## Classes And Objects
 Python is an object oriented programming language. Almost everything in Python is an `object`, with its properties and methods. A `class` is like an `object` constructor, or a "blueprint" for creating objects.  
 
 For example:   
@@ -992,7 +992,9 @@ You got 3 questions right ! Congrats !!
 
 <br>
 Reference:   
-* [Python OOP Tutorials - Working with Classes](https://www.youtube.com/watch?v=ZDa-Z5JzLYM&list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc&index=1)  
+* [Python OOP Tutorials - Working with Classes](https://www.youtube.com/watch?v=ZDa-Z5JzLYM&list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc&index=1)
+* [Python Classes and Objects - w3school](https://www.w3schools.com/python/python_classes.asp)    
+* [Python Classes and Objects - geeksforgeeks](https://www.geeksforgeeks.org/python-classes-and-objects/)    
 * [Dunder or magic methods in Python](https://www.geeksforgeeks.org/dunder-magic-methods-python/)  
 * [Google Colab](https://colab.research.google.com/drive/1jgVIjPjNqJNmFhYMEyXdBv9CViIimy3E?usp=sharing)  
 
