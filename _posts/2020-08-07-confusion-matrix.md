@@ -22,7 +22,7 @@ In the confusion matrix, there are many evaluation metrics can be derived for ev
 * Recall/sensitivity
 * F1-score
 
-Accuracy rate is <u>focusing on the cases that were correctly predicted</u>. Precision is <u>focusing on the predicted cases that were truly true</u>. Recall, also known as sensitivity, is <u>focusing on the true cases that were correctly found</u>. And F1-score is simply <u> a harmonic mean of precision and recall</u>, a hybrid version of the overall score.  
+`Accuracy rate` is <u>focusing on the cases that were correctly predicted</u>. `Precision` is <u>focusing on the predicted cases that were truly true</u>. (When the precision is higher, it reduces the False Positive/Type I Error). `Recall`, also known as sensitivity, is <u>focusing on the true cases that were correctly found</u>. (When the recall is higher, it reduces the False Negative/Type II Error). And `F1-score` is simply <u> a harmonic mean of precision and recall</u>, a hybrid version of the overall score.  
 
 There are four type of states to describe in confusion matrix:  
 
