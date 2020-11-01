@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Python Tips: Array and List"
-date: 2020-10-01
+date: 2020-11-01
 theme: minimal
 mathjax: true
 categories: Python
