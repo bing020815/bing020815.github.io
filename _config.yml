@@ -20,3 +20,6 @@ plugins:
 # Where things are
 
 highlighter: rouge
+
+# resolve timezone issue when operating jekyll in local
+timezone: Asia/Taipei
