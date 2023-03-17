@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Confusion Matrix</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Confusion Matrix</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">07 Aug 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Data-science">Data-science</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/data-science/confusion_matrix0.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Confusion Matrix</p>
+</div>
+
+<h2 id="confusion-matrix">Confusion Matrix</h2>
+<p>A confusion matrix is a table that is often used to describe the performance of a classification model (classifier) on a set of test data for which the true values are known. It allows the visualization of the performance of an algorithm.</p>
+
+<p>In the confusion matrix, there are many evaluation metrics can be derived for evaluating model performance:</p>
+
+<ul>
+  <li>Accuracy</li>
+  <li>Precision</li>
+  <li>Recall/sensitivity</li>
+  <li>F1-score</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">Accuracy rate</code> is <u>focusing on the cases that were correctly predicted</u>. <code class="language-plaintext highlighter-rouge">Precision</code> is <u>focusing on the predicted cases that were truly true</u>. (When the precision is higher, it reduces the False Positive/Type I Error). <code class="language-plaintext highlighter-rouge">Recall</code>, also known as sensitivity, is <u>focusing on the true cases that were correctly found</u>. (When the recall is higher, it reduces the False Negative/Type II Error). And <code class="language-plaintext highlighter-rouge">F1-score</code> is simply <u> a harmonic mean of precision and recall</u>, a hybrid version of the overall score.</p>
+
+<p>There are four type of states to describe in confusion matrix:</p>
+
+<ul>
+  <li>TP (true positive)
+    <ul>
+      <li>An outcome where the model <strong>correctly predicts the positive</strong> class</li>
+    </ul>
+  </li>
+  <li>TN (true negative)
+    <ul>
+      <li>An outcome where the model <strong>correctly predicts the negative</strong> class</li>
+    </ul>
+  </li>
+  <li>FP (false positive / type I error)
+    <ul>
+      <li>An outcome where the model <strong>incorrectly predicts the positive</strong> class</li>
+    </ul>
+  </li>
+  <li>FN (false negative / type II error)
+    <ul>
+      <li>An outcome where the model <strong>incorrectly predicts the negative</strong> class</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+<p align="center"><img src="/assets/images/post/data-science/confusion_matrix.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Confusion Matrix Summary Table</p>
+
+<p>Recall and precision for each class:</p>
+<div id="postive" style="float: left; margin-right: 10%;">
+<ul style="list-style: none; ">
+  <li>$Recall_{class=Yes} = \frac{a}{(a + b)} $</li>
+  <li>$Precision_{class=Yes} = \frac{a}{(a + c)}$</li>
+  <li>$F_1 = \frac{2}{ \frac{1}{P} + \frac{1}{R} } = \frac{2PR}{(P+R)}$</li>
+</ul></div>
+
+<div id="negative">
+<ul style="list-style: none; display: inline;">
+  <li>$Recall_{class=No} = \frac{d}{(c + d)} $</li>
+  <li>$Precision_{class=No} = \frac{d}{(b + d)} $</li>
+  <li>where $ \text{ $P = Precision_{class}$ , and $R = Recall_{class}$ }$</li>
+</ul></div>
+
+<p><br /></p>
+
+<h2 id="example">Example:</h2>
+<p>Calculate precisions, recalls, and F-measure for the following prediction result. See result table below:</p>
+<p align="center"><img src="/assets/images/post/data-science/confusion_matrix_calculation.png" title="" style="width: 40%" /></p>
+
+<div id="postive" style="float: left; margin-right: 10%;">
+<ul style="list-style: none; ">
+  <li>Class = Positive:</li>
+  <li>$Recall_{class=positive} = \frac{a}{(a + b)} = \frac{70}{(70 + 10)} = 0.875$</li>
+  <li>$Precision_{class=positive} = \frac{a}{(a + c)} = \frac{70}{(70 + 10)} = 0.875$</li>
+  <li>$F1_{class=positive} = \frac{2}{ \frac{1}{P} + \frac{1}{R} } = \frac{2PR}{(P+R)} = \frac{2*0.875*0.875}{0.875+0.875} \approx 0.875$</li>
+</ul></div>
+
+<div id="negative">
+<ul style="list-style: none; display: inline;">
+  <li>Class = Negative:</li>
+  <li>$Recall_{class=negative} = \frac{d}{(c + d)} = \frac{10}{(10 + 10)} = 0.5$</li>
+  <li>$Precision_{class=negative} = \frac{d}{(b + d)} = \frac{10}{(10 + 10)} = 0.5$</li>
+  <li>$F1_{class=negative} = \frac{2}{ \frac{1}{P} + \frac{1}{R} } = \frac{2PR}{(P+R)} = \frac{2*0.5*0.5}{0.5+0.5} = 0.5$</li>
+</ul></div>
+
+<p><br />
+Reference: <br />
+<a href="https://en.wikipedia.org/wiki/Confusion_matrix">Confusion matrix</a><br />
+<a href="https://scikit-learn.org/stable/modules/model_evaluation.html#confusion-matrix">Metrics and scoring: quantifying the quality of predictions</a></p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

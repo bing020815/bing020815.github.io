@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Statistics Summary Part 5: Probability</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Statistics Summary Part 5: Probability</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">01 Jul 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Math">Math</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/statistics/probability.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Probability Concept</p>
+</div>
+
+<h2 id="probability">Probability</h2>
+
+<p>Probability is simply how likely something is to happen.</p>
+
+<p>Whenever we’re unsure about the outcome of an event, we can talk about the probabilities of certain outcomes—how likely they are. The analysis of events governed by probability is called statistics.</p>
+
+<p>This post is going to cover the following:</p>
+<ol>
+  <li><a href="#jointprob">Joint Probability</a></li>
+  <li><a href="#unionevents">Union of Events</a></li>
+  <li><a href="#conditionalprob">Conditional Probability</a></li>
+</ol>
+
+<h3 id="jointprob"><strong>(1). Joint Probability:</strong></h3>
+
+<p>Joint probability is a statistical measure that calculates the likelihood of two events occurring together and at the same point in time. Joint probability is the probability of event Y occurring at the same time that event X occurs.</p>
+
+<ul style="list-style: none;">
+  <li><p align="center"><img src="/assets/images/post/statistics/joint-of-events.png" title="" /></p></li>
+  <li>The formula for Joint Probability is:</li>
+  <li style="display: inline; margin-right: 10%">$P(A \text{ and } B) = P(A \cap B)= P(A) \times P(B)$</li>
+  <li style="display: inline; ">$\text{when events A and B are independent}$</li> 
+</ul>
+
+<p><br /></p>
+
+<h3 id="unionevents"><strong>(2). Union of Events:</strong></h3>
+
+<p>Union of Events. The union of events A and B, denoted $A \cup B$, is the collection of all outcomes that are elements of one or the other of the sets A and B, or of both of them.</p>
+
+<ul style="list-style: none;">
+  <li><p align="center"><img src="/assets/images/post/statistics/union-of-events.png" title="" /></p></li>	
+  <li>The formula for Union of Events is:</li>
+  <li style="display: inline; margin-right: 10%">$P(A \text{ or } B) = P(A \cup B)= P(A) + P(B) - P(A \cap B)$</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="conditionalprob"><strong>(3). Conditional Probability:</strong></h3>
+
+<p>Conditional probability is the probability of one event occurring with some relationship to one or more other events.</p>
+
+<p>For example: Event A is that it is raining outside, and it has a 0.3 (30%) chance of raining today. Event B is that you will need to go outside, and that has a probability of 0.5 (50%). A conditional probability would look at these two events in relationship with one another, such as the probability that it is both raining and you will need to go outside.</p>
+
+<ul style="list-style: none;">
+  <li>The formula for Conditional Probability is:</li>
+  <br />
+  <li style="display: inline; margin-right: 10%;">$P(A|B) = \frac{P(A \text{ and } B)}{P(B)} = \frac{P(B|A) \times P(A)}{P(B)}$</li>
+  <li style="display: inline;">$Posterior = \frac{Likelihood \times Prior}{\text{Marginal Probability of Evidence}}$</li>
+  <li><p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Bayes' Theorem</p></li>
+  <li>Graphical:</li>
+  <li><p align="center"><img src="/assets/images/post/statistics/conditional-prob.png" title="" /></p></li>
+
+</ul>
+
+<p><strong>Example 1:</strong></p>
+
+<p>Assume that eye color is an autosomally inherited trait controlled by one gene with two alleles. Brown is dominant to blue. A brown-eyed man with genotype Bb and a blue-eyed woman have three children. The first has blue eyes. What is the probability that all three children have blue eyes?</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">B</th>
+      <th style="text-align: center">b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>b</strong></td>
+      <td style="text-align: center">Bb</td>
+      <td style="text-align: center">bb</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>b</strong></td>
+      <td style="text-align: center">Bb</td>
+      <td style="text-align: center">bb</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The probability that the couple has three children with blue eyes is:</p>
+
+<p align="center">$
+P(A \text{ and } B) = P(\text{other 2 children = bb and 1st child bb}) = 0.5 \times 0.5 \times 0.5 = 0.125
+$</p>
+
+<p>Therefore,</p>
+<p align="center">$
+P(\text{other 2 children = bb | 1st child bb})= P(A|B) = \frac{P(A \text{ and } B)}{P(B)} = \frac{P(B|A) \times P(A)}{P(B)} = \frac{0.125}{0.5} = 0.25
+$</p>
+
+<p><strong>Example 2:</strong></p>
+
+<p>Based on the analysis of her pedigree, it is determined that a woman has a 70% chance of being Zz and a 30% chance of being ZZ for a sex-linked trait, where Z is dominant to z. IF she now has a son with the Z phenotype, what is the probability of her being Zz.</p>
+
+<p>The target is to find:</p>
+<p align="center">$
+P(A|B) = P(\text{woman=Zz | Son with the Z phenotype})
+$</p>
+
+<p>However, two events, $A:\text{woman=Zz}$ and $B: \text{Son with the Z phenotype}$ are not independent.<br />
+Thus, we use conditional probability:</p>
+
+<p align="center">$
+P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}
+$</p>
+<p align="center">$
+P(B|A) = P(\text{Son with the Zphenotype | woman=Zz }) = 0.5
+$</p>
+<p align="center"><i>50% of chance of passing on the Z allele</i></p>
+<p align="center">$
+P(A) = P(woman=Zz) = 0.7
+$</p>
+<p align="center"><i>Given</i></p>
+<p align="center">$
+P(B) = P(\text{Son with the Z phenotype}) = (0.7 \times 0.5)+(0.3 \times 1) = 0.65
+$</p>
+<p align="center"><i>Son can be Z from the woman being either Zz or ZZ</i></p>
+
+<p align="center">$
+P(\text{woman=Zz | Son with the Z phenotype}) = \frac{0.5 \times 0.7}{0.65} = 0.538
+$</p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

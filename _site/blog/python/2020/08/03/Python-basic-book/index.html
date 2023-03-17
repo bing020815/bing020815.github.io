@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Python Baisc: PYTHON FOR EVERYBODY</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Python Baisc: PYTHON FOR EVERYBODY</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">03 Aug 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Python">Python</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/python/python-basic.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Pyhon Baisc: <a href="https://www.amazon.com/Python-Everybody-Exploring-Data/dp/1530051126">PYTHON FOR EVERYBODY</a></p>
+</div>
+
+<h2 id="table-of-contents">Table of contents:</h2>
+<ul>
+  <li><a href="#introduction">Chapter 1. Introduction</a></li>
+  <li><a href="#variables">Chapter 2. Variables</a></li>
+  <li><a href="#conditional-execution">Chapter 3. Conditional Execution</a></li>
+  <li><a href="#functions">Chapter 4. Functions</a></li>
+  <li><a href="#iteration">Chapter 5. Iteration</a></li>
+  <li><a href="#strings">Chapter 6. Strings</a></li>
+  <li><a href="#files">Chapter 7. Files</a></li>
+  <li><a href="#list">Chapter 8. List</a></li>
+  <li><a href="#dictionaries">Chapter 9. Dictionaries</a></li>
+  <li><a href="#tuples">Chapter 10. Tuples</a></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="introduction">Introduction</h2>
+<h3 id="errors">Errors</h3>
+<p>In python, there are three general type of errors:</p>
+<ul>
+  <li>Syntax errors
+    <ul>
+      <li>Violated the “grammar” rules of python.</li>
+    </ul>
+  </li>
+  <li>Logic errors
+    <ul>
+      <li>A mistake in the order of the statements.</li>
+    </ul>
+  </li>
+  <li>Semantic errors
+    <ul>
+      <li>The program is perfectly correct but it does not do what you intended for it to do.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="debugging">Debugging</h3>
+<ol>
+  <li>Reading</li>
+  <li>Running</li>
+  <li>Ruminating
+    <ul>
+      <li>syntax</li>
+      <li>runtime</li>
+      <li>semantic</li>
+    </ul>
+  </li>
+  <li>retreating</li>
+</ol>
+
+<p><br /></p>
+
+<h2 id="variables">Variables</h2>
+<h3 id="data-type">Data Type</h3>
+<ul>
+  <li>String: str</li>
+  <li>Integers: int</li>
+  <li>Number with a decimal point: float</li>
+</ul>
+
+<p><strong>PS</strong>: Variable name cannot start with a number</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># This is a statement/assignment:
+</span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># This is a script:
+</span><span class="k">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></pre></figure>
+
+<h3 id="operation">Operation</h3>
+<ul>
+  <li>
+    <p><em>Order of operations:</em><br />
+Python follows the order of operations, PEMDAS, (Parenthese, Exponentiation, Multiplication, Division, Addition, Substraction)</p>
+  </li>
+  <li>
+    <p><em>Modulus Operator:</em></p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">quotient</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">//</span><span class="mi">3</span>
+<span class="k">print</span><span class="p">(</span><span class="n">quotient</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">remainder</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">%</span> <span class="mi">3</span>
+<span class="k">print</span><span class="p">(</span><span class="n">remainder</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<ul>
+  <li><em>String Operation:</em></li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Case 1
+</span><span class="n">first</span> <span class="o">=</span> <span class="s">'100'</span>
+<span class="n">second</span> <span class="o">=</span> <span class="s">'150'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">first</span> <span class="o">+</span> <span class="n">second</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>100150
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Case 2
+</span><span class="n">first</span> <span class="o">=</span> <span class="s">'Test'</span>
+<span class="n">second</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">print</span><span class="p">(</span><span class="n">first</span> <span class="o">*</span> <span class="n">second</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TestTestTest
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="conditional-execution">Conditional Execution</h2>
+<h3 id="bools">Bools</h3>
+<ul>
+  <li>Boolean Expression: TRUE/FALSE</li>
+  <li>Data Type: bool</li>
+</ul>
+
+<h3 id="operation-1">Operation</h3>
+<ul>
+  <li>Logical Operator:
+    <ul>
+      <li>and</li>
+      <li>or</li>
+      <li>not</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Condition expression tables:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>x != y</td>
+      <td>x is not equal to y</td>
+    </tr>
+    <tr>
+      <td>x &gt; y</td>
+      <td>x is greater than y</td>
+    </tr>
+    <tr>
+      <td>x &lt; y</td>
+      <td>x is less than y</td>
+    </tr>
+    <tr>
+      <td>x &gt;= y</td>
+      <td>x is greater than or equal to y</td>
+    </tr>
+    <tr>
+      <td>x &lt;= y</td>
+      <td>x is less than or equal to y</td>
+    </tr>
+    <tr>
+      <td>x is y</td>
+      <td>x is the same as y</td>
+    </tr>
+    <tr>
+      <td>x is not y</td>
+      <td>x is not the same as y</td>
+    </tr>
+    <tr>
+      <td>x == y</td>
+      <td>x is equal to y</td>
+    </tr>
+  </tbody>
+</table>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">inp</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"Enter Fahrenhiet:"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">fahr</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+    <span class="n">cel</span> <span class="o">=</span> <span class="p">(</span><span class="n">fahr</span><span class="o">-</span><span class="mf">32.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">5.0</span><span class="o">/</span><span class="mf">9.0</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">cel</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Enter Fahrenhiet:123
+50.55555555555556
+</code></pre></div></div>
+<p><br /></p>
+
+<h2 id="functions">Functions</h2>
+<p>A function is a named sequence of statements that performs a comptation.</p>
+
+<h3 id="built-in-function">Built-in function</h3>
+<ul>
+  <li>max: In a string, Z would be the largest one</li>
+  <li>min: In a string, a space would be the smallest</li>
+  <li>len: In a string, returns the # of characters</li>
+</ul>
+
+<h3 id="conversion-functions">Conversion functions</h3>
+<ul>
+  <li>int
+    <ul>
+      <li>Takes any value and converts it to an integer if it can</li>
+      <li>It can convert floating-point values to integers but it does not round off</li>
+      <li>It will chops off the fraction part</li>
+    </ul>
+  </li>
+  <li>float
+    <ul>
+      <li>It converts integers and strings to floating-point numbers</li>
+    </ul>
+  </li>
+  <li>str
+    <ul>
+      <li>It converts its argument to a string</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="math-functions">Math functions</h3>
+<p>A ‘math’ module needs to be imported by using:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">math</span></code></pre></figure>
+
+<ul>
+  <li>A module contains the functions and variables defined in the module.</li>
+  <li>To access one of the function, you have to specify the name of the module and the name of the function, separted by a dot</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">ratio</span> <span class="o">=</span> <span class="mi">12</span><span class="o">/</span><span class="mi">24</span>
+<span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">math</span><span class="p">.</span><span class="n">log10</span><span class="p">(</span><span class="n">ratio</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-3.010299956639812
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">radians</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">height</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.644217687237691
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">degrees</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="n">radians</span> <span class="o">=</span> <span class="n">degrees</span><span class="o">/</span><span class="mf">360.0</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="p">.</span><span class="n">pi</span>
+<span class="n">math</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.7071067811865475
+</code></pre></div></div>
+
+<h3 id="random-numbers">Random numbers</h3>
+<ul>
+  <li>random: (From <strong>random</strong> module)
+    <ul>
+      <li>It returns a random float between 0.0 and 1.0 (including 0.0 but not 1.0)</li>
+    </ul>
+  </li>
+  <li>randint
+    <ul>
+      <li>It takes the parameters ‘low’ and ‘high’ and returns an integer between ‘low’ and ‘high’</li>
+    </ul>
+  </li>
+  <li>choice
+    <ul>
+      <li>It choose an element from a sequence at random</li>
+    </ul>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># random
+</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.7305591062488854
+0.8859907707980562
+0.449918375542002
+0.7643633082695483
+0.42944509322878277
+0.8951958910887714
+0.3319489418362195
+0.11402093233851263
+0.7428676466169906
+0.9881847290549769
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># randint
+</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># randint
+</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># choice
+</span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># choice
+</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+<p>The <strong>random</strong> module also provides functions to generate random values form continuous distributions inclusing “Gaussian”, “exponential”, “gamma” and a few more.</p>
+
+<h3 id="define-a-new-function">Define a new function</h3>
+<p>A function definition specifies the name of a new function and the sequence of statements that exceute when the function is called.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">def</code>: It indicates that this is a function definition</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">print_lyrics</span><span class="p">():</span> 
+    <span class="k">print</span><span class="p">(</span><span class="s">"I'm a lumberjack, and I am okay."</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'I sleep all night and I work all day.'</span><span class="p">)</span>
+<span class="n">print_lyrics</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I'm a lumberjack, and I am okay.
+I sleep all night and I work all day.
+</code></pre></div></div>
+<ul>
+  <li>Defining a function also create a variable with the same name.</li>
+  <li>The value of the function is a function object, which has type “function”</li>
+  <li>Function can be used inside another function</li>
+  <li>The statements inside the function do not get executed until the function is called</li>
+</ul>
+
+<p>A function that can yeild a result is called <strong>fruitful functions</strong>; on the other hand, a function that can perform action but don’t return a value  is called <strong>void functions</strong>.</p>
+<ul>
+  <li>Void function might display something on the screen or have some other effects but they do not have a return value.</li>
+  <li>If you try to assign the result from a void function to a variable, you will get a speial value called “None”</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">print_twice</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">print_twice</span><span class="p">(</span><span class="s">'test'</span><span class="p">)</span> </code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>test
+test
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># nothing was assigned to the result variable
+</span><span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> </code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>None
+</code></pre></div></div>
+<p>In order to return a result from a function, use “<code class="language-plaintext highlighter-rouge">return</code>” statement.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">addtwo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">added</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="k">return</span> <span class="n">added</span>
+    
+<span class="n">x</span> <span class="o">=</span> <span class="n">addtwo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="iteration">Iteration</h2>
+<h3 id="loops">Loops</h3>
+<p>Python has three iteration/loops functions:</p>
+<ul>
+  <li>if - looping with conditions</li>
+  <li>for - looping through a know set of items</li>
+  <li>while - loops until some condition becomes False</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># The script has five iterations:
+</span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'blast off'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+4
+3
+2
+1
+blast off
+</code></pre></div></div>
+<h3 id="endless-loop">Endless Loop</h3>
+<p>The  <code class="language-plaintext highlighter-rouge">while True</code> statement creates an endless loops:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'&gt; '</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="s">'done'</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Done!'</span><span class="p">)</span></code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="strings">Strings</h2>
+<p>String literals in python are surrounded by either single quotation marks, or double quotation marks. <code class="language-plaintext highlighter-rouge">'hello'</code> is the same as <code class="language-plaintext highlighter-rouge">"hello"</code>. Each string has its index. The expression in brackets is called an index. Index starts from 0 to n-1. n is the length of a string.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fruit</span> <span class="o">=</span> <span class="s">'banana'</span>
+<span class="n">letter</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a
+</code></pre></div></div>
+
+<p>Getting the length of string using <code class="language-plaintext highlighter-rouge">len()</code>:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fruit</span> <span class="o">=</span> <span class="s">'banana'</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">length</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+<span class="n">last</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">last</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a
+</code></pre></div></div>
+
+<h3 id="negative-indices">Negative indices</h3>
+<p>Index can be expressed as a negative number:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fruit</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'a'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">length</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+<span class="n">fruit</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'n'
+</code></pre></div></div>
+
+<h3 id="loops-application">Loops application</h3>
+<p>Use while loop to write a traversal:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">index</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">while</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruit</span><span class="p">):</span>
+    <span class="n">letter</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">letter</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0: b
+1: a
+2: n
+3: a
+4: n
+5: a
+</code></pre></div></div>
+
+<p>Use for loop to write a traversal:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">fruit</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>b
+a
+n
+a
+n
+a
+</code></pre></div></div>
+
+<p>Use while loop to write a reverse traversal:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">index</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruit</span><span class="p">):</span>
+    <span class="n">letter</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="o">-</span><span class="n">index</span><span class="p">]</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">letter</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1: a
+2: n
+3: a
+4: n
+5: a
+6: b
+</code></pre></div></div>
+<h3 id="string-slices">String slices</h3>
+<p>Selecting a slice is similar to selecting a character.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span> <span class="o">=</span> <span class="s">'Monty Python'</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">12</span><span class="p">])</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Monty
+Python
+</code></pre></div></div>
+<p>The operator returns the part of the sting from the ‘<em>n-th</em>’ to ‘<em>m-th</em>’ character, including the first but excluding the last.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fruit</span> <span class="o">=</span> <span class="s">'banana'</span>
+<span class="n">fruit</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'ban'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fruit</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'ana'
+</code></pre></div></div>
+
+<p>If the first index is greater than or equal to the second the result is an empty string.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fruit</span> <span class="o">=</span> <span class="s">'banana'</span>
+<span class="n">fruit</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>''
+</code></pre></div></div>
+
+<p>The best you can do is create a new string that is a variation on the original:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">greeting</span> <span class="o">=</span> <span class="s">'Hello World!'</span>
+<span class="n">new_greeting</span> <span class="o">=</span> <span class="s">'J'</span> <span class="o">+</span> <span class="n">greeting</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">new_greeting</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Jello World!
+</code></pre></div></div>
+<h3 id="looping-and-counting">Looping and counting</h3>
+<p>Using loop to count charactors:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="s">'banana'</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s">'a'</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+2
+3
+</code></pre></div></div>
+<h3 id="the-in-operator">The ‘in’ operator</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">'a'</span> <span class="ow">in</span> <span class="s">'banana'</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">'seed'</span> <span class="ow">in</span> <span class="s">'banana'</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+<h3 id="string-comparison">String comparison</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="s">'banana'</span>
+<span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s">'banana'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'All right, bananas'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>All right, bananas
+</code></pre></div></div>
+
+<h3 id="string-methods">String Methods</h3>
+<ul>
+  <li>There are string methods can be used
+    <ul>
+      <li><strong>dir</strong>: shows the available methods</li>
+      <li><strong>type</strong>: type of an object</li>
+    </ul>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># check object type
+</span><span class="n">stuff</span> <span class="o">=</span> <span class="s">'hello world'</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">stuff</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>str
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">dir</span><span class="p">(</span><span class="n">stuff</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['__add__',
+ '__class__',
+ '__contains__',
+ '__delattr__',
+ '__dir__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__getitem__',
+ '__getnewargs__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__init_subclass__',
+ '__iter__',
+ '__le__',
+ '__len__',
+ '__lt__',
+ '__mod__',
+ '__mul__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__rmod__',
+ '__rmul__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ 'capitalize',
+ 'casefold',
+ 'center',
+ 'count',
+ 'encode',
+ 'endswith',
+ 'expandtabs',
+ 'find',
+ 'format',
+ 'format_map',
+ 'index',
+ 'isalnum',
+ 'isalpha',
+ 'isdecimal',
+ 'isdigit',
+ 'isidentifier',
+ 'islower',
+ 'isnumeric',
+ 'isprintable',
+ 'isspace',
+ 'istitle',
+ 'isupper',
+ 'join',
+ 'ljust',
+ 'lower',
+ 'lstrip',
+ 'maketrans',
+ 'partition',
+ 'replace',
+ 'rfind',
+ 'rindex',
+ 'rjust',
+ 'rpartition',
+ 'rsplit',
+ 'rstrip',
+ 'split',
+ 'splitlines',
+ 'startswith',
+ 'strip',
+ 'swapcase',
+ 'title',
+ 'translate',
+ 'upper',
+ 'zfill']
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">help</span><span class="p">(</span><span class="nb">str</span><span class="p">.</span><span class="n">capitalize</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Help on method_descriptor:
+
+capitalize(...)
+    S.capitalize() -&gt; str
+    
+    Return a capitalized version of S, i.e. make the first character
+    have upper case and the rest lower case.
+</code></pre></div></div>
+
+<p>Calling a method is similar to calling a function but the syntax is different:</p>
+
+<ol>
+  <li>upper</li>
+  <li>find</li>
+  <li>strip</li>
+  <li>lower</li>
+  <li>startswith</li>
+  <li>count</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># upper
+</span><span class="n">word</span> <span class="o">=</span> <span class="s">'banana'</span>
+<span class="n">new_word</span> <span class="o">=</span> <span class="n">word</span><span class="p">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">new_word</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BANANA
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># find
+</span><span class="n">word</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">'na'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># find (setting the index where it should start)
+</span><span class="n">word</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">'na'</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># strip: get rid of leading and trailing spaces
+</span><span class="n">line</span> <span class="o">=</span> <span class="s">' Here we go             '</span>
+<span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Here we go'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># lower
+</span><span class="n">line</span> <span class="o">=</span> <span class="s">'Have a nice day'</span>
+<span class="n">line</span><span class="p">.</span><span class="n">lower</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'have a nice day'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># startswith
+</span><span class="n">line</span> <span class="o">=</span> <span class="s">'Have a nice day'</span>
+<span class="n">line</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'h'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">line</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'H'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># count
+</span><span class="n">line</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">'e'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<h3 id="parsing-strings">Parsing strings</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">data</span> <span class="o">=</span> <span class="s">' from abc@this.is.test Sat Jan 23:45:67 2019'</span>
+<span class="n">atpos</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">'@'</span><span class="p">)</span>
+<span class="n">stoppos</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">' '</span><span class="p">,</span> <span class="n">atpos</span><span class="p">)</span> <span class="c1"># find the position of the blank starting the search from the position of at sign
+</span><span class="n">host</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">atpos</span> <span class="o">+</span><span class="mi">1</span> <span class="p">:</span><span class="n">stoppos</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">host</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this.is.test
+</code></pre></div></div>
+
+<h3 id="format-operator">Format operator</h3>
+<p>The format operator, <code class="language-plaintext highlighter-rouge">%</code>, allows us to construct strings, replacing parts of the strings with the data stored in variables. <code class="language-plaintext highlighter-rouge">%d</code> means that the second operand should be formatted as an integer:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">camels</span><span class="o">=</span><span class="mi">42</span>
+<span class="s">"I have spotted %d camels"</span> <span class="o">%</span><span class="n">camels</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'I have spotted 42 camels'
+</code></pre></div></div>
+
+<p>Other format operators, such as <code class="language-plaintext highlighter-rouge">%g</code> is to format a floating-point number and <code class="language-plaintext highlighter-rouge">%s</code> is to format a string:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="s">'In %d years, I have spotted %g %s.'</span> <span class="o">%</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s">'camels'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'In 3 years, I have spotted 0.1 camels.'
+</code></pre></div></div>
+<p><br /></p>
+
+<h2 id="files">Files</h2>
+<h3 id="use-open">Use open()</h3>
+
+<p>Count each of the lines in a files:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'inbox-short.txt'</span><span class="p">)</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fhand</span><span class="p">:</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span><span class="mi">1</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Line count:'</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span></code></pre></figure>
+
+<p>If the file is relatively small compared to the size of your main memory, using the ‘read’ method on the file handle.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'inbox-short.txt'</span><span class="p">)</span>
+<span class="n">inp</span> <span class="o">=</span> <span class="n">fhand</span><span class="p">.</span><span class="n">read</span><span class="p">()</span></code></pre></figure>
+
+<p>If the file is too large to fit in main memory, you should write your program to read the file in chunks using a for or while loop.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'inbox-short.txt'</span><span class="p">)</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fhand</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">line</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'From:'</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></code></pre></figure>
+
+<p>As the file processing programs get more complicated, you may want to structure your search loops using “continue”</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'inbox-short.txt'</span><span class="p">)</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fhand</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="c1"># skip 'uninteresting lines'
+</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'From:'</span><span class="p">):</span>
+        <span class="k">continue</span>
+<span class="c1"># process the 'interesting lines'
+</span>    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li>find() return -1 if the string was not found</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fhand</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'inbox-short.txt'</span><span class="p">)</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fhand</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">line</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">'@utc.ac.za'</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li>try/except for reading file program</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fname</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter the file name:'</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">fhand</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s">'inbox-short.txt'</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'File cannot be opened'</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
+    <span class="nb">exit</span><span class="p">()</span> <span class="c1"># terminate the program
+</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fhand</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="c1"># skip 'uninteresting lines'
+</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'Subject:'</span><span class="p">):</span>
+        <span class="n">count</span><span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'There were'</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s">'subject lives in'</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span></code></pre></figure>
+
+<h3 id="writting-files">writting files</h3>
+<p>To write a file, you have to open it with mode “w” as a second parameter:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># If the file already exists, opening it in write mode clears out the old data and starts fresh
+# + sign allow the 'read' mode
+</span><span class="n">fout</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'output.txt'</span><span class="p">,</span><span class="s">'w+'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">fout</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;_io.TextIOWrapper name='output.txt' mode='w+' encoding='UTF-8'&gt;
+</code></pre></div></div>
+
+<p>The ‘write’ method of the file handle object puts data into the file, returning the number of characters written.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">line1</span><span class="o">=</span><span class="s">'This is test line</span><span class="se">\n</span><span class="s">'</span>
+<span class="n">fout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>18
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fout</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is test line
+</code></pre></div></div>
+
+<p>Close the file when writting is done.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fout</span><span class="p">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+<p>Spaces, tabs, and newlines can be treated as a string by using ‘repr’</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">s</span><span class="o">=</span><span class="s">'1 2</span><span class="se">\t</span><span class="s"> 3</span><span class="se">\n</span><span class="s"> 4'</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Without "repr":</span><span class="se">\n</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'With "repr":</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Without "repr":
+1 2  3
+ 4
+
+With "repr":'1 2\t 3\n 4'
+</code></pre></div></div>
+<p><br /></p>
+
+<h2 id="list">List</h2>
+<p>A list is a sequence of values (elements/items).</p>
+
+<ul>
+  <li>In a string: values are characters</li>
+  <li>In a list: values can be any type</li>
+  <li>Example: [10, 20, 30, 40]</li>
+</ul>
+
+<p>A list within another list is nested. A list that contains no elements is called an empty list.<br />
+Example:</p>
+<ul>
+  <li>[]</li>
+  <li>[‘Spam’, 2.0, 5, [10,20]]</li>
+</ul>
+
+<p>Here, <code class="language-plaintext highlighter-rouge">'Spam'</code> is string type; <code class="language-plaintext highlighter-rouge">2.0</code> is float type, <code class="language-plaintext highlighter-rouge">5</code> is integer; and <code class="language-plaintext highlighter-rouge">[10,20]</code> is a list.</p>
+
+<p>Functions can be used for list:</p>
+<ul>
+  <li>len(): returns the number of elements in the list</li>
+  <li>range(): returns a list of indices from 0 to n-1</li>
+</ul>
+
+<h3 id="lists-are-mutable">Lists are mutable</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Define a list
+</span><span class="n">cheeses</span> <span class="o">=</span> <span class="p">[</span><span class="s">'cheddar'</span><span class="p">,</span> <span class="s">'Edam'</span> <span class="p">,</span> <span class="s">'Gouda'</span><span class="p">]</span>
+<span class="c1"># assign a value to the list
+</span><span class="n">cheeses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">'Cheddar'</span>
+<span class="c1"># call the lis
+</span><span class="n">cheeses</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Cheddar', 'Edam', 'Gouda']
+</code></pre></div></div>
+
+<h3 id="list-operation">List operation</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Concatenation
+</span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5, 6]
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Repetition
+</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 0, 0, 0]
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Repetition
+</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">*</span> <span class="mi">3</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 1, 2, 3, 1, 2, 3]
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Membership
+</span><span class="mi">1</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Iteration
+</span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span> 
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+2
+3
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Length
+</span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<h3 id="list-slices">List slices</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'f'</span><span class="p">]</span>
+<span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['b', 'c']
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'b', 'c', 'd']
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="p">[:]</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'b', 'c', 'd', 'e', 'f']
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'f'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'b', 'c', 'd', 'e']
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="s">'x'</span><span class="p">,</span><span class="s">'y'</span><span class="p">]</span>
+<span class="n">t</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'x', 'y', 'd', 'e', 'f']
+</code></pre></div></div>
+
+<h3 id="list-methods">List methods</h3>
+<ol>
+  <li>append</li>
+  <li>extend</li>
+  <li>sort</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># append
+</span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">]</span>
+<span class="n">t</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="s">'d'</span><span class="p">,</span><span class="s">'e'</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'b', 'c', ['d', 'e']]
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># extend
+# This method leaves t2 unmodified
+</span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">]</span>
+<span class="n">t2</span><span class="o">=</span> <span class="p">[</span><span class="s">'d'</span><span class="p">,</span><span class="s">'e'</span><span class="p">]</span>
+<span class="n">t1</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'b', 'c', 'd', 'e']
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># sort
+</span><span class="n">t</span><span class="o">=</span><span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'f'</span><span class="p">]</span>
+<span class="n">t</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'b', 'c', 'd', 'e', 'f']
+</code></pre></div></div>
+<p>DONT USE <code class="language-plaintext highlighter-rouge">t=t.sort()</code> ! It will return “NONE” !!</p>
+
+<h3 id="deleting-elements">Deleting elements</h3>
+
+<ol>
+  <li>pop - can save the deleted value</li>
+  <li>del - Don’t need the removed value and know index</li>
+  <li>remove - know elem,ent but not index</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># pop
+</span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">]</span>
+<span class="n">x</span><span class="o">=</span><span class="n">t</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'t: </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'x: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s">'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>t: ['a', 'c']
+x: b
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># del
+</span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a']
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># remove
+</span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">]</span>
+<span class="n">t</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="s">'b'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'c']
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sum()</code> can only be used when the elements are numbers</li>
+  <li><code class="language-plaintext highlighter-rouge">max()</code>, <code class="language-plaintext highlighter-rouge">len()</code>, etc, can be used with lists of strings and other types</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">numlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">inp</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter a number:'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">inp</span> <span class="o">==</span> <span class="s">'done'</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+    <span class="n">numlist</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numlist</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">numlist</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Average: </span><span class="si">{</span><span class="n">average</span><span class="si">}</span><span class="s">'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Enter a number:10
+Average: 10.0
+Enter a number:85
+Average: 47.5
+Enter a number:2
+Average: 32.333333333333336
+Enter a number:done
+</code></pre></div></div>
+
+<h3 id="lists-and-strings">Lists and strings</h3>
+<p>Convert a string to a list of char:</p>
+<ol>
+  <li>list</li>
+  <li>split</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># list - break a string into individual letters
+</span><span class="n">s</span><span class="o">=</span><span class="s">'spam'</span>
+<span class="n">t</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['s', 'p', 'a', 'm']
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># split - break a string into words
+</span><span class="n">s</span> <span class="o">=</span> <span class="s">"printing      for the    frog"</span>
+<span class="n">t</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="n">split</span><span class="p">()</span>  <span class="c1">#- In default, it will split all the words on varies of white spaces
+</span><span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['printing', 'for', 'the', 'frog']
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>frog
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># split - with delimiter
+</span><span class="n">s</span><span class="o">=</span><span class="s">'spam-spam-spam'</span>
+<span class="n">delimiter</span> <span class="o">=</span> <span class="s">'-'</span>
+<span class="n">s</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">delimiter</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['spam', 'spam', 'spam']
+</code></pre></div></div>
+
+<p>Take a list of strings and concatenates the elements:</p>
+<ul>
+  <li>join</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># delimiter as a whitespace
+</span><span class="n">t</span><span class="o">=</span><span class="p">[</span><span class="s">'printing'</span><span class="p">,</span> <span class="s">'for'</span><span class="p">,</span> <span class="s">'the'</span><span class="p">,</span> <span class="s">'frog'</span><span class="p">]</span>
+<span class="n">delimiter</span><span class="o">=</span><span class="s">' '</span>
+<span class="n">delimiter</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'printing for the frog'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># delimiter as None
+</span><span class="n">t</span><span class="o">=</span><span class="p">[</span><span class="s">'printing'</span><span class="p">,</span> <span class="s">'for'</span><span class="p">,</span> <span class="s">'the'</span><span class="p">,</span> <span class="s">'frog'</span><span class="p">]</span>
+<span class="n">delimiter</span><span class="o">=</span><span class="s">''</span>
+<span class="n">delimiter</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'printingforthefrog'
+</code></pre></div></div>
+
+<h3 id="parsing-lines">Parsing lines</h3>
+<ul>
+  <li>If two list are equivalent, they are not necessarily identical.</li>
+  <li>If two list are identical, they are also equivalent.</li>
+</ul>
+
+<h3 id="aliasing">Aliasing</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">b</span> <span class="ow">is</span> <span class="n">a</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+<p>Now, b is refering a. When b is changed, a is also changed.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+[17, 2, 3]
+</code></pre></div></div>
+<p>In general, it is safter to avoid aliasing when you are working withmutable objects. 
+<br /></p>
+
+<h2 id="dictionaries">Dictionaries</h2>
+<ul>
+  <li>A dictionary is like a list</li>
+  <li>The indices of a dictionary can be any type</li>
+  <li>Dictionary: A mapping between a set of indices (which are called keys) and a set of values</li>
+  <li>Key-value pair: the associationi of a key and a value</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">adict</span><span class="o">=</span><span class="nb">dict</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{}
+</code></pre></div></div>
+<p>The curly breakets, {}, represent an empty dictionary.<br />
+To add items to the dictionary, use square brackets:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># add a key value pair: 'one':'uno'
+</span><span class="n">adict</span><span class="p">[</span><span class="s">'one'</span><span class="p">]</span><span class="o">=</span><span class="s">'uno'</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The order of items in a dictionary isunpredictable.
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">adict</span><span class="o">=</span><span class="p">{</span><span class="s">'one'</span><span class="p">:</span><span class="s">'uno'</span><span class="p">,</span> <span class="s">'two'</span><span class="p">:</span><span class="s">'dos'</span><span class="p">,</span> <span class="s">'three'</span><span class="p">:</span><span class="s">'tres'</span><span class="p">,</span> <span class="s">'a'</span><span class="p">:</span><span class="s">'wha'</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'one': 'uno', 'two': 'dos', 'three': 'tres', 'a': 'wha'}
+</code></pre></div></div>
+
+<p>Look up the corresponding values by keys:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s">'a'</span><span class="p">])</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wha
+</code></pre></div></div>
+
+<p>The len function works on dictionaries; it returns the number of key value pairs:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">len</span><span class="p">(</span><span class="n">adict</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<p>The “in” operator works on dictionaries; it tells you whether something appears as a key in the dictionary:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># works with key
+</span><span class="s">'one'</span> <span class="ow">in</span> <span class="n">adict</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># does not work with value
+</span><span class="s">'uno'</span> <span class="ow">in</span> <span class="n">adict</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<p>Use ‘values’ to see whether somehing appears as a value in a dictionary:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">vals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">adict</span><span class="p">.</span><span class="n">values</span><span class="p">())</span>
+<span class="s">'uno'</span> <span class="ow">in</span> <span class="n">vals</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<h3 id="dictionary-as-a-set-of-counters">Dictionary as a set of counters</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="s">'brontosaurus'</span>
+<span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+        <span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'b': 1, 'r': 2, 'o': 2, 'n': 1, 't': 1, 's': 2, 'a': 1, 'u': 2}
+</code></pre></div></div>
+
+<h3 id="get">Get</h3>
+<p>It takes a key and a default value. If the key appears in the dictionary. ‘get’ returns the corresponding value; otherwise it returns the default value.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">counts</span> <span class="o">=</span> <span class="p">{</span><span class="s">'chuck'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'annie'</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span> <span class="s">'jan'</span><span class="p">:</span><span class="mi">100</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">counts</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'jan'</span><span class="p">))</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>100
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">counts</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'tim'</span><span class="p">))</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>None
+</code></pre></div></div>
+
+<p>Write a histogram loop</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">word</span> <span class="o">=</span> <span class="s">'brontosaurus'</span>
+<span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+    <span class="c1"># get(c,0): if there is not key in the dictionary, return 0
+</span>    <span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'b': 1, 'r': 2, 'o': 2, 'n': 1, 't': 1, 's': 2, 'a': 1, 'u': 2}
+</code></pre></div></div>
+
+<h3 id="dictionaries-and-files">Dictionaries and files</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fname</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter the file name:'</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">fhand</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'File cannot be opend:'</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
+    <span class="nb">exit</span><span class="p">()</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fhand</span><span class="p">:</span>
+    <span class="n">words</span><span class="o">=</span><span class="n">line</span><span class="p">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+            <span class="n">count</span><span class="p">[</span><span class="n">word</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span><span class="o">+=</span><span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span></code></pre></figure>
+
+<h3 id="looping-and-dictionaries">Looping and dictionaries</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">counts</span> <span class="o">=</span> <span class="p">{</span><span class="s">'chuck'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'annie'</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span> <span class="s">'jan'</span><span class="p">:</span><span class="mi">100</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">counts</span><span class="p">[</span><span class="n">key</span><span class="p">])</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chuck 1
+annie 42
+jan 100
+</code></pre></div></div>
+
+<h3 id="using-pattern">Using pattern</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">counts</span> <span class="o">=</span> <span class="p">{</span><span class="s">'chuck'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'annie'</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span> <span class="s">'jan'</span><span class="p">:</span><span class="mi">100</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">counts</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">10</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">counts</span><span class="p">[</span><span class="n">key</span><span class="p">])</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>annie 42
+jan 100
+</code></pre></div></div>
+
+<h3 id="make-the-keys-in-alphabetical-order">Make the keys in alphabetical order</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">counts</span> <span class="o">=</span> <span class="p">{</span><span class="s">'chuck'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'annie'</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span> <span class="s">'jan'</span><span class="p">:</span><span class="mi">100</span><span class="p">}</span>
+
+<span class="n">lst</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+<span class="n">lst</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">counts</span><span class="p">[</span><span class="n">key</span><span class="p">])</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['chuck', 'annie', 'jan']
+annie 42
+chuck 1
+jan 100
+</code></pre></div></div>
+
+<h3 id="advanced-text-parsing-with-punctuation">Advanced text parsing (with punctuation)</h3>
+<ol>
+  <li>string method:
+    <ul>
+      <li>lower</li>
+      <li>punctuation</li>
+      <li>translate</li>
+    </ul>
+  </li>
+  <li>fromstr
+    <ul>
+      <li>replace the characters</li>
+    </ul>
+  </li>
+  <li>tostr
+    <ul>
+      <li>with the character in the same position</li>
+    </ul>
+  </li>
+  <li>deletstr
+    <ul>
+      <li>delete all charactors</li>
+    </ul>
+  </li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">string</span>
+<span class="n">string</span><span class="p">.</span><span class="n">punctuation</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'!"#$%&amp;\'()*+,-./:;&lt;=&gt;?@[\\]^_`{|}~'
+</code></pre></div></div>
+
+<p>To remove punctuation of a text:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">fname</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Enter the file name:'</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">fhand</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'File cannot be opend:'</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
+    <span class="nb">exit</span><span class="p">()</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fhand</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s">' '</span><span class="p">,</span><span class="s">''</span><span class="p">,</span><span class="n">string</span><span class="p">.</span><span class="n">punctuation</span><span class="p">))</span>
+    <span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">words</span><span class="o">=</span><span class="n">line</span><span class="p">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+            <span class="n">count</span><span class="p">[</span><span class="n">word</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span><span class="o">+=</span><span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span></code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="tuples">Tuples</h2>
+<p>A tuple is a sequence of values much like a list.
+THe values stored in a tuple can be any type and they are indexed by integers.</p>
+
+<ul>
+  <li>tuples are immutable</li>
+  <li>tuples are also comparable and hashable</li>
+  <li>tuples can be sorted and be used as key alues in Python dictionaries</li>
+  <li>tuple is a comma-separated list of values</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span> <span class="o">=</span> <span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span>
+<span class="n">t</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('a', 'b', 'c', 'd', 'e')
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">)</span>
+<span class="n">t</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('a', 'b', 'c', 'd', 'e')
+</code></pre></div></div>
+<p>To create a tuple with a single element, a final comma must be included. Otherwise, python will treats (‘a’) as an expression with a string:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t1</span><span class="o">=</span><span class="p">(</span><span class="s">'a'</span><span class="p">,)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tuple
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="o">=</span><span class="nb">tuple</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>()
+</code></pre></div></div>
+
+<p>If the argument is a sequence (string, list, or tuple), the result of the call to tuple is a tuple with the elements of the swquence:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="s">'lupins'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('l', 'u', 'p', 'i', 'n', 's')
+</code></pre></div></div>
+<p><b>Tuple cannot be modified:</b></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="s">'A'</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+&lt;ipython-input-144-2cabaacd7cc5&gt; in &lt;module&gt;()
+----&gt; 1 t[0]='A'
+
+TypeError: 'tuple' object does not support item assignment
+</code></pre></div></div>
+
+<p><b>But tuple can be replaced by other tuple:</b></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="s">'A'</span><span class="p">,</span> <span class="p">)</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('A', 'u', 'p', 'i', 'n', 's')
+</code></pre></div></div>
+
+<h3 id="comparing-tuples">Comparing tuples</h3>
+<ol>
+  <li>Decorate</li>
+  <li>Sort</li>
+  <li>Undercorate
+Sort a list of words from longest to shortest:</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">txt</span> <span class="o">=</span> <span class="s">'but soft what light in yonder window breaks'</span>
+<span class="n">words</span><span class="o">=</span><span class="n">txt</span><span class="p">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">t</span><span class="o">=</span><span class="nb">list</span><span class="p">()</span>
+<span class="n">words</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'sorted on alphabet:'</span><span class="p">,</span><span class="n">words</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">),</span> <span class="n">word</span><span class="p">))</span> <span class="c1">#tuple
+</span><span class="n">t</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'sorted on length:'</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">length</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+    <span class="n">res</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sorted on alphabet: ['yonder', 'window', 'what', 'soft', 'light', 'in', 'but', 'breaks']
+sorted on length: [(6, 'yonder'), (6, 'window'), (6, 'breaks'), (5, 'light'), (4, 'what'), (4, 'soft'), (3, 'but'), (2, 'in')]
+['yonder', 'window', 'breaks', 'light', 'what', 'soft', 'but', 'in']
+</code></pre></div></div>
+
+<h3 id="tuple-assignment">Tuple assignment</h3>
+<p>It can be assigned to more than one variable at a time when the left side is a sequence</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">m</span><span class="o">=</span><span class="p">[</span><span class="s">'have'</span><span class="p">,</span> <span class="s">'fun'</span><span class="p">]</span>
+<span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">m</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>have
+fun
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">m</span><span class="o">=</span><span class="p">[</span><span class="s">'have'</span><span class="p">,</span> <span class="s">'fun'</span><span class="p">]</span>
+<span class="n">x</span><span class="o">=</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span><span class="o">=</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>have
+fun
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">m</span><span class="o">=</span><span class="p">[</span><span class="s">'have'</span><span class="p">,</span> <span class="s">'fun'</span><span class="p">]</span>
+<span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">=</span><span class="n">m</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>have
+fun
+</code></pre></div></div>
+
+<p><b>Swap the values of two variables in a single statement:</b></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'before:'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span><span class="n">a</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">after:'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>before:
+1
+2
+
+after:
+2
+1
+</code></pre></div></div>
+
+<p>Split an email address into a name&amp;domain:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">addr</span><span class="o">=</span><span class="s">'monty@python.org'</span>
+<span class="n">uname</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">addr</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'@'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">uname</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>monty
+python.org
+</code></pre></div></div>
+
+<p>Dictionaries have a method called “<code class="language-plaintext highlighter-rouge">items</code>” that returns a list of tuples, where each tuple is akey-value pair:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">d</span><span class="o">=</span><span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+<span class="n">t</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">items</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[('a', 10), ('c', 22), ('b', 1)]
+</code></pre></div></div>
+
+<p>It can be sorted after using <code class="language-plaintext highlighter-rouge">.items()</code>:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">d</span><span class="o">=</span><span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+<span class="n">t</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">items</span><span class="p">())</span>
+<span class="n">t</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">t</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[('a', 10), ('b', 1), ('c', 22)]
+</code></pre></div></div>
+
+<p>Mutiple assignment with dictionaries:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'key:{:1} value:{:2}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">))</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>key:a value:10
+key:c value:22
+key:b value: 1
+</code></pre></div></div>
+<ul>
+  <li>Lists are more common than tuples</li>
+  <li>There are a few cases you might prefer tuples</li>
+  <li>“return” statement
+    <ul>
+      <li>it is sytactically simpler to create a tuple than a list</li>
+    </ul>
+  </li>
+  <li>use a sequence as a dictionary key
+    <ul>
+      <li>you have to use an immutable type like a tuple or string</li>
+    </ul>
+  </li>
+  <li>passing a sequence as an argement to a function, using tuples reduces the potential for unexpected behavior</li>
+</ul>
+
+<p>‘sort’, ‘sorted’, ‘reverse’, ‘reversed’ do work on tuples</p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

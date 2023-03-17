@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Template for kmarkdown reference</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Template for kmarkdown reference</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">01 Jan 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Life, Python, Math, Database, Data-science, Others">Life, Python, Math, Database, Data-science, Others</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <h2 id="images">images</h2>
+<div id="top">
+  <p align="center"><img src="/assets/images/post/bjw.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Description of picture</p>
+</div>
+
+<h2 id="codes">codes</h2>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># code put here
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'hellow world'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ouput here:
+helloworld
+</code></pre></div></div>
+
+<h2 id="math-equation">Math equation</h2>
+
+<p>$ \frac{a}{b}-math-equation-with-one-dollar \pi $<br />
+\(math-equation-with-two-dollars-\frac{a}{b}\)</p>
+
+<p>$% \f is defined as f(#1) using the macro
+	f(x) = \int_{-\infty}^\infty
+    \hat \f\xi\,e^{2 \pi i \xi x}
+    \,d\xi$
+\(\begin{align}
+  \nabla\times\vec{\mathbf{B}}-\frac{1}{c}\frac{\partial\vec{\mathbf{E}}}{\partial t} &amp;= \frac{4\pi}{c}\vec{\mathbf{j}} \\
+  \nabla\cdot\vec{\mathbf{E}} &amp;= 4\pi\rho \\
+  \nabla\times\vec{\mathbf{E}}+\frac{1}{c}\frac{\partial\vec{\mathbf{B}}}{\partial t} &amp;= \vec{\mathbf{0}} \\
+  \nabla\cdot\vec{\mathbf{B}} &amp;= 0 \\
+  \text{this is text}
+\end{align}\)</p>
+
+<p align="center">$
+\begin{equation}
+       y_i^{(\lambda)}= 
+        \begin{cases}
+            \frac{y_i^{\lambda}-1}{\lambda} &amp; \text{if $\lambda \neq 0 $,} \\
+            \ln y_i &amp; \text{if $\lambda = 0$}
+        \end{cases}
+    \end{equation}
+$</p>
+
+<h2 id="more-example">More example</h2>
+
+\[\frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} \equiv 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}} {1+\frac{e^{-8\pi}} {1+\cdots} } } }\]
+
+\[\begin{align*}
+  \dot{x} &amp;= \sigma(y - x) \\
+  \dot{y} &amp;= \rho x - y - xz \\
+  \dot{z} &amp;= -\beta z + xy
+\end{align*}\]
+
+\[\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)\]
+
+\[\Gamma\ \Delta\ \Theta\ \Lambda\ \Xi\ \Pi\ \Sigma\ \Upsilon\ \Phi\ \Psi\ \Omega\]
+
+\[\omicron\ \pi\ \rho\ \sigma\ \tau\ \upsilon\ \phi\ \chi\ \psi\ \omega\ \varepsilon\ \vartheta\ \varpi\ \varrho\ \varsigma\ \varphi\]
+
+\[\alpha\ \beta\ \gamma\ \delta\ \epsilon\ \zeta\ \eta\ \theta\ \iota\ \kappa\ \lambda\ \mu\ \nu\ \xi\]
+
+\[\gets\ \to\ \leftarrow\ \rightarrow\ \uparrow\ \Uparrow\ \downarrow\ \Downarrow\ \updownarrow\ \Updownarrow\]
+
+\[f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi i \xi x}\]
+
+\[\mathbf{V}_1 \times \mathbf{V}_2 =
+\begin{vmatrix}
+  \mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+  \frac{\partial X}{\partial u} &amp; \frac{\partial Y}{\partial u} &amp; 0 \\
+  \frac{\partial X}{\partial v} &amp; \frac{\partial Y}{\partial v} &amp; 0
+\end{vmatrix}\]
+
+<h2 id="this-is-a-demo-of-all-styled-elements-in-jekyll-now">This is a demo of all styled elements in Jekyll Now.</h2>
+
+<p><a href="https://raw.githubusercontent.com/barryclark/www.jekyllnow.com/gh-pages/_posts/2014-6-19-Markdown-Style-Guide.md">View the markdown used to create this post</a>.</p>
+
+<p>This is a paragraph, it’s surrounded by whitespace. Next up are some headers, they’re heavily influenced by GitHub’s markdown style.</p>
+
+<h2 id="header-2-h1-is-reserved-for-post-titles">Header 2 (H1 is reserved for post titles)##</h2>
+
+<h3 id="header-3">Header 3</h3>
+
+<h4 id="header-4">Header 4</h4>
+
+<p>A link to <a href="http://github.com/barryclark/jekyll-now/">Jekyll Now</a>. A big ass literal link <a href="http://github.com/barryclark/jekyll-now/">http://github.com/barryclark/jekyll-now/</a></p>
+
+<p>An image, located within /images</p>
+
+<p><img src="/images/jekyll-logo.png" alt="an image alt text" title="an image title" /></p>
+
+<ul>
+  <li>A bulletted list</li>
+  <li>alternative syntax 1</li>
+  <li>alternative syntax 2
+    <ul>
+      <li>an indented list item</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>An</li>
+  <li>ordered</li>
+  <li>list</li>
+</ol>
+
+<p>Inline markup styles:</p>
+
+<ul>
+  <li><em>italics</em></li>
+  <li><strong>bold</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">code()</code></li>
+</ul>
+
+<blockquote>
+  <p>Blockquote</p>
+  <blockquote>
+    <p>Nested Blockquote</p>
+  </blockquote>
+</blockquote>
+
+<p>Syntax highlighting can be used by wrapping your code in a liquid tag like so:</p>
+
+<p>{% highlight javascript %}<br />
+/* Some pointless Javascript */
+var rawr = [“r”, “a”, “w”, “r”];
+{% endhighlight %}</p>
+
+<p>creates…</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/* Some pointless Javascript */</span>
+<span class="kd">var</span> <span class="nx">rawr</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">r</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">w</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">r</span><span class="dl">"</span><span class="p">];</span></code></pre></figure>
+
+<p>Use two trailing spaces<br />
+on the right<br />
+to create linebreak tags</p>
+
+<p>Finally, horizontal lines</p>
+
+<hr />
+<hr />
+<p>```</p>
+
+<hr />
+
+<p>####See below for how it beautifully renders in <code class="language-plaintext highlighter-rouge">HTML</code> 😉</p>
+
+<hr />
+<p>layout: post
+title: Markdown Style Guide
+—</p>
+
+<p>This is a demo of all styled elements in Jekyll Now.</p>
+
+<p><a href="https://raw.githubusercontent.com/barryclark/www.jekyllnow.com/gh-pages/_posts/2014-6-19-Markdown-Style-Guide.md">View the markdown used to create this post</a>.</p>
+
+<p>This is a paragraph, it’s surrounded by whitespace. Next up are some headers, they’re heavily influenced by GitHub’s markdown style.</p>
+
+<h2 id="header-2-h1-is-reserved-for-post-titles-1">Header 2 (H1 is reserved for post titles)##</h2>
+
+<h3 id="header-3-1">Header 3</h3>
+
+<h4 id="header-4-1">Header 4</h4>
+
+<p>A link to <a href="http://github.com/barryclark/jekyll-now/">Jekyll Now</a>. A big ass literal link <a href="http://github.com/barryclark/jekyll-now/">http://github.com/barryclark/jekyll-now/</a></p>
+
+<p>An image, located within /images</p>
+
+<p><img src="/images/jekyll-logo.png" alt="an image alt text" title="an image title" /></p>
+
+<ul>
+  <li>A bulletted list</li>
+  <li>alternative syntax 1</li>
+  <li>alternative syntax 2
+    <ul>
+      <li>an indented list item</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>An</li>
+  <li>ordered</li>
+  <li>list</li>
+</ol>
+
+<p>Inline markup styles:</p>
+
+<ul>
+  <li><em>italics</em></li>
+  <li><strong>bold</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">code()</code></li>
+</ul>
+
+<blockquote>
+  <p>Blockquote</p>
+  <blockquote>
+    <p>Nested Blockquote</p>
+  </blockquote>
+</blockquote>
+
+<p>Syntax highlighting can be used by wrapping your code in a liquid tag like so:</p>
+
+<p>{% highlight javascript %}<br />
+/* Some pointless Javascript */
+var rawr = [“r”, “a”, “w”, “r”];<br />
+{% endhighlight %}</p>
+
+<p>creates…</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/* Some pointless Javascript */</span>
+<span class="kd">var</span> <span class="nx">rawr</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">r</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">w</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">r</span><span class="dl">"</span><span class="p">];</span></code></pre></figure>
+
+<p>Use two trailing spaces<br />
+on the right<br />
+to create linebreak tags</p>
+
+<p>Finally, horizontal lines</p>
+
+<hr />
+<hr />
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

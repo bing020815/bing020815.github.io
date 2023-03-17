@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Database Management: Hadoop Ecosystem</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Database Management: Hadoop Ecosystem</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">08 Aug 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Database">Database</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/database/hadoop-ecosystem.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Hadoop Ecosystem</p>
+</div>
+
+<h2 id="hadoop">Hadoop</h2>
+<p>When we talk about <strong>big data</strong>, we often think of Hadoop. Why? Hadoop is a system for <u>storing data</u>, <u>processing data</u> and <u>managing data</u>. It can ingest data from different platform or resources. In the big data world, sometimes, the traditional DBMSs could not meet their reporting requirements. Companies may require to shorten the time to process a significant amount of data. Increasing more storage or computer power could be another benefit using Hadoop.</p>
+
+<p>Hadoop consists of three basic parts:</p>
+<ul>
+  <li><strong>HDFS</strong>: storing data</li>
+  <li><strong>YARN</strong>: managing data</li>
+  <li><strong>MapReduce</strong>: processing data</li>
+</ul>
+
+<p>Hadoop implements cluster management in the system. It stores data and process data in clusters. Each cluster contains a master node and worker nodes. The master node runs the Apache Yarn as <strong>Resource Manager</strong>. The worker node runs Apache Yarn as <strong>Node Manager</strong> to getting the information of CPU, memory, disk and network usage to the <strong>Resource Manager</strong>. The <strong>Resource Manager</strong> decides where to direct the new tasks based on the current workloads reported from <strong>Node Manager</strong> with the Scheduler and ApplicationsManager.</p>
+
+<p align="center"><img src="/assets/images/post/database/cluster.png" title="" /></p>
+
+<p>Hadoop Data are:</p>
+<ul>
+  <li>Time-variant: reflect that point in time</li>
+  <li>Non-volatile: not updated</li>
+  <li>Subject-oriented: stored by topic</li>
+</ul>
+
+<p>The example of hadoop data are web logs, sales transactions, event records, sensor data…etc</p>
+
+<p><br /></p>
+
+<h3 id="the-hadoop-philosophy">The Hadoop Philosophy</h3>
+
+<ul>
+  <li>Capture the data “as are” and store them.</li>
+  <li>Do not transform before you store them.</li>
+  <li>Store all the data, as you don’t know what you’ll need.</li>
+  <li>Transform them when you query them.</li>
+</ul>
+
+<p>This is the anti-pattern of relational modeling!</p>
+
+<p><br /></p>
+
+<h3 id="how-does-hadoop-differ-from-relational">How Does Hadoop Differ From Relational?</h3>
+
+<div id="relation_vs_hadoop">
+  <style>
+  table {border: none; width: 100%; table-layout: fixed ;}
+  </style>
+  <table cellspacing="0" cellpadding="0">
+  <thead>
+  <tr>
+  <th align="center">Relational</th>
+  <th align="center">Hadoop</th>
+  </tr>
+  </thead>
+
+  <tbody> <tr>
+  <td>
+  	<ul style="list-style: none">
+  		<li>1. Schema on write; need a table</li>
+  		<li>2. Fast reads</li>
+  		<li>3. Highly structured data</li>
+  		<li>4. Declarative data processing(SQL)</li>
+  		<li>5. Good for ACID transactions, business data</li>
+  	</ul>
+  </td>
+  <td>
+  	<ul style="list-style: none">
+  		<li>1. Schema on read; schema applied when data are read</li>
+  		<li>2. Fast writes</li>
+  		<li>3. Loosely structured data; write the data “as they are” to HDFS</li>
+  		<li>4. Declarative and procedural data processing</li>
+  		<li>5. Good for logs, data streams, unstructured data discovery</li>
+  	</ul>
+  </td>
+  </tr>  </tbody>   
+  </table>
+  </div>
+
+<p><strong>Note: ACID (Atomicity, Consistency, Isolation, Durability)</strong></p>
+
+<p><br /></p>
+
+<h3 id="mapreduce">MapReduce</h3>
+<p>MapReduce is a processing technique and a program model for distributed computing based on java. Map takes a set of data and converts it into another set of data, where individual elements are broken down into tuples (key/value pairs).</p>
+<ul>
+  <li><strong>Map</strong>: apply a transformation to a data set</li>
+  <li><strong>Shuffle</strong>: transfer output from Mapper to Reducer nodes</li>
+  <li><strong>Reduce</strong>: aggregate items into a single result</li>
+  <li><strong>Combine</strong>: output of Reducer nodes into single output</li>
+</ul>
+
+<p align="center"><img src="/assets/images/post/database/mapreduce.png" title="" style="width: 60%" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">MapReduce process</p>
+
+<p><br /></p>
+
+<h3 id="hdfs">HDFS</h3>
+<p>The Hadoop Distributed File System (HDFS) is a distributed file system designed to run on commodity hardware. It is highly fault-tolerant and is designed to be deployed on low-cost hardware. HDFS provides high throughput access to application data and is suitable for applications that have large data sets.</p>
+
+<p>HDFS is reponsible for:</p>
+<ul>
+  <li>Distributed data storage paradigm</li>
+  <li>A single file is divided into blocks</li>
+  <li>Blocks are spread across nodes</li>
+  <li>Blocks are written multiple times for redundancy</li>
+</ul>
+
+<p align="center"><img src="/assets/images/post/database/abc.png" title="" /></p>
+<p align="center"><img src="/assets/images/post/database/HDFS.png" title="" /></p>
+
+<p><br /></p>
+
+<h2 id="hadoop-ecosystem-in-action">Hadoop Ecosystem in Action</h2>
+
+<p align="center"><img src="/assets/images/post/database/ecosystem.png" title="" style="width: 90%" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Hadoop Ecosystem in Action</p>
+
+<p><br /></p>
+
+<h2 id="options-for-data-ingestion">Options for Data Ingestion</h2>
+
+<p align="center"><img src="/assets/images/post/database/data_ingestion.png" title="" style="width: 75%" /></p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Git</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Git</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">13 Jan 2021 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Data-science">Data-science</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/data-science/git.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Git</p>
+</div>
+
+<h2 id="what-is-git">What is Git?</h2>
+
+<p>According to the official documentation, Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.</p>
+
+<p>When we work on a project, we often need to have version control. And, Git is a tool that can help on version control.</p>
+
+<p><br /></p>
+
+<h2 id="how-does-git-work">How does Git work?</h2>
+
+<p>First, Git handles content in snapshots, one for each commit, and knows how to apply or roll back the change sets between two snapshots. This is an important concept. Understanding the concept of applying and rolling back change sets makes Git much easier to understand and work with.</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/creating_a_change_from_version_A_to_version_B.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">Process of creating a change from branch A to branch B</p>
+
+<h3 id="naming">Naming</h3>
+
+<p>Snapshots, changes, are the main elements in Git. They are named with the <strong>commit ID</strong>, which is a hash ID like “6e3cd7b0261a299d84e867d7bd765d6df3435ba7” for example. It comprises of the actual content and some metadata like time of submission, author information, parents, etc. Git takes the minimum number of characters from the start of the ID as its commit ID. “6e3cd7b” is the example here.</p>
+
+<p>A branch in Git is only a named pointer to a specific snapshot. It notes the place where new changes should be applied to when this branch is used.</p>
+
+<h3 id="branching">Branching</h3>
+
+<p>The concept behind branching is that each snapshot can have more than one child. Applying a second change set to the same snapshot creates a new, separate stream of development.</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/branch_structure_in_git.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">Example branch structure in Git</p>
+
+<p>As the figure shown above, there are three branches, master, old and feature, in the Repo. Each branch points to different snapshot. <code class="language-plaintext highlighter-rouge">HEAD</code> is the pointer that points to the current working branch.</p>
+
+<h3 id="merging">Merging</h3>
+
+<p>When a new feature development is finished, it needs to be merged back into the master branch. To do so, the master branch should be checking out with a <code class="language-plaintext highlighter-rouge">git merge &lt;branch name&gt;</code> command. Git merges the changes from the given branch into the checked out branch. What Git does is to apply all of the change sets from the feature branch onto the tip of the master branch.</p>
+
+<p>Depending on the type of changes in the two branches, and possible conflicts, there are three possibilities that can happen.</p>
+
+<ul>
+  <li>Fast forward merge</li>
+  <li>No-conflict merge</li>
+  <li>Conflicting merge</li>
+</ul>
+
+<h4 id="fast-forward-merge">Fast forward Merge</h4>
+
+<p>The receiving branch, master (by checking out master as the first step), did not get any changes since the two branches are diverging. The receiving branch still points to the last commit before the other branch, feature. In this case, Git moves the branch pointer of the receiving branch, master, forward to the last snapshot in the other branch, feature. Because there is nothing to do besides moving the branch pointer forward, Git calls this a fast forward merge.</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/fast_forward_merge.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">Fast-forward merge</p>
+
+<h4 id="no-conflict-merge">No-conflict Merge</h4>
+
+<p>There are changes in both branches, master and feature, but they do not have conflict. Tthe changes in both branches affect different files. Git can automatically apply all changes from the other branch into the receiving branch, master, and create a new commit with these changes included. The receiving branch is then moved forward to that commit</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/no_conflict_merge.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">No-conflict merge</p>
+
+<h4 id="conflicting-merge">Conflicting Merge</h4>
+
+<p>There are changes in both branches, but they conflict. In this case, the conflicting result is left in the working directory for the user to fix and commit, or to abort the merge with <code class="language-plaintext highlighter-rouge">git merge –abort</code> command.</p>
+
+<p>To deeply understand how to resolve conflict in action, check <a href="https://github.com/bing020815/git/blob/master/git-Solving_Conflict.md">Sovling Conflict</a></p>
+
+<p><br /></p>
+
+<p>Apart from merging, sometimes, we develop a feature, but the master development also heads on in parallel. At that time, we do not want to merge the developing feature with master branch just yet. The consequence would be that the two branches, master and feature, move away from each other quite quickly. However, it is possible to apply change sets from one branch to another. Git offers the <code class="language-plaintext highlighter-rouge">rebase</code> and the <code class="language-plaintext highlighter-rouge">cherry-picking</code> feature for that.</p>
+
+<h3 id="rebasing">Rebasing</h3>
+
+<p>Normally, we are developing a feature and need to incorporate the latest changes from the master branch to keep up with general development. This is so called <strong>rebasing feature branch</strong>. It moves the diversion point between the two branches up on one of the branches. Git puts the oldest snapshot from one branch on top of the tip of the other branch, creating new commits for each of the original commits.</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/rebasing_a_branch.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">Rebasing a branch</p>
+
+<h3 id="cherry-picking">Cherry picking</h3>
+
+<p>Usually, we are working on a feature, and have developed some change that should be put into the master development immediately. This could be a bug fix, or a cool feature but you don’t want to merge or rebase the branches yet. Git allows to copy a change set from one branch to another by using the cherry pick feature.</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/cherry_picking_a_commit.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">Cherry picking a commit</p>
+
+<h3 id="revert">Revert</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">revert</code> command rolls back one or more patch sets on the working directory, then creates a new commit on the result. <code class="language-plaintext highlighter-rouge">revert</code> is almost the reverse of a <code class="language-plaintext highlighter-rouge">cherry-pick</code>.</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/reverting_a_commit.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">Reverting a commit</p>
+
+<p><br /></p>
+
+<h2 id="workflow">Workflow</h2>
+
+<p align="center"><img style="width: 60%" src="/assets/images/post/data-science/git_workflow.png" title="" /></p>
+
+<p>Here is a list of common workflow that we will use as a developer:</p>
+
+<ul>
+  <li>Create a branch for desired feature</li>
+  <li>Do some changes and commit the changes</li>
+  <li>After commit, push branch to remote</li>
+  <li>Merge a branch</li>
+  <li>Deleting a branch</li>
+</ul>
+
+<p>To deeply understand the workflow in action, check <a href="https://github.com/bing020815/git/blob/master/git-Command_Line_Basics.md#common-workflow">Common workflow</a></p>
+
+<p><br /></p>
+
+<h2 id="reference">Reference:</h2>
+<p><a href="https://git-scm.com/">git</a><br />
+<a href="https://developer.ibm.com/technologies/web-development/tutorials/d-learn-workings-git/">Learn the workings of Git</a></p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

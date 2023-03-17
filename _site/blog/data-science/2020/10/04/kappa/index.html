@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Cohen’s Kappa</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Cohen’s Kappa</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">04 Oct 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Data-science">Data-science</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/data-science/kappa.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Cohen’s Kappa statistic measure</p>
+</div>
+
+<h2 id="cohens-kappa-statistic-measure">Cohen’s Kappa Statistic Measure</h2>
+<p>The Cohen’s Kappa statistic measure was used to find the degree of agreement between two annotators. The Kappa value give a quantitative measure of the agreement in any situation in which or more independent observers evaluating the same thing.</p>
+
+<p>The equation of the Kappa value is $K \equiv \frac{P_o - P_e}{1-Pe} = 1 - \frac{1-P_o}{1-Pe}$, where $P_o$ is the probability of random agreement and $P_e$ is the probability of expected agreement.</p>
+
+<p align="center"><img src="/assets/images/post/data-science/annotators_matrix.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Matrix of two annotators</p>
+
+<p>The matrix above shows the agreement of two persons. The equation of the observed proportionate agreement is $P_o = \frac{(a+d)}{(a+b+c+d)}$. <br />
+The equation for the expected probability is $P_e = \frac{(a+b)}{(a+b+c+d)} \times \frac{(a+c)}{(a+b+c+d)} + \frac{(c+d)}{(a+b+c+d)} \times \frac{(b+d)}{(a+b+c+d)}$.</p>
+
+<p align="center"><img src="/assets/images/post/data-science/kappa_interpretation.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Interpretation of Cohen’s Kappa</p>
+
+<p>By utilizing the Kappa formula, the kappa value can be interpreted through the interpretation table shown above. In the case of <u>using kappa value as one of metric to evaluate the machine learning models</u>, two annotators can be substituted as <b>true labels</b> and <b>prediction outcome</b> .</p>
+
+<p><br /></p>
+
+<h2 id="example">Example:</h2>
+<h3 id="amazon-mechanical-turk-experiment">Amazon Mechanical Turk Experiment</h3>
+<p>Often we need data with labels in order to train models. However, it could be a tough task to gether data with its ground truth, considering the cost of time and money. Amazon Mechanical Turk program provides the solution for researchers to get data labeled in the timeless and cheaper fasions. But, is the tool good enough to be used to label the unlabeled data? Is it better to find the area experts to do the labeling? The experiment is going to find out if AMT is a viable solution for labeling data.</p>
+
+<h4 id="about-the-data">About the Data</h4>
+<p>Data were sampled from Yelp restaurant reviews. Six restaurant reviews were sampled. There is one one-star review, two two-stars reviews, one four-stars review and two five-stars reviews. The ‘label’ column was created with rules, number of stars below 3 labeled as ‘negative’ and number of stars above 3 labeled as ‘positive’.  It is esteemed as the data ground truth. Three restaurant reviews were labeled as ‘n’ and the other three were labeled as ‘p’.</p>
+
+<p align="center"><img src="/assets/images/post/data-science/kappa_dataset_dictionary.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Dataset Dictionary</p>
+
+<p align="center"><img src="/assets/images/post/data-science/kappa_dataset.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Dataset</p>
+
+<h4 id="the-experiment">The Experiment</h4>
+
+<p>The data were used for the Amazon Mechanical Turk (AMT) experiment. The experiment was designed to have five assignments for each of documents, yelp restaurant reviews. In order to get the result in time, a short time period was set up as 2 days.  There was no requirement for Turkers to complete the tasks. Five Turkers were expected to be hired for annotating the sentiment of the restaurant reviews. However, in lack of understanding how the AMT workflow works, there were 18 Turkers fulfilled the request. The project was done within four hours. With the price of $0.2 per Human Intelligence Task (HIT) and 30 assignments in total, the total cost is \$7.2 for the entire project.</p>
+
+<h4 id="analysis-and-result">Analysis and Result</h4>
+
+<p align="center"><img src="/assets/images/post/data-science/AMT_table.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">AMT table: Turkers participation and annotation with the ground truth, label</p>
+
+<p>The AMT table above shows the information how the six documents and annotation were distributed into 18 Turkers. It is clear to see that one of the Turkers, annotator Q, has systematic bias, favoring the ‘positive’ label. Another Turker who could be the potential systematic bias is annotator J. That Turker has annotated three ‘positive’ labels when there is only one document actually is ‘positive’. However, the result of the experiment cannot hold the credibility because of lack of evidences. If there are more instances that all six documents were responded by the same Turker, the analysis could be stronger and persuasive.</p>
+
+<p align="center"><img src="/assets/images/post/data-science/AMT_avg_vote.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">AMT Average vote score </p>
+
+<p>The bar chart above shows the bias between the Annotators and the ground truth. The sentiment labeled from Turkers were calculated for voting. The vote score is the average of the labels score (‘n’:0, ‘p’:1) for each document. If the vote score equal to 1, it means the sentiment label is the same as the ground truth. As the vote score getting lower, it shows that the disagreement between Turkers and the ground truth. By taking closer look at The bar chart, it pointed out that two documents, document 4 and document 5, have the same sentiment. Both documents are positive reviews based on the ground truth. Its review contains positive words or phrase without too much ambiguous sentences or tones, such as ‘Famous’, ‘better’, ‘placed was packed’, ‘premium’, ‘illuminating review’, ‘hadn’t heard code violation’…etc.</p>
+
+<p>The Cohen’s Kappa measure can be used as the tool to compare the degree of agreement on two Annotators or AMT Tukers and ground truth:</p>
+
+<div id="P_vs_Q">
+<table><tr>
+  <td align="center">
+  	<p align="center"><img src="/assets/images/post/data-science/AMT_P_vs_Q.png" title="" /></p>
+	<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Turker P vs Turker Q</p>
+  </td>
+  <td style="vertical-align: top;  text-align: left;">
+	<ul style="list-style: none; display: inline;">
+		<li>Annotator P vs Annotator Q:</li>
+		<li>$ P_o = \frac{(a+d)}{(a+b+c+d)} = \frac{1}{4} = 0.25$</li>
+		<li>$ P_e = \frac{(a+b)}{(a+b+c+d)} \times \frac{(a+c)}{(a+b+c+d)} + \frac{(c+d)}{(a+b+c+d)} \times \frac{(b+d)}{(a+b+c+d)} = \frac{3}{4} \times \frac{0}{4} + \frac{1}{4} \times \frac{4}{4} = \frac{1}{4} = 0.25$</li>
+		<li>$ K \equiv \frac{P_o - P_e}{1-P_e} = 1 - \frac{1-P_o}{1-P_e} = 1- \frac{1-0.25}{1-0.25} = 0$</li>
+		<li>$ \because K &lt; 0$ </li>
+		<li>$ \therefore$ Both annotator has very poor agreement on the review sentiment</li>
+	</ul>
+  </td>
+</tr></table>
+</div>
+
+<div id="truth_vs_turkers">
+<table><tr>
+  <td align="center">
+  	<p align="center"><img src="/assets/images/post/data-science/truth_vs_turkers.png" title="" /></p>
+	<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Ground Truth vs AMT Turkers</p>
+  </td>
+  <td style="vertical-align: top;  text-align: left;">
+	<ul style="list-style: none; display: inline;">
+		<li>Ground Truth vs Turkers</li>
+		<li>$ P_o = \frac{(a+d)}{(a+b+c+d)} = \frac{1}{4} = 0.733$</li>
+		<li>$ P_e = \frac{(a+b)}{(a+b+c+d)} \times \frac{(a+c)}{(a+b+c+d)} + \frac{(c+d)}{(a+b+c+d)} \times \frac{(b+d)}{(a+b+c+d)} = \frac{15}{30} \times \frac{11}{30} + \frac{15}{30} \times \frac{19}{30} = \frac{1}{2} = 0.5$</li>
+		<li>$ K \equiv \frac{P_o - P_e}{1-P_e} = 1 - \frac{1-P_o}{1-P_e} = 1- \frac{1-0.733}{1-0.5} = 1 - 0.534 = 0.467$</li>
+		<li>$\because 0.41 &lt; K &lt; 0.60 $ </li>
+		<li>$\therefore$ Ground truth and Turkers have moderate agreement on the review sentiment</li>
+	</ul>
+  </td>
+</tr></table>
+</div>
+
+<p>Since there are two annotators having overlaps on 4 documents, document 2, document 3, document 5 and document 6, the Cohen’s Kappa measure can be used to compare the degree of agreement on two Annotators. The first table above shows the matrix between Annotator P and Annotator Q. The Kappa value was calculated. Both annotators, Annotator P and Annotator Q have poor agreement and the data are not reliable as the ground truth. However, this result cannot represent the conclusion because of the sample size. If there are more labeled data to be compared, the Kappa value could have improvement in this case.</p>
+
+<p>For the degree of agreement between the ground truth and Turkers, a Kappa value was calculated as the second table shown above. The Kappa measurement is 0.467. According to the Interpretation of Cohen’s Kappa table, this value is in ‘moderate agreement’ category. It seems like the annotations from Turkers are not too far from the ground truth but also not too close to the ground truth as well. It may have some reasons. One is that the annotators might be systematic bias, such as annotator Q. The other thing needs to be mentioned is that the samples are not enough for advanced analysis between Turkers. A complete sample, having several Turkers finished all six documents annotation, should be obtained more for identifying the reliability. Based on the result of the experiment, the statement of ‘AMT is a viable approach for obtaining training labels’ cannot not be confirmed in this case. Although the result is not satisfying, it still has the possibility that AMT can be another approach to get the training labels, with restrict requirements on hired workers. By combining the factors, such as cost, time, and resources, into the consideration, using Amazon Mechanical Turk as an alternative to obtain the training data is still a viable approach.</p>
+
+<p><br />
+Reference: <br />
+<a href="https://en.wikipedia.org/wiki/Cohen%27s_kappa">Cohen’s kappa, from Wikipedia</a>  <br />
+<a href="http://vassarstats.net/kappa.html">Kappa Online Tool</a>  <br />
+<a href="https://www.youtube.com/watch?v=DfNo32nL_fo&amp;t=105s">Kappa Value Calculation, from YouTube</a>  <br />
+<a href="https://www.youtube.com/watch?v=AfgFyzGGlto">Cohen’s Kappa in Excel, from YouTube</a></p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

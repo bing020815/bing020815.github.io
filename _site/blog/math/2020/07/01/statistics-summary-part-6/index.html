@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Statistics Summary Part 6: Multiple Experiments</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Statistics Summary Part 6: Multiple Experiments</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">01 Jul 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Math">Math</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/statistics/binomial_distribution.png" title="" style="width: 40%" /><img src="/assets/images/post/statistics/poisson-distribution.png" title="" style="width: 40%" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Binomial Distribution and Poisson Distribution; <a href="https://www.statisticshowto.com/probability-and-statistics/binomial-theorem/binomial-distribution-formula/">Source 1</a> and <a href="https://www.statisticshowto.com/poisson-distribution/">Source 2</a></p>
+</div>
+
+<h2 id="binomial-distribution">Binomial Distribution</h2>
+
+<p>A binomial distribution can be thought of as simply the probability of a <code class="language-plaintext highlighter-rouge">SUCCES</code>S or <code class="language-plaintext highlighter-rouge">FAILURE</code> outcome in an experiment or survey that is repeated multiple times.</p>
+
+<p>The binomial is a type of distribution that has two possible outcomes. For example, a coin toss has only two possible outcomes: heads or tails and taking a test could have two possible outcomes: pass or fail.</p>
+
+<ul style="list-style: none;">
+  <li>The formula for Binomial Distribution is:</li>
+  <li style="display: inline; margin-right: 10%">$
+  P(X = m) = \frac{n! \times p^m \times (1-p)^(n-m)}{m! \times (n-m)!}
+$</li>
+  <li style="display: inline; ">$\text{where `m` is outcome of event X in `n` total trials with `p`=probability of X occuring once}$</li> 
+</ul>
+
+<p><strong>Example:</strong> <br />
+What is the probability that a couple has one boy out of five children?</p>
+
+<ul style="list-style: none;">
+  <li>Number of trials (n) = 5</li>
+  <li>Probability of getting a boy (p) = 0.5</li>
+  <li>Number of outcomes (m) = 1</li>
+  <li><p align="center">$
+  P(X = 1) = \frac{n! \times p^m \times (1-p)^(n-m)}{m! \times (n-m)!} = \frac{5! \times 0.5^1 \times (1-0.5)^(5-1)}{1! \times (5-1)!} = 0.15625
+$</p></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="poisson-distribution">Poisson Distribution</h2>
+
+<p>A Poisson distribution is a tool that helps to predict the probability of certain events from happening when you know how often the event has occurred. It gives us the probability of a given number of events happening in a fixed interval of time.</p>
+
+<p>The binomial distribution works for a small number of trials but as n gets too large, the factorials become unwieldy.
+THe Poisson distribution is an estimate of the binomial distribution for large n.</p>
+
+<ul style="list-style: none;">
+  <li>The formula for Poisson Distribution is:</li>
+  <li style="display: inline; margin-right: 10%">$
+  P(X = m) = \frac{e^{-\lambda} \times (\lambda)^m}{m!}
+$</li>
+  <li style="display: inline; ">$\text{where $\lambda$ (event rate) is also known as the number of expected outcomes for event X }$</li> 
+</ul>
+
+<p><strong>Example:</strong> <br />
+The average number of major storms in your city is 2 per year. What is the probability that exactly 3 storms will hit your city next year?</p>
+
+<ul style="list-style: none;">
+  <li>Number of expected outcomes for event X ($\lambda$) = 3</li>
+  <li>e = 2.71828</li>
+  <li>Number of outcomes (m) = 3</li>
+  <li><p align="center">$
+  P(X = 3) = \frac{e^{-\lambda} \times (\lambda)^m}{m!} = \frac{2.71828^{-2} \times (2)^3}{3!} = \frac{0.13534 \times 8}{6}= 0.180
+$</p></li>
+</ul>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

@@ -1,0 +1,2537 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-17T23:54:04+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">BING-JE WU, Data Science Enthusiastic Learner</title><entry><title type="html">Git</title><link href="http://localhost:4000/blog/data-science/2021/01/13/git/" rel="alternate" type="text/html" title="Git" /><published>2021-01-13T00:00:00+08:00</published><updated>2021-01-13T00:00:00+08:00</updated><id>http://localhost:4000/blog/data-science/2021/01/13/git</id><content type="html" xml:base="http://localhost:4000/blog/data-science/2021/01/13/git/"><![CDATA[<div id="top">
+  <p align="center"><img src="/assets/images/post/data-science/git.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Git</p>
+</div>
+
+<h2 id="what-is-git">What is Git?</h2>
+
+<p>According to the official documentation, Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.</p>
+
+<p>When we work on a project, we often need to have version control. And, Git is a tool that can help on version control.</p>
+
+<p><br /></p>
+
+<h2 id="how-does-git-work">How does Git work?</h2>
+
+<p>First, Git handles content in snapshots, one for each commit, and knows how to apply or roll back the change sets between two snapshots. This is an important concept. Understanding the concept of applying and rolling back change sets makes Git much easier to understand and work with.</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/creating_a_change_from_version_A_to_version_B.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">Process of creating a change from branch A to branch B</p>
+
+<h3 id="naming">Naming</h3>
+
+<p>Snapshots, changes, are the main elements in Git. They are named with the <strong>commit ID</strong>, which is a hash ID like “6e3cd7b0261a299d84e867d7bd765d6df3435ba7” for example. It comprises of the actual content and some metadata like time of submission, author information, parents, etc. Git takes the minimum number of characters from the start of the ID as its commit ID. “6e3cd7b” is the example here.</p>
+
+<p>A branch in Git is only a named pointer to a specific snapshot. It notes the place where new changes should be applied to when this branch is used.</p>
+
+<h3 id="branching">Branching</h3>
+
+<p>The concept behind branching is that each snapshot can have more than one child. Applying a second change set to the same snapshot creates a new, separate stream of development.</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/branch_structure_in_git.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">Example branch structure in Git</p>
+
+<p>As the figure shown above, there are three branches, master, old and feature, in the Repo. Each branch points to different snapshot. <code class="language-plaintext highlighter-rouge">HEAD</code> is the pointer that points to the current working branch.</p>
+
+<h3 id="merging">Merging</h3>
+
+<p>When a new feature development is finished, it needs to be merged back into the master branch. To do so, the master branch should be checking out with a <code class="language-plaintext highlighter-rouge">git merge &lt;branch name&gt;</code> command. Git merges the changes from the given branch into the checked out branch. What Git does is to apply all of the change sets from the feature branch onto the tip of the master branch.</p>
+
+<p>Depending on the type of changes in the two branches, and possible conflicts, there are three possibilities that can happen.</p>
+
+<ul>
+  <li>Fast forward merge</li>
+  <li>No-conflict merge</li>
+  <li>Conflicting merge</li>
+</ul>
+
+<h4 id="fast-forward-merge">Fast forward Merge</h4>
+
+<p>The receiving branch, master (by checking out master as the first step), did not get any changes since the two branches are diverging. The receiving branch still points to the last commit before the other branch, feature. In this case, Git moves the branch pointer of the receiving branch, master, forward to the last snapshot in the other branch, feature. Because there is nothing to do besides moving the branch pointer forward, Git calls this a fast forward merge.</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/fast_forward_merge.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">Fast-forward merge</p>
+
+<h4 id="no-conflict-merge">No-conflict Merge</h4>
+
+<p>There are changes in both branches, master and feature, but they do not have conflict. Tthe changes in both branches affect different files. Git can automatically apply all changes from the other branch into the receiving branch, master, and create a new commit with these changes included. The receiving branch is then moved forward to that commit</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/no_conflict_merge.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">No-conflict merge</p>
+
+<h4 id="conflicting-merge">Conflicting Merge</h4>
+
+<p>There are changes in both branches, but they conflict. In this case, the conflicting result is left in the working directory for the user to fix and commit, or to abort the merge with <code class="language-plaintext highlighter-rouge">git merge –abort</code> command.</p>
+
+<p>To deeply understand how to resolve conflict in action, check <a href="https://github.com/bing020815/git/blob/master/git-Solving_Conflict.md">Sovling Conflict</a></p>
+
+<p><br /></p>
+
+<p>Apart from merging, sometimes, we develop a feature, but the master development also heads on in parallel. At that time, we do not want to merge the developing feature with master branch just yet. The consequence would be that the two branches, master and feature, move away from each other quite quickly. However, it is possible to apply change sets from one branch to another. Git offers the <code class="language-plaintext highlighter-rouge">rebase</code> and the <code class="language-plaintext highlighter-rouge">cherry-picking</code> feature for that.</p>
+
+<h3 id="rebasing">Rebasing</h3>
+
+<p>Normally, we are developing a feature and need to incorporate the latest changes from the master branch to keep up with general development. This is so called <strong>rebasing feature branch</strong>. It moves the diversion point between the two branches up on one of the branches. Git puts the oldest snapshot from one branch on top of the tip of the other branch, creating new commits for each of the original commits.</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/rebasing_a_branch.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">Rebasing a branch</p>
+
+<h3 id="cherry-picking">Cherry picking</h3>
+
+<p>Usually, we are working on a feature, and have developed some change that should be put into the master development immediately. This could be a bug fix, or a cool feature but you don’t want to merge or rebase the branches yet. Git allows to copy a change set from one branch to another by using the cherry pick feature.</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/cherry_picking_a_commit.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">Cherry picking a commit</p>
+
+<h3 id="revert">Revert</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">revert</code> command rolls back one or more patch sets on the working directory, then creates a new commit on the result. <code class="language-plaintext highlighter-rouge">revert</code> is almost the reverse of a <code class="language-plaintext highlighter-rouge">cherry-pick</code>.</p>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/reverting_a_commit.png" title="" /></p>
+<p align="center" style="font-size: 0.9em; color: grey; font-style: italic;">Reverting a commit</p>
+
+<p><br /></p>
+
+<h2 id="workflow">Workflow</h2>
+
+<p align="center"><img style="width: 60%" src="/assets/images/post/data-science/git_workflow.png" title="" /></p>
+
+<p>Here is a list of common workflow that we will use as a developer:</p>
+
+<ul>
+  <li>Create a branch for desired feature</li>
+  <li>Do some changes and commit the changes</li>
+  <li>After commit, push branch to remote</li>
+  <li>Merge a branch</li>
+  <li>Deleting a branch</li>
+</ul>
+
+<p>To deeply understand the workflow in action, check <a href="https://github.com/bing020815/git/blob/master/git-Command_Line_Basics.md#common-workflow">Common workflow</a></p>
+
+<p><br /></p>
+
+<h2 id="reference">Reference:</h2>
+<p><a href="https://git-scm.com/">git</a><br />
+<a href="https://developer.ibm.com/technologies/web-development/tutorials/d-learn-workings-git/">Learn the workings of Git</a></p>
+
+<p align="center"><a href="#top">Top</a></p>]]></content><author><name></name></author><category term="Data-science" /><summary type="html"><![CDATA[Git]]></summary></entry><entry><title type="html">Docker</title><link href="http://localhost:4000/blog/data-science/2020/12/06/Docker/" rel="alternate" type="text/html" title="Docker" /><published>2020-12-06T00:00:00+08:00</published><updated>2020-12-06T00:00:00+08:00</updated><id>http://localhost:4000/blog/data-science/2020/12/06/Docker</id><content type="html" xml:base="http://localhost:4000/blog/data-science/2020/12/06/Docker/"><![CDATA[<div id="top">
+  <p align="center"><img src="/assets/images/post/data-science/Docker.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Docker</p>
+</div>
+
+<h2 id="what-is-docker">What is Docker?</h2>
+
+<p>Docker is a technology which simplifies the complexity of delivering software applications. It can prevents the environment setting problem on every machine and guarantee the reproducibility.</p>
+
+<p>When we develop an application, we usually need to create a project team to complete the product. The project should be covered by different roles, such as Front-end developers (Client), Backend developers (Server), Database Administrators, etc. Normally, the development team will bundle all the necessary software, packages/library dependencies, models, and components into a box called Container, and Docker will operate the application in this container on different platforms for different roles in the team.</p>
+
+<p><br /></p>
+
+<h2 id="how-does-docker-work">How does Docker work?</h2>
+
+<p>The project team will define all the requirements (software, environment, dependencies, etc.) in a file called <strong>Docker file</strong>. A <strong>Docker image</strong> is created based the <strong>Docker file</strong>. The application dependencies are bundled into an <strong>image</strong>. A <strong>container</strong> is a running instance of the <strong>image</strong>. <strong>Containers</strong> are isolated from each other and from the host computer. Team members can run an application in the container on any machine.</p>
+
+<p><br /></p>
+
+<h2 id="basic-workflow">Basic workflow</h2>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/docker_workflow.png" title="" /></p>
+
+<p><strong>Docker Hub</strong> is the official online repository where we can pull the <strong>Docker images</strong>. In order to get an <strong>image</strong> from the <strong>Docker Hub</strong>, <a href="https://docs.docker.com/get-docker/">Docker</a> needs to be installed in any computer. Then, users can use <code class="language-plaintext highlighter-rouge">docker pull</code> command in a command prompt to download an <strong>image</strong> from the <strong>Docker Hub</strong> into a computer that is running Docker. By issuing the command, <code class="language-plaintext highlighter-rouge">docker run</code>, Docker will run the <strong>image</strong> in a <strong>container</strong>. (It is possible to run several <strong>containers</strong> with the same <strong>image</strong> at the same time depends on the situation.)</p>
+
+<p>To deeply understand how the Docker works in action, check <a href="https://github.com/bing020815/Docker/blob/master/Docker-Basic-Commands.md#the-basics">Basic Docker commands</a>
+<br /></p>]]></content><author><name></name></author><category term="Data-science" /><summary type="html"><![CDATA[Docker]]></summary></entry><entry><title type="html">Python Tips: Reshape Images</title><link href="http://localhost:4000/blog/python/2020/11/07/python-reshape-image/" rel="alternate" type="text/html" title="Python Tips: Reshape Images" /><published>2020-11-07T00:00:00+08:00</published><updated>2020-11-07T00:00:00+08:00</updated><id>http://localhost:4000/blog/python/2020/11/07/python-reshape-image</id><content type="html" xml:base="http://localhost:4000/blog/python/2020/11/07/python-reshape-image/"><![CDATA[<div id="top">
+  <p align="center"><img src="/assets/images/post/python/reshape-images.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Reshape Images</p>
+</div>
+
+<h2 id="table-of-contents">Table of contents:</h2>
+<ul>
+  <li><a href="#the-concept">The Concept</a></li>
+  <li><a href="#resahpe-1-d-array-to-n-d-array">Resahpe 1-d Array to n-d Array</a></li>
+  <li><a href="#flatten-array">Flatten Array</a></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="the-concept">The Concept</h2>
+<p>In image recognition task, we often need to convert the image to pixels values and manipulate it within arrays. However, dealing with dimensions is always a pain, not only for beginners but for everyone. Here is the simpler example to help. Let’s say we have 10 images, each one with size of 4 * 4 pixels (width and length), and it has 3 dimensions (channels) of them R, G, B:</p>
+
+<ul>
+  <li>
+    <p>images in data (10, 4, 4, 3)</p>
+
+    <ul>
+      <li>
+        <p>dataset (images) : 10</p>
+      </li>
+      <li>
+        <p>image width : 4</p>
+      </li>
+      <li>
+        <p>image length : 4</p>
+      </li>
+      <li>
+        <p>channels (R, G, B): 3</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Given that dataset, it cannot be fed into a neural network with a 4-D matrix. It should be reshaped into a 2-D array (vector per sample/image). In other words, we need to make the matrix of size (10, 64, 64, 3) to one with the size of (10, 4 * 4 * 3), so it will be a matrix with size of (10, 48).</p>
+
+<ul>
+  <li>
+    <p>New data: (10, 48)</p>
+
+    <ul>
+      <li>
+        <p>dataset (images) : 10</p>
+      </li>
+      <li>
+        <p>reshaped pixels : 4 * 4 * 3 = 48</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="resahpe-1-d-array-to-n-d-array">Resahpe 1-d Array to n-d Array</h2>
+<p>To keep the example easy to view, we use 10 examples of pictures. Each picture is of size 4x4 pixels, and each pixel contains 3 (r,g,b) values we first fill an array with sequential 480 entries (10 * 4 * 4 * 3) and then reshape it into an 10x4x4x3 array</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="mi">4</span><span class="o">*</span><span class="mi">4</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Before doing reshape:</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Rank 1 Array: </span><span class="se">\n</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">-------------------</span><span class="se">\n</span><span class="s">After doing reshape:</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'4-D Array: </span><span class="se">\n</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s">'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Before doing reshape:
+
+(480,)
+Rank 1 Array: 
+[  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
+  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35
+  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53
+  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71
+  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89
+  90  91  92  93  94  95  96  97  98  99 100 101 102 103 104 105 106 107
+ 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125
+ 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143
+ 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161
+ 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179
+ 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197
+ 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215
+ 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233
+ 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251
+ 252 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269
+ 270 271 272 273 274 275 276 277 278 279 280 281 282 283 284 285 286 287
+ 288 289 290 291 292 293 294 295 296 297 298 299 300 301 302 303 304 305
+ 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 321 322 323
+ 324 325 326 327 328 329 330 331 332 333 334 335 336 337 338 339 340 341
+ 342 343 344 345 346 347 348 349 350 351 352 353 354 355 356 357 358 359
+ 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377
+ 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395
+ 396 397 398 399 400 401 402 403 404 405 406 407 408 409 410 411 412 413
+ 414 415 416 417 418 419 420 421 422 423 424 425 426 427 428 429 430 431
+ 432 433 434 435 436 437 438 439 440 441 442 443 444 445 446 447 448 449
+ 450 451 452 453 454 455 456 457 458 459 460 461 462 463 464 465 466 467
+ 468 469 470 471 472 473 474 475 476 477 478 479]
+
+-------------------
+After doing reshape:
+
+(10, 4, 4, 3)
+4-D Array: 
+[[[[  0   1   2]
+   [  3   4   5]
+   [  6   7   8]
+   [  9  10  11]]
+
+  [[ 12  13  14]
+   [ 15  16  17]
+   [ 18  19  20]
+   [ 21  22  23]]
+
+  [[ 24  25  26]
+   [ 27  28  29]
+   [ 30  31  32]
+   [ 33  34  35]]
+
+  [[ 36  37  38]
+   [ 39  40  41]
+   [ 42  43  44]
+   [ 45  46  47]]]
+
+
+ [[[ 48  49  50]
+   [ 51  52  53]
+   [ 54  55  56]
+   [ 57  58  59]]
+
+  [[ 60  61  62]
+   [ 63  64  65]
+   [ 66  67  68]
+   [ 69  70  71]]
+
+  [[ 72  73  74]
+   [ 75  76  77]
+   [ 78  79  80]
+   [ 81  82  83]]
+
+  [[ 84  85  86]
+   [ 87  88  89]
+   [ 90  91  92]
+   [ 93  94  95]]]
+
+
+ [[[ 96  97  98]
+   [ 99 100 101]
+   [102 103 104]
+   [105 106 107]]
+
+  [[108 109 110]
+   [111 112 113]
+   [114 115 116]
+   [117 118 119]]
+
+  [[120 121 122]
+   [123 124 125]
+   [126 127 128]
+   [129 130 131]]
+
+  [[132 133 134]
+   [135 136 137]
+   [138 139 140]
+   [141 142 143]]]
+
+
+ [[[144 145 146]
+   [147 148 149]
+   [150 151 152]
+   [153 154 155]]
+
+  [[156 157 158]
+   [159 160 161]
+   [162 163 164]
+   [165 166 167]]
+
+  [[168 169 170]
+   [171 172 173]
+   [174 175 176]
+   [177 178 179]]
+
+  [[180 181 182]
+   [183 184 185]
+   [186 187 188]
+   [189 190 191]]]
+
+
+ [[[192 193 194]
+   [195 196 197]
+   [198 199 200]
+   [201 202 203]]
+
+  [[204 205 206]
+   [207 208 209]
+   [210 211 212]
+   [213 214 215]]
+
+  [[216 217 218]
+   [219 220 221]
+   [222 223 224]
+   [225 226 227]]
+
+  [[228 229 230]
+   [231 232 233]
+   [234 235 236]
+   [237 238 239]]]
+
+
+ [[[240 241 242]
+   [243 244 245]
+   [246 247 248]
+   [249 250 251]]
+
+  [[252 253 254]
+   [255 256 257]
+   [258 259 260]
+   [261 262 263]]
+
+  [[264 265 266]
+   [267 268 269]
+   [270 271 272]
+   [273 274 275]]
+
+  [[276 277 278]
+   [279 280 281]
+   [282 283 284]
+   [285 286 287]]]
+
+
+ [[[288 289 290]
+   [291 292 293]
+   [294 295 296]
+   [297 298 299]]
+
+  [[300 301 302]
+   [303 304 305]
+   [306 307 308]
+   [309 310 311]]
+
+  [[312 313 314]
+   [315 316 317]
+   [318 319 320]
+   [321 322 323]]
+
+  [[324 325 326]
+   [327 328 329]
+   [330 331 332]
+   [333 334 335]]]
+
+
+ [[[336 337 338]
+   [339 340 341]
+   [342 343 344]
+   [345 346 347]]
+
+  [[348 349 350]
+   [351 352 353]
+   [354 355 356]
+   [357 358 359]]
+
+  [[360 361 362]
+   [363 364 365]
+   [366 367 368]
+   [369 370 371]]
+
+  [[372 373 374]
+   [375 376 377]
+   [378 379 380]
+   [381 382 383]]]
+
+
+ [[[384 385 386]
+   [387 388 389]
+   [390 391 392]
+   [393 394 395]]
+
+  [[396 397 398]
+   [399 400 401]
+   [402 403 404]
+   [405 406 407]]
+
+  [[408 409 410]
+   [411 412 413]
+   [414 415 416]
+   [417 418 419]]
+
+  [[420 421 422]
+   [423 424 425]
+   [426 427 428]
+   [429 430 431]]]
+
+
+ [[[432 433 434]
+   [435 436 437]
+   [438 439 440]
+   [441 442 443]]
+
+  [[444 445 446]
+   [447 448 449]
+   [450 451 452]
+   [453 454 455]]
+
+  [[456 457 458]
+   [459 460 461]
+   [462 463 464]
+   [465 466 467]]
+
+  [[468 469 470]
+   [471 472 473]
+   [474 475 476]
+   [477 478 479]]]]
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">.reshape</code> method will reshape an array in specified order in the input argument. Here, we have input as <code class="language-plaintext highlighter-rouge">(10, 4, 4, 3)</code>. The innermost two axis are <code class="language-plaintext highlighter-rouge">4</code> and <code class="language-plaintext highlighter-rouge">3</code>. Thus, we can see that the innermost layer consists of <code class="language-plaintext highlighter-rouge">12</code> values. That 12 values makeup a small array, and it contains <code class="language-plaintext highlighter-rouge">4</code> rows and <code class="language-plaintext highlighter-rouge">3</code> columns. Every four small arrays compose a bigger array which contains 48 values (4 * 4 * 3) in total based on the second argurement, <code class="language-plaintext highlighter-rouge">4</code>, in the input. There are 10 bigger array (10 images) in response to the input <code class="language-plaintext highlighter-rouge">10</code>.</p>
+
+<p>So we can observe that the <code class="language-plaintext highlighter-rouge">.reshape</code> method makes an array by order.</p>
+<ol>
+  <li>takes 0-11 to fullfill the third and fourth dimension</li>
+  <li>repeats the fisrt step 4 times to fullfill the second dimension</li>
+  <li>combines first and second steps as a whole and repeats it 10 times as specified in the first dimension</li>
+</ol>
+
+<h2 id="flatten-array">Flatten Array</h2>
+<p>After finishing the forward thinking, let’s do it backward to understand more the <code class="language-plaintext highlighter-rouge">.reshape</code> method. We can reshape arrays using <code class="language-plaintext highlighter-rouge">.reshape</code> method to flat an array.</p>
+
+<p>Array axis is numbered from 0 and accessed through <code class="language-plaintext highlighter-rouge">.shape</code> method.<br />
+If a specific axis is specified to <code class="language-plaintext highlighter-rouge">.reshape</code>, that axis is preserved and the rest of the axis’ are reshaped/flattened. <code class="language-plaintext highlighter-rouge">-1</code> argument tells numpy to figure out the dimensions of reshaped axis.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># flatten the innermost axis (the r,g,b values), which are already flat, so this operation does nothing
+</span><span class="n">aflat</span><span class="o">=</span><span class="n">a</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">a</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">a</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">aflat</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">aflat</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(10, 4, 4, 3)
+[[[[  0   1   2]
+   [  3   4   5]
+   [  6   7   8]
+   [  9  10  11]]
+
+  [[ 12  13  14]
+   [ 15  16  17]
+   [ 18  19  20]
+   [ 21  22  23]]
+
+  [[ 24  25  26]
+   [ 27  28  29]
+   [ 30  31  32]
+   [ 33  34  35]]
+
+  [[ 36  37  38]
+   [ 39  40  41]
+   [ 42  43  44]
+   [ 45  46  47]]]
+
+
+ [[[ 48  49  50]
+   [ 51  52  53]
+   [ 54  55  56]
+   [ 57  58  59]]
+
+  [[ 60  61  62]
+   [ 63  64  65]
+   [ 66  67  68]
+   [ 69  70  71]]
+
+  [[ 72  73  74]
+   [ 75  76  77]
+   [ 78  79  80]
+   [ 81  82  83]]
+
+  [[ 84  85  86]
+   [ 87  88  89]
+   [ 90  91  92]
+   [ 93  94  95]]]
+
+
+ [[[ 96  97  98]
+   [ 99 100 101]
+   [102 103 104]
+   [105 106 107]]
+
+  [[108 109 110]
+   [111 112 113]
+   [114 115 116]
+   [117 118 119]]
+
+  [[120 121 122]
+   [123 124 125]
+   [126 127 128]
+   [129 130 131]]
+
+  [[132 133 134]
+   [135 136 137]
+   [138 139 140]
+   [141 142 143]]]
+
+
+ [[[144 145 146]
+   [147 148 149]
+   [150 151 152]
+   [153 154 155]]
+
+  [[156 157 158]
+   [159 160 161]
+   [162 163 164]
+   [165 166 167]]
+
+  [[168 169 170]
+   [171 172 173]
+   [174 175 176]
+   [177 178 179]]
+
+  [[180 181 182]
+   [183 184 185]
+   [186 187 188]
+   [189 190 191]]]
+
+
+ [[[192 193 194]
+   [195 196 197]
+   [198 199 200]
+   [201 202 203]]
+
+  [[204 205 206]
+   [207 208 209]
+   [210 211 212]
+   [213 214 215]]
+
+  [[216 217 218]
+   [219 220 221]
+   [222 223 224]
+   [225 226 227]]
+
+  [[228 229 230]
+   [231 232 233]
+   [234 235 236]
+   [237 238 239]]]
+
+
+ [[[240 241 242]
+   [243 244 245]
+   [246 247 248]
+   [249 250 251]]
+
+  [[252 253 254]
+   [255 256 257]
+   [258 259 260]
+   [261 262 263]]
+
+  [[264 265 266]
+   [267 268 269]
+   [270 271 272]
+   [273 274 275]]
+
+  [[276 277 278]
+   [279 280 281]
+   [282 283 284]
+   [285 286 287]]]
+
+
+ [[[288 289 290]
+   [291 292 293]
+   [294 295 296]
+   [297 298 299]]
+
+  [[300 301 302]
+   [303 304 305]
+   [306 307 308]
+   [309 310 311]]
+
+  [[312 313 314]
+   [315 316 317]
+   [318 319 320]
+   [321 322 323]]
+
+  [[324 325 326]
+   [327 328 329]
+   [330 331 332]
+   [333 334 335]]]
+
+
+ [[[336 337 338]
+   [339 340 341]
+   [342 343 344]
+   [345 346 347]]
+
+  [[348 349 350]
+   [351 352 353]
+   [354 355 356]
+   [357 358 359]]
+
+  [[360 361 362]
+   [363 364 365]
+   [366 367 368]
+   [369 370 371]]
+
+  [[372 373 374]
+   [375 376 377]
+   [378 379 380]
+   [381 382 383]]]
+
+
+ [[[384 385 386]
+   [387 388 389]
+   [390 391 392]
+   [393 394 395]]
+
+  [[396 397 398]
+   [399 400 401]
+   [402 403 404]
+   [405 406 407]]
+
+  [[408 409 410]
+   [411 412 413]
+   [414 415 416]
+   [417 418 419]]
+
+  [[420 421 422]
+   [423 424 425]
+   [426 427 428]
+   [429 430 431]]]
+
+
+ [[[432 433 434]
+   [435 436 437]
+   [438 439 440]
+   [441 442 443]]
+
+  [[444 445 446]
+   [447 448 449]
+   [450 451 452]
+   [453 454 455]]
+
+  [[456 457 458]
+   [459 460 461]
+   [462 463 464]
+   [465 466 467]]
+
+  [[468 469 470]
+   [471 472 473]
+   [474 475 476]
+   [477 478 479]]]]
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># flatten the innermost two axis (r,g,b values in each pixel row). 4x3 gets flattened to 12 color values
+</span><span class="n">aflat</span><span class="o">=</span><span class="n">a</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">a</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">aflat</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">aflat</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(10, 4, 12)
+[[[  0   1   2   3   4   5   6   7   8   9  10  11]
+  [ 12  13  14  15  16  17  18  19  20  21  22  23]
+  [ 24  25  26  27  28  29  30  31  32  33  34  35]
+  [ 36  37  38  39  40  41  42  43  44  45  46  47]]
+
+ [[ 48  49  50  51  52  53  54  55  56  57  58  59]
+  [ 60  61  62  63  64  65  66  67  68  69  70  71]
+  [ 72  73  74  75  76  77  78  79  80  81  82  83]
+  [ 84  85  86  87  88  89  90  91  92  93  94  95]]
+
+ [[ 96  97  98  99 100 101 102 103 104 105 106 107]
+  [108 109 110 111 112 113 114 115 116 117 118 119]
+  [120 121 122 123 124 125 126 127 128 129 130 131]
+  [132 133 134 135 136 137 138 139 140 141 142 143]]
+
+ [[144 145 146 147 148 149 150 151 152 153 154 155]
+  [156 157 158 159 160 161 162 163 164 165 166 167]
+  [168 169 170 171 172 173 174 175 176 177 178 179]
+  [180 181 182 183 184 185 186 187 188 189 190 191]]
+
+ [[192 193 194 195 196 197 198 199 200 201 202 203]
+  [204 205 206 207 208 209 210 211 212 213 214 215]
+  [216 217 218 219 220 221 222 223 224 225 226 227]
+  [228 229 230 231 232 233 234 235 236 237 238 239]]
+
+ [[240 241 242 243 244 245 246 247 248 249 250 251]
+  [252 253 254 255 256 257 258 259 260 261 262 263]
+  [264 265 266 267 268 269 270 271 272 273 274 275]
+  [276 277 278 279 280 281 282 283 284 285 286 287]]
+
+ [[288 289 290 291 292 293 294 295 296 297 298 299]
+  [300 301 302 303 304 305 306 307 308 309 310 311]
+  [312 313 314 315 316 317 318 319 320 321 322 323]
+  [324 325 326 327 328 329 330 331 332 333 334 335]]
+
+ [[336 337 338 339 340 341 342 343 344 345 346 347]
+  [348 349 350 351 352 353 354 355 356 357 358 359]
+  [360 361 362 363 364 365 366 367 368 369 370 371]
+  [372 373 374 375 376 377 378 379 380 381 382 383]]
+
+ [[384 385 386 387 388 389 390 391 392 393 394 395]
+  [396 397 398 399 400 401 402 403 404 405 406 407]
+  [408 409 410 411 412 413 414 415 416 417 418 419]
+  [420 421 422 423 424 425 426 427 428 429 430 431]]
+
+ [[432 433 434 435 436 437 438 439 440 441 442 443]
+  [444 445 446 447 448 449 450 451 452 453 454 455]
+  [456 457 458 459 460 461 462 463 464 465 466 467]
+  [468 469 470 471 472 473 474 475 476 477 478 479]]]
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># flatten the innermost three axis (r,g,b values in each pixel row, reading left to right and top to bottom). 
+# 4x4x3 gets flattened to 48 values.  this operation flattens each individual image
+</span><span class="n">aflat</span><span class="o">=</span><span class="n">a</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">aflat</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">aflat</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(10, 48)
+[[  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
+   18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35
+   36  37  38  39  40  41  42  43  44  45  46  47]
+ [ 48  49  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65
+   66  67  68  69  70  71  72  73  74  75  76  77  78  79  80  81  82  83
+   84  85  86  87  88  89  90  91  92  93  94  95]
+ [ 96  97  98  99 100 101 102 103 104 105 106 107 108 109 110 111 112 113
+  114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131
+  132 133 134 135 136 137 138 139 140 141 142 143]
+ [144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161
+  162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179
+  180 181 182 183 184 185 186 187 188 189 190 191]
+ [192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209
+  210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227
+  228 229 230 231 232 233 234 235 236 237 238 239]
+ [240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257
+  258 259 260 261 262 263 264 265 266 267 268 269 270 271 272 273 274 275
+  276 277 278 279 280 281 282 283 284 285 286 287]
+ [288 289 290 291 292 293 294 295 296 297 298 299 300 301 302 303 304 305
+  306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 321 322 323
+  324 325 326 327 328 329 330 331 332 333 334 335]
+ [336 337 338 339 340 341 342 343 344 345 346 347 348 349 350 351 352 353
+  354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371
+  372 373 374 375 376 377 378 379 380 381 382 383]
+ [384 385 386 387 388 389 390 391 392 393 394 395 396 397 398 399 400 401
+  402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 419
+  420 421 422 423 424 425 426 427 428 429 430 431]
+ [432 433 434 435 436 437 438 439 440 441 442 443 444 445 446 447 448 449
+  450 451 452 453 454 455 456 457 458 459 460 461 462 463 464 465 466 467
+  468 469 470 471 472 473 474 475 476 477 478 479]]
+</code></pre></div></div>
+
+<p>At this point, the rows have ‘examples’ (the training or test cases) and columns have the ‘features’ (the color values).</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># to get the features in rows and examples in columns, we transpose the matrix using the .T method
+</span><span class="n">aflatt</span><span class="o">=</span><span class="n">aflat</span><span class="p">.</span><span class="n">T</span>
+<span class="k">print</span><span class="p">(</span><span class="n">aflatt</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">aflatt</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(48, 10)
+[[  0  48  96 144 192 240 288 336 384 432]
+ [  1  49  97 145 193 241 289 337 385 433]
+ [  2  50  98 146 194 242 290 338 386 434]
+ [  3  51  99 147 195 243 291 339 387 435]
+ [  4  52 100 148 196 244 292 340 388 436]
+ [  5  53 101 149 197 245 293 341 389 437]
+ [  6  54 102 150 198 246 294 342 390 438]
+ [  7  55 103 151 199 247 295 343 391 439]
+ [  8  56 104 152 200 248 296 344 392 440]
+ [  9  57 105 153 201 249 297 345 393 441]
+ [ 10  58 106 154 202 250 298 346 394 442]
+ [ 11  59 107 155 203 251 299 347 395 443]
+ [ 12  60 108 156 204 252 300 348 396 444]
+ [ 13  61 109 157 205 253 301 349 397 445]
+ [ 14  62 110 158 206 254 302 350 398 446]
+ [ 15  63 111 159 207 255 303 351 399 447]
+ [ 16  64 112 160 208 256 304 352 400 448]
+ [ 17  65 113 161 209 257 305 353 401 449]
+ [ 18  66 114 162 210 258 306 354 402 450]
+ [ 19  67 115 163 211 259 307 355 403 451]
+ [ 20  68 116 164 212 260 308 356 404 452]
+ [ 21  69 117 165 213 261 309 357 405 453]
+ [ 22  70 118 166 214 262 310 358 406 454]
+ [ 23  71 119 167 215 263 311 359 407 455]
+ [ 24  72 120 168 216 264 312 360 408 456]
+ [ 25  73 121 169 217 265 313 361 409 457]
+ [ 26  74 122 170 218 266 314 362 410 458]
+ [ 27  75 123 171 219 267 315 363 411 459]
+ [ 28  76 124 172 220 268 316 364 412 460]
+ [ 29  77 125 173 221 269 317 365 413 461]
+ [ 30  78 126 174 222 270 318 366 414 462]
+ [ 31  79 127 175 223 271 319 367 415 463]
+ [ 32  80 128 176 224 272 320 368 416 464]
+ [ 33  81 129 177 225 273 321 369 417 465]
+ [ 34  82 130 178 226 274 322 370 418 466]
+ [ 35  83 131 179 227 275 323 371 419 467]
+ [ 36  84 132 180 228 276 324 372 420 468]
+ [ 37  85 133 181 229 277 325 373 421 469]
+ [ 38  86 134 182 230 278 326 374 422 470]
+ [ 39  87 135 183 231 279 327 375 423 471]
+ [ 40  88 136 184 232 280 328 376 424 472]
+ [ 41  89 137 185 233 281 329 377 425 473]
+ [ 42  90 138 186 234 282 330 378 426 474]
+ [ 43  91 139 187 235 283 331 379 427 475]
+ [ 44  92 140 188 236 284 332 380 428 476]
+ [ 45  93 141 189 237 285 333 381 429 477]
+ [ 46  94 142 190 238 286 334 382 430 478]
+ [ 47  95 143 191 239 287 335 383 431 479]]
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># fun exercise
+# to create random pixel noise to test a trained network, try the following
+</span><span class="n">x_test</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="o">*</span><span class="mi">64</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="mi">209</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x_test</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(12288, 209)
+[[164 185  78 ... 240  91  16]
+ [130  81 141 ... 204 104  17]
+ [ 72 199 203 ... 236  16 222]
+ ...
+ [172 152 159 ...  66  77  67]
+ [219 248 122 ... 223   0  43]
+ [156  98   9 ...  36  88 208]]
+</code></pre></div></div>
+
+<p><br />
+Reference:</p>
+<ul>
+  <li><a href="https://numpy.org/doc/stable/reference/generated/numpy.reshape.html">numpy.reshape</a></li>
+</ul>
+
+<p align="center"><a href="#top">Top</a></p>]]></content><author><name></name></author><category term="Python" /><summary type="html"><![CDATA[Reshape Images]]></summary></entry><entry><title type="html">Python Tips: Array and List</title><link href="http://localhost:4000/blog/python/2020/11/01/python-list-array/" rel="alternate" type="text/html" title="Python Tips: Array and List" /><published>2020-11-01T00:00:00+08:00</published><updated>2020-11-01T00:00:00+08:00</updated><id>http://localhost:4000/blog/python/2020/11/01/python-list-array</id><content type="html" xml:base="http://localhost:4000/blog/python/2020/11/01/python-list-array/"><![CDATA[<div id="top">
+  <p align="center"><img src="/assets/images/post/python/array-vs-list.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Array and List</p>
+</div>
+
+<h2 id="table-of-contents">Table of contents:</h2>
+<ul>
+  <li><a href="#array-and-list">Array and List</a></li>
+  <li><a href="#array-broadcasting">Array Broadcasting</a>
+    <ul>
+      <li><a href="#scalar-and-one-dimensional-array">Scalar and One-Dimensional Array</a></li>
+      <li><a href="#one-dimensional-array-and-two-dimensional-array">One-Dimensional Array and Two-Dimensional Array</a></li>
+      <li><a href="#more-complicated-cases-in-broadcasting-of-both-arrays">More Complicated Cases in Broadcasting of Both Arrays</a></li>
+    </ul>
+  </li>
+  <li><a href="#array-broadcasting-functionality-on-list-and-array">Array Broadcasting Functionality on List and Array</a></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="array-and-list">Array and List</h2>
+<p>As learning Python, people usually get confused between <code class="language-plaintext highlighter-rouge">Array</code> and <code class="language-plaintext highlighter-rouge">List</code>. <code class="language-plaintext highlighter-rouge">List</code> is a python built-in method and the <code class="language-plaintext highlighter-rouge">Array</code> is built in <a href="https://numpy.org/">NumPy</a>. Both are the methods that are commonly used in Python in order to store data. It can store any datatype such as numbers, string, etc. They can both be indexed and iterated. However, they do not serve the same purposes. The main difference is that the <code class="language-plaintext highlighter-rouge">Array</code> has the <b>Array Broadcasting</b> functionality in <a href="https://numpy.org/">NumPy</a> but <code class="language-plaintext highlighter-rouge">List</code> does not have.</p>
+
+<p><br /></p>
+
+<h2 id="array-broadcasting">Array Broadcasting</h2>
+<p>Broadcasting is simply a set of rules for applying binary ufuncs (e.g., addition, subtraction, multiplication, etc.) on arrays of different sizes. Broadcasting in NumPy follows a strict set of rules to determine the interaction between the two arrays:</p>
+
+<ol>
+  <li>If the two arrays differ in their number of dimensions, the shape of the one with fewer dimensions is padded with ones on its leading (left) side.</li>
+  <li>If the shape of the two arrays does not match in any dimension, the array with shape equal to 1 in that dimension is stretched to match the other shape.</li>
+  <li>If in any dimension the sizes disagree and neither is equal to 1, an error is raised.</li>
+</ol>
+
+<h3 id="scalar-and-one-dimensional-array">Scalar and One-Dimensional Array</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">b</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([5, 6, 7])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">+</span> <span class="mi">5</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([5, 6, 7])
+</code></pre></div></div>
+
+<h3 id="one-dimensional-array-and-two-dimensional-array">One-Dimensional Array and Two-Dimensional Array</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">M</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[1., 1., 1.],
+       [1., 1., 1.],
+       [1., 1., 1.]])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">M</span> <span class="o">+</span> <span class="n">a</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[1., 2., 3.],
+       [1., 2., 3.],
+       [1., 2., 3.]])
+</code></pre></div></div>
+
+<h3 id="more-complicated-cases-in-broadcasting-of-both-arrays">More Complicated Cases in Broadcasting of Both Arrays</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)[:,</span> <span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="c1"># increase a dimension and make it as a column vector
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0 1 2]
+[[0]
+ [1]
+ [2]]
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">+</span> <span class="n">b</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0, 1, 2],
+       [1, 2, 3],
+       [2, 3, 4]])
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="array-broadcasting-functionality-on-list-and-array">Array Broadcasting Functionality on List and Array</h2>
+<p>Now, we have some basic understanding on the Array Broadcasting functionality. Let’s setup a 2-d array, 1-d array and a list to do the experiment.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="c1"># create a 2-d array
+</span><span class="n">array_2d</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">array_2d</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.58758076, 0.74464029, 0.68320516],
+       [0.98230461, 0.24750985, 0.05020555]])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># create a 1-d array
+</span><span class="n">array_1d</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">array_1d</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3, 4])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># create a list
+</span><span class="n">alist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">array_1d</span><span class="p">)</span>
+<span class="n">alist</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4]
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Multiplication operation on the 2-d array
+</span><span class="n">array_2d</span><span class="o">*</span><span class="mi">2</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[1.17516152, 1.48928058, 1.36641033],
+       [1.96460922, 0.49501969, 0.1004111 ]])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Multiplication operation on the 1-d array
+</span><span class="n">array_1d</span><span class="o">*</span><span class="mi">2</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2, 4, 6, 8])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Multiplication operation on the list
+</span><span class="n">alist</span><span class="o">*</span><span class="mi">2</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 1, 2, 3, 4]
+</code></pre></div></div>
+
+<p>The broadcasting functionality works fine on arrays but not on the list. The list was repeated with the multiplication operation.</p>
+
+<p><br /></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Division operation on the 2-d array
+</span><span class="n">array_2d</span><span class="o">/</span><span class="mi">2</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.29379038, 0.37232015, 0.34160258],
+       [0.4911523 , 0.12375492, 0.02510277]])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Division operation on the 1-d array
+</span><span class="n">array_1d</span><span class="o">/</span><span class="mi">2</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rray([0.5, 1. , 1.5, 2. ])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Division operation on the list
+</span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">alist</span><span class="o">/</span><span class="mi">2</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+&lt;ipython-input-15-388b6a901f4d&gt; in &lt;module&gt;
+      1 # Division operation on the list
+      2 alist = [1, 2, 3, 4]
+----&gt; 3 alist/2
+
+TypeError: unsupported operand type(s) for /: 'list' and 'int'
+</code></pre></div></div>
+
+<p>The result above shows that the broadcasting functionality cannot be applied on the list. Thus, we can see the main different between <code class="language-plaintext highlighter-rouge">Array</code> and <code class="language-plaintext highlighter-rouge">List</code>.</p>
+
+<p><br />
+Reference:</p>
+<ul>
+  <li><a href="https://machinelearningmastery.com/broadcasting-with-numpy-arrays/">A Gentle Introduction to Broadcasting with NumPy Arrays</a></li>
+  <li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a></li>
+</ul>
+
+<p align="center"><a href="#top">Top</a></p>]]></content><author><name></name></author><category term="Python" /><summary type="html"><![CDATA[Array and List]]></summary></entry><entry><title type="html">Cohen’s Kappa</title><link href="http://localhost:4000/blog/data-science/2020/10/04/kappa/" rel="alternate" type="text/html" title="Cohen’s Kappa" /><published>2020-10-04T00:00:00+08:00</published><updated>2020-10-04T00:00:00+08:00</updated><id>http://localhost:4000/blog/data-science/2020/10/04/kappa</id><content type="html" xml:base="http://localhost:4000/blog/data-science/2020/10/04/kappa/"><![CDATA[<div id="top">
+  <p align="center"><img src="/assets/images/post/data-science/kappa.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Cohen’s Kappa statistic measure</p>
+</div>
+
+<h2 id="cohens-kappa-statistic-measure">Cohen’s Kappa Statistic Measure</h2>
+<p>The Cohen’s Kappa statistic measure was used to find the degree of agreement between two annotators. The Kappa value give a quantitative measure of the agreement in any situation in which or more independent observers evaluating the same thing.</p>
+
+<p>The equation of the Kappa value is $K \equiv \frac{P_o - P_e}{1-Pe} = 1 - \frac{1-P_o}{1-Pe}$, where $P_o$ is the probability of random agreement and $P_e$ is the probability of expected agreement.</p>
+
+<p align="center"><img src="/assets/images/post/data-science/annotators_matrix.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Matrix of two annotators</p>
+
+<p>The matrix above shows the agreement of two persons. The equation of the observed proportionate agreement is $P_o = \frac{(a+d)}{(a+b+c+d)}$. <br />
+The equation for the expected probability is $P_e = \frac{(a+b)}{(a+b+c+d)} \times \frac{(a+c)}{(a+b+c+d)} + \frac{(c+d)}{(a+b+c+d)} \times \frac{(b+d)}{(a+b+c+d)}$.</p>
+
+<p align="center"><img src="/assets/images/post/data-science/kappa_interpretation.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Interpretation of Cohen’s Kappa</p>
+
+<p>By utilizing the Kappa formula, the kappa value can be interpreted through the interpretation table shown above. In the case of <u>using kappa value as one of metric to evaluate the machine learning models</u>, two annotators can be substituted as <b>true labels</b> and <b>prediction outcome</b> .</p>
+
+<p><br /></p>
+
+<h2 id="example">Example:</h2>
+<h3 id="amazon-mechanical-turk-experiment">Amazon Mechanical Turk Experiment</h3>
+<p>Often we need data with labels in order to train models. However, it could be a tough task to gether data with its ground truth, considering the cost of time and money. Amazon Mechanical Turk program provides the solution for researchers to get data labeled in the timeless and cheaper fasions. But, is the tool good enough to be used to label the unlabeled data? Is it better to find the area experts to do the labeling? The experiment is going to find out if AMT is a viable solution for labeling data.</p>
+
+<h4 id="about-the-data">About the Data</h4>
+<p>Data were sampled from Yelp restaurant reviews. Six restaurant reviews were sampled. There is one one-star review, two two-stars reviews, one four-stars review and two five-stars reviews. The ‘label’ column was created with rules, number of stars below 3 labeled as ‘negative’ and number of stars above 3 labeled as ‘positive’.  It is esteemed as the data ground truth. Three restaurant reviews were labeled as ‘n’ and the other three were labeled as ‘p’.</p>
+
+<p align="center"><img src="/assets/images/post/data-science/kappa_dataset_dictionary.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Dataset Dictionary</p>
+
+<p align="center"><img src="/assets/images/post/data-science/kappa_dataset.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Dataset</p>
+
+<h4 id="the-experiment">The Experiment</h4>
+
+<p>The data were used for the Amazon Mechanical Turk (AMT) experiment. The experiment was designed to have five assignments for each of documents, yelp restaurant reviews. In order to get the result in time, a short time period was set up as 2 days.  There was no requirement for Turkers to complete the tasks. Five Turkers were expected to be hired for annotating the sentiment of the restaurant reviews. However, in lack of understanding how the AMT workflow works, there were 18 Turkers fulfilled the request. The project was done within four hours. With the price of $0.2 per Human Intelligence Task (HIT) and 30 assignments in total, the total cost is \$7.2 for the entire project.</p>
+
+<h4 id="analysis-and-result">Analysis and Result</h4>
+
+<p align="center"><img src="/assets/images/post/data-science/AMT_table.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">AMT table: Turkers participation and annotation with the ground truth, label</p>
+
+<p>The AMT table above shows the information how the six documents and annotation were distributed into 18 Turkers. It is clear to see that one of the Turkers, annotator Q, has systematic bias, favoring the ‘positive’ label. Another Turker who could be the potential systematic bias is annotator J. That Turker has annotated three ‘positive’ labels when there is only one document actually is ‘positive’. However, the result of the experiment cannot hold the credibility because of lack of evidences. If there are more instances that all six documents were responded by the same Turker, the analysis could be stronger and persuasive.</p>
+
+<p align="center"><img src="/assets/images/post/data-science/AMT_avg_vote.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">AMT Average vote score </p>
+
+<p>The bar chart above shows the bias between the Annotators and the ground truth. The sentiment labeled from Turkers were calculated for voting. The vote score is the average of the labels score (‘n’:0, ‘p’:1) for each document. If the vote score equal to 1, it means the sentiment label is the same as the ground truth. As the vote score getting lower, it shows that the disagreement between Turkers and the ground truth. By taking closer look at The bar chart, it pointed out that two documents, document 4 and document 5, have the same sentiment. Both documents are positive reviews based on the ground truth. Its review contains positive words or phrase without too much ambiguous sentences or tones, such as ‘Famous’, ‘better’, ‘placed was packed’, ‘premium’, ‘illuminating review’, ‘hadn’t heard code violation’…etc.</p>
+
+<p>The Cohen’s Kappa measure can be used as the tool to compare the degree of agreement on two Annotators or AMT Tukers and ground truth:</p>
+
+<div id="P_vs_Q">
+<table><tr>
+  <td align="center">
+  	<p align="center"><img src="/assets/images/post/data-science/AMT_P_vs_Q.png" title="" /></p>
+	<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Turker P vs Turker Q</p>
+  </td>
+  <td style="vertical-align: top;  text-align: left;">
+	<ul style="list-style: none; display: inline;">
+		<li>Annotator P vs Annotator Q:</li>
+		<li>$ P_o = \frac{(a+d)}{(a+b+c+d)} = \frac{1}{4} = 0.25$</li>
+		<li>$ P_e = \frac{(a+b)}{(a+b+c+d)} \times \frac{(a+c)}{(a+b+c+d)} + \frac{(c+d)}{(a+b+c+d)} \times \frac{(b+d)}{(a+b+c+d)} = \frac{3}{4} \times \frac{0}{4} + \frac{1}{4} \times \frac{4}{4} = \frac{1}{4} = 0.25$</li>
+		<li>$ K \equiv \frac{P_o - P_e}{1-P_e} = 1 - \frac{1-P_o}{1-P_e} = 1- \frac{1-0.25}{1-0.25} = 0$</li>
+		<li>$ \because K &lt; 0$ </li>
+		<li>$ \therefore$ Both annotator has very poor agreement on the review sentiment</li>
+	</ul>
+  </td>
+</tr></table>
+</div>
+
+<div id="truth_vs_turkers">
+<table><tr>
+  <td align="center">
+  	<p align="center"><img src="/assets/images/post/data-science/truth_vs_turkers.png" title="" /></p>
+	<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Ground Truth vs AMT Turkers</p>
+  </td>
+  <td style="vertical-align: top;  text-align: left;">
+	<ul style="list-style: none; display: inline;">
+		<li>Ground Truth vs Turkers</li>
+		<li>$ P_o = \frac{(a+d)}{(a+b+c+d)} = \frac{1}{4} = 0.733$</li>
+		<li>$ P_e = \frac{(a+b)}{(a+b+c+d)} \times \frac{(a+c)}{(a+b+c+d)} + \frac{(c+d)}{(a+b+c+d)} \times \frac{(b+d)}{(a+b+c+d)} = \frac{15}{30} \times \frac{11}{30} + \frac{15}{30} \times \frac{19}{30} = \frac{1}{2} = 0.5$</li>
+		<li>$ K \equiv \frac{P_o - P_e}{1-P_e} = 1 - \frac{1-P_o}{1-P_e} = 1- \frac{1-0.733}{1-0.5} = 1 - 0.534 = 0.467$</li>
+		<li>$\because 0.41 &lt; K &lt; 0.60 $ </li>
+		<li>$\therefore$ Ground truth and Turkers have moderate agreement on the review sentiment</li>
+	</ul>
+  </td>
+</tr></table>
+</div>
+
+<p>Since there are two annotators having overlaps on 4 documents, document 2, document 3, document 5 and document 6, the Cohen’s Kappa measure can be used to compare the degree of agreement on two Annotators. The first table above shows the matrix between Annotator P and Annotator Q. The Kappa value was calculated. Both annotators, Annotator P and Annotator Q have poor agreement and the data are not reliable as the ground truth. However, this result cannot represent the conclusion because of the sample size. If there are more labeled data to be compared, the Kappa value could have improvement in this case.</p>
+
+<p>For the degree of agreement between the ground truth and Turkers, a Kappa value was calculated as the second table shown above. The Kappa measurement is 0.467. According to the Interpretation of Cohen’s Kappa table, this value is in ‘moderate agreement’ category. It seems like the annotations from Turkers are not too far from the ground truth but also not too close to the ground truth as well. It may have some reasons. One is that the annotators might be systematic bias, such as annotator Q. The other thing needs to be mentioned is that the samples are not enough for advanced analysis between Turkers. A complete sample, having several Turkers finished all six documents annotation, should be obtained more for identifying the reliability. Based on the result of the experiment, the statement of ‘AMT is a viable approach for obtaining training labels’ cannot not be confirmed in this case. Although the result is not satisfying, it still has the possibility that AMT can be another approach to get the training labels, with restrict requirements on hired workers. By combining the factors, such as cost, time, and resources, into the consideration, using Amazon Mechanical Turk as an alternative to obtain the training data is still a viable approach.</p>
+
+<p><br />
+Reference: <br />
+<a href="https://en.wikipedia.org/wiki/Cohen%27s_kappa">Cohen’s kappa, from Wikipedia</a>  <br />
+<a href="http://vassarstats.net/kappa.html">Kappa Online Tool</a>  <br />
+<a href="https://www.youtube.com/watch?v=DfNo32nL_fo&amp;t=105s">Kappa Value Calculation, from YouTube</a>  <br />
+<a href="https://www.youtube.com/watch?v=AfgFyzGGlto">Cohen’s Kappa in Excel, from YouTube</a></p>
+
+<p align="center"><a href="#top">Top</a></p>]]></content><author><name></name></author><category term="Data-science" /><summary type="html"><![CDATA[Cohen’s Kappa statistic measure]]></summary></entry><entry><title type="html">Python Baisc: Classes and Objects</title><link href="http://localhost:4000/blog/python/2020/09/02/python-class-and-object/" rel="alternate" type="text/html" title="Python Baisc: Classes and Objects" /><published>2020-09-02T00:00:00+08:00</published><updated>2020-09-02T00:00:00+08:00</updated><id>http://localhost:4000/blog/python/2020/09/02/python-class-and-object</id><content type="html" xml:base="http://localhost:4000/blog/python/2020/09/02/python-class-and-object/"><![CDATA[<div id="top">
+  <p align="center"><img src="/assets/images/post/python/classes-objects.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Classes and Objects</p>
+</div>
+
+<h2 id="table-of-contents">Table of contents:</h2>
+<ul>
+  <li><a href="#classes-and-objects">Classes And Objects</a></li>
+  <li><a href="#basic-python-class">Basic Python Class</a></li>
+  <li><a href="#object-methods">Object Methods</a>
+    <ul>
+      <li><a href="#getter-deletor-and-setter">Getter, Deletor and Setter</a></li>
+      <li><a href="#dunder-methods">Dunder Methods</a></li>
+      <li><a href="#class-variable-and-instance-variables">Class Variable and Instance Variables</a></li>
+      <li><a href="#static-methods">Static Methods</a></li>
+    </ul>
+  </li>
+  <li><a href="#class-inherent">Class Inherent</a></li>
+  <li><a href="#built-in-functions">Built-in Functions</a></li>
+  <li><a href="#application">Application</a></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="classes-and-objects">Classes And Objects</h2>
+<p>Python is an object oriented programming language. Almost everything in Python is an <code class="language-plaintext highlighter-rouge">object</code>, with its properties and methods. A <code class="language-plaintext highlighter-rouge">class</code> is like an <code class="language-plaintext highlighter-rouge">object</code> constructor, or a “blueprint” for creating objects.</p>
+
+<p>For example: <br />
+A factory can have a blueprint of making a car for a specific model. The blueprint is a ‘class’. <br />
+Customer can buy a customized car, leather interior, roof, navigation system …etc, for that specific model. The customized car here is an <code class="language-plaintext highlighter-rouge">object</code>.</p>
+
+<p><br /></p>
+
+<h2 id="basic-python-class">Basic Python Class</h2>
+<p>In python, there are built-in data types, such as numeric (<code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">float</code>), Boolean (<code class="language-plaintext highlighter-rouge">True</code>, <code class="language-plaintext highlighter-rouge">False</code>), Sequence Type (<code class="language-plaintext highlighter-rouge">string</code>, <code class="language-plaintext highlighter-rouge">list</code>, <code class="language-plaintext highlighter-rouge">tuple</code>) and Dictionary (<code class="language-plaintext highlighter-rouge">dict</code>). Python has an built-in function <code class="language-plaintext highlighter-rouge">type()</code> to ascertain the data type of a certain value.</p>
+
+<p>However, a custom datatype can be built by using python class.</p>
+
+<p>Let’s say we want to have a <strong>Book</strong> datatype in python. We want the <strong>Book</strong> datatype contains the information of book name, publish year, author name, book price, and if it is kindle version.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Book</span><span class="p">:</span>
+    <span class="s">'''This is the comment section that you are able to access through "__doc__" attribute.'''</span>
+
+    <span class="c1"># class variable
+</span>    <span class="n">num_of_books</span> <span class="o">=</span> <span class="mi">0</span>  
+    <span class="c1"># When access a class variable, it should be called through a class itself or an instance of a class
+</span>
+
+    <span class="c1"># The __init__ method is roughly what represents a constructor in Python
+</span>    <span class="c1"># It runs everytime when a new instance has been created 
+</span>    <span class="c1"># 'self' refers as an instance of a class
+</span>    <span class="c1"># 'name', 'publish_year', 'author', 'price', 'is_kindle' are parameters
+</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">publish_year</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">is_kindle</span><span class="p">):</span>
+    <span class="c1"># 'self.name', 'self.publish_year', 'self.author', 'self.price', 'self.is_kindle' are attributes, also called instance variables
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">publish_year</span> <span class="o">=</span> <span class="n">publish_year</span>        
+        <span class="bp">self</span><span class="p">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">author</span>        
+        <span class="bp">self</span><span class="p">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span> 
+        <span class="bp">self</span><span class="p">.</span><span class="n">is_kindle</span> <span class="o">=</span> <span class="n">is_kindle</span> 
+
+        <span class="n">Book</span><span class="p">.</span><span class="n">num_of_books</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># it increases everytime when a instance has been created
+</span>    
+    <span class="k">def</span> <span class="nf">pass_statement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1">#class definitions cannot be empty, but if you have a class definition with no content, put in the pass statement to avoid getting an error
+</span>        <span class="k">pass</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">Class</code> datatype can contain two types of variable, <code class="language-plaintext highlighter-rouge">instance variable</code> and <code class="language-plaintext highlighter-rouge">class variable</code>. <code class="language-plaintext highlighter-rouge">instance variable</code> are used for data that is unique to each instance, such as ‘name’, ‘publish_year’, ‘author’, ‘price’, ‘is_kindle’.  <code class="language-plaintext highlighter-rouge">class variables</code> are the variables that are shared among all instances of a class. The example here can be ‘num_of_books’. It can be called through a class itself or an instance of a class.</p>
+
+<p>All classes have a function called <code class="language-plaintext highlighter-rouge">__init__()</code>, which is always executed when the class is being initiated. Use the <code class="language-plaintext highlighter-rouge">__init__()</code> function to assign values to object properties, or other operations that are necessary to do when the object is being created.</p>
+
+<p>Now, the <code class="language-plaintext highlighter-rouge">__Book__</code> data type has been created. The next step is to instanciate the class to create an object, a book.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># instantiate the `Book` class
+</span><span class="n">book1</span> <span class="o">=</span> <span class="n">Book</span><span class="p">(</span><span class="s">'How to master python'</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="s">"Bing-Je"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="c1"># call the instance attribute, name
+</span><span class="n">book1</span><span class="p">.</span><span class="n">name</span>  </code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'How to master python'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call the instance attribute, publish_year 
+</span><span class="n">book1</span><span class="p">.</span><span class="n">publish_year</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2020
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call the instance attribute, price
+</span><span class="n">book1</span><span class="p">.</span><span class="n">price</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call the instance attribute, author
+</span><span class="n">book1</span><span class="p">.</span><span class="n">author</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Bing-Je'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call the instance attribute, is_kindle
+</span><span class="n">book1</span><span class="p">.</span><span class="n">is_kindle</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<p>Now, we have the first object. Let’s create another object, second book.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># instantiate the `Book` class
+</span><span class="n">book2</span> <span class="o">=</span> <span class="n">Book</span><span class="p">(</span><span class="s">'The Road Ahead: Completely Revised and Up-to-Date'</span><span class="p">,</span> <span class="mi">1996</span><span class="p">,</span> <span class="s">'Bill Gates'</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="c1"># call the instance attribute, name
+</span><span class="n">book2</span><span class="p">.</span><span class="n">name</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'The Road Ahead: Completely Revised and Up-to-Date'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call the instance attribute, is_kindle, for book2
+</span><span class="n">book2</span><span class="p">.</span><span class="n">is_kindle</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call the instance attribute, is_kindle, for book1
+</span><span class="n">book1</span><span class="p">.</span><span class="n">is_kindle</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<p>A class must be instantiated in order to get the instance attribute/instance variable.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">try</span><span class="p">:</span>
+    <span class="n">Book</span><span class="p">.</span><span class="n">is_kindle</span>
+<span class="k">except</span> <span class="nb">AttributeError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'class does not inherent from a class or does not have the instance attribute/instance variable, "is_kindle"!'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class does not inherent from a class or does not have the instance attribute/instance variable, "is_kindle"!
+</code></pre></div></div>
+
+<p>Using <code class="language-plaintext highlighter-rouge">__dict__</code> attribute and check the current parameters that are assigined to a class or a instance.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Check the instance, book1
+</span><span class="n">book1</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'author': 'Bing-Je',
+ 'is_kindle': False,
+ 'name': 'How to master python',
+ 'price': 20,
+ 'publish_year': 2020}
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">__dict__</code> attribute only shows the instance variables when the method is called from a <code class="language-plaintext highlighter-rouge">name space</code>, book1.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Check Book class
+</span><span class="n">Book</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mappingproxy({'__dict__': &lt;attribute '__dict__' of 'Book' objects&gt;,
+              '__doc__': 'This is the comment section that you are able to access through "__doc__" attribute.',
+              '__init__': &lt;function __main__.Book.__init__&gt;,
+              '__module__': '__main__',
+              '__weakref__': &lt;attribute '__weakref__' of 'Book' objects&gt;,
+              'num_of_books': 2,
+              'pass_statement': &lt;function __main__.Book.pass_statement&gt;})
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">num_of_book</code> parameter, <code class="language-plaintext highlighter-rouge">class variable</code>, indicates the number of instances has been instanciated for the class.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">__doc__</code> attribute shows the information about the class.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Book</span><span class="p">.</span><span class="n">__doc__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'This is the comment section that you are able to access through "__doc__" attribute.'
+</code></pre></div></div>
+
+<p>Alright, that is the basis of the python class and object.</p>
+
+<p><br /></p>
+
+<h2 id="object-methods">Object Methods</h2>
+
+<p>Within a python <code class="language-plaintext highlighter-rouge">class</code>, it can define mutiple functions as the method of an <code class="language-plaintext highlighter-rouge">object</code>. When an <code class="language-plaintext highlighter-rouge">object</code> is instantiated based on the <code class="language-plaintext highlighter-rouge">class</code>, it is automatically assigned the functions as methods that can be used in advanced.</p>
+
+<p>The methods can be categorized into three:</p>
+<ul>
+  <li><strong>Regular Method</strong>
+    <ul>
+      <li>Regular method in a class automatically take the <code class="language-plaintext highlighter-rouge">instance</code> as the first argument</li>
+      <li>By convention, we ususally call the first argument as ‘self’</li>
+    </ul>
+  </li>
+  <li><strong>Class Method</strong>
+    <ul>
+      <li>Class method will add a decorator, <code class="language-plaintext highlighter-rouge">@classmethod</code>, on the top</li>
+      <li>The method in a class automatically take the <code class="language-plaintext highlighter-rouge">class</code> as the first argument</li>
+      <li>By convention, we ususally call the first argument as ‘cls’</li>
+    </ul>
+  </li>
+  <li><strong>Static Method</strong>
+    <ul>
+      <li>Static methods will add a decorator,<code class="language-plaintext highlighter-rouge">@staticmethod</code>, on the top</li>
+      <li>Static methods do not take the <code class="language-plaintext highlighter-rouge">instance</code> or the <code class="language-plaintext highlighter-rouge">class</code> as the first argument automatically</li>
+      <li>They behave just like normal functions, yet they should have some logical connection to our class.</li>
+      <li>If a function of a class does not access the <code class="language-plaintext highlighter-rouge">instances</code> or the <code class="language-plaintext highlighter-rouge">class</code> anywhere within the function,  it should be used as a static method</li>
+    </ul>
+  </li>
+</ul>
+
+<p>There are some special methods, such as <strong>magic method</strong>, also known as <strong>dunder method</strong>. These methods allow us to emulate built-in types or implement operator overloading.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">__init__()</code>
+    <ul>
+      <li>The <code class="language-plaintext highlighter-rouge">__init__</code> method for initialization is invoked without any call, when an instance of a class is created</li>
+      <li>It contains a collection of statements(i.e. instructions) that are executed at time of object creation</li>
+      <li>The keyword <code class="language-plaintext highlighter-rouge">self</code> represents the instance of a <code class="language-plaintext highlighter-rouge">class</code> and binds the attributes with the given arguments</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">__repr__</code>
+    <ul>
+      <li>To be an unambiguous representation of the object</li>
+      <li>It should be used for debugging or logging</li>
+      <li>It is meant to be seen by other developers</li>
+      <li>This method can fix the vague object description when we use <code class="language-plaintext highlighter-rouge">print()</code> on a object</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">__str__()</code>
+    <ul>
+      <li>It is meant to be more readable representation of an object</li>
+      <li>It is meant to be used as a display to the end-user</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">__add__()</code>
+    <ul>
+      <li>Can be set to perform addition on numbers or strings</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">__len__()</code>
+    <ul>
+      <li>It help perfrom the <code class="language-plaintext highlighter-rouge">len()</code> on objects.</li>
+    </ul>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># importing datetime module and random module for the functions created in the Robot class
+# importing datetime module and random module for the functions created in the Robot class
+</span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">class</span> <span class="nc">Robot</span><span class="p">:</span>
+    
+    <span class="c1"># class variables
+</span>    <span class="n">battery_amt</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="c1"># When access a class variable, it should be called through a class itself or an instance of a class
+</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">robotname</span> <span class="o">=</span> <span class="n">robotname</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">ownername</span> <span class="o">=</span> <span class="n">ownername</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">birth</span> <span class="o">=</span> <span class="n">birth</span>
+
+    <span class="o">@</span><span class="nb">property</span>     <span class="c1"># allow user to access 'id' as an instanace attribute
+</span>    <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"{}'s {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">ownername</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">robotname</span><span class="p">)</span>
+
+    <span class="o">@</span><span class="nb">id</span><span class="p">.</span><span class="n">setter</span>  <span class="c1"># allow user to change the 'id' also change the attributes of 'robotname' and 'ownername'
+</span>    <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">identity</span><span class="p">):</span>
+        <span class="s">""" identity: 'someone's robot """</span>
+        <span class="n">owner</span><span class="p">,</span> <span class="n">robot</span> <span class="o">=</span> <span class="n">identity</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">"'s "</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">ownername</span> <span class="o">=</span> <span class="n">owner</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">robotname</span> <span class="o">=</span> <span class="n">robot</span>
+
+    <span class="o">@</span><span class="nb">id</span><span class="p">.</span><span class="n">deleter</span>  <span class="c1"># allow user to delete the attributes of 'robotname' and 'ownername'
+</span>    <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Delete Name'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">ownername</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">robotname</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="c1"># saying hello with user name; regular method
+</span>    <span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">'Hello, {}!'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">ownername</span><span class="p">)</span>
+        
+    <span class="c1"># return the current time; regular method    
+</span>    <span class="k">def</span> <span class="nf">tell_me_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">current_time</span><span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="k">return</span> <span class="s">'Current time is {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>
+
+    <span class="c1"># return what day is today randomly; regular method    
+</span>    <span class="k">def</span> <span class="nf">what_day_is_today</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">day</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Monday'</span><span class="p">,</span> <span class="s">'Tuesday'</span><span class="p">,</span> <span class="s">'Wednesday'</span><span class="p">,</span> <span class="s">'Thursday'</span><span class="p">,</span> 
+               <span class="s">'Friday'</span><span class="p">,</span> <span class="s">'Saturday'</span><span class="p">,</span> <span class="s">'Sunday'</span><span class="p">]</span>
+        <span class="n">today</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s">'Today is {}!'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">day</span><span class="p">[</span><span class="n">today</span><span class="p">])</span>
+
+    <span class="c1"># method can access a class variable as an attribute of an instance; regular method
+</span>    <span class="k">def</span> <span class="nf">charge_battery</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">battery_amt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">battery_amt</span> <span class="o">+</span> <span class="n">amount</span><span class="p">)</span>
+
+    <span class="o">@</span><span class="nb">classmethod</span>    <span class="c1"># using decorator to refer a method with a class instead of instances
+</span>    <span class="k">def</span> <span class="nf">set_battery</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>   <span class="c1"># using 'cls' as convention to refer the class
+</span>        <span class="n">cls</span><span class="p">.</span><span class="n">battery_amt</span> <span class="o">=</span> <span class="n">amount</span>  <span class="c1"># call a class variable from a class
+</span>
+    <span class="o">@</span><span class="nb">classmethod</span>  <span class="c1"># using class method as an alternative constructor
+</span>    <span class="k">def</span> <span class="nf">from_string</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">robot_string</span><span class="p">,</span> <span class="n">separator</span><span class="p">):</span>
+        <span class="s">""" robot_string: 'robotname-onwername-mm/dd' ; separator : '-' """</span>
+        <span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span> <span class="o">=</span> <span class="n">robot_string</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="p">(</span><span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span><span class="p">)</span>
+
+    <span class="o">@</span><span class="nb">staticmethod</span>    <span class="c1"># staticmethod does not access a class or an instance within the function
+</span>    <span class="k">def</span> <span class="nf">lucky_number_1_to_10</span><span class="p">():</span>
+        <span class="kn">import</span> <span class="nn">random</span>
+        <span class="k">return</span> <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># at least has this method to show more infomation of an instance; dunder method
+</span>        <span class="k">return</span> <span class="s">"'{}', '{}', '{}'"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">robotname</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">ownername</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">birth</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># dunder method
+</span>        <span class="k">return</span> <span class="s">"'{} - {} - {}'"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">robotname</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">ownername</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">birth</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># dunder method
+</span>        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">say_hello</span> <span class="o">+</span> <span class="n">other</span><span class="p">.</span><span class="n">say_hello</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># dunder method
+</span>        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">robotname</span><span class="p">)</span></code></pre></figure>
+
+<p>Now, we have created a new <code class="language-plaintext highlighter-rouge">class</code>, <strong>Robot</strong> data type. We are ready to create instances, <code class="language-plaintext highlighter-rouge">objects</code>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">alexa</span> <span class="o">=</span> <span class="n">Robot</span><span class="p">(</span><span class="s">'alexa'</span><span class="p">,</span> <span class="s">'Bing'</span><span class="p">,</span> <span class="s">'08/15'</span><span class="p">)</span>
+<span class="n">siri</span> <span class="o">=</span> <span class="n">Robot</span><span class="p">(</span><span class="s">'siri'</span><span class="p">,</span> <span class="s">'Bing-Je'</span><span class="p">,</span> <span class="s">'12/30'</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">alexa</span><span class="p">.</span><span class="n">say_hello</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Hello, Bing!'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">alexa</span><span class="p">.</span><span class="n">tell_me_time</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Current time is 2020-09-02 20:44:05.000624'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">alexa</span><span class="p">.</span><span class="n">what_day_is_today</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Today is Monday!'
+</code></pre></div></div>
+
+<h3 id="getter-deletor-and-setter">Getter, Deletor and Setter</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">property decorator</code> using as a <code class="language-plaintext highlighter-rouge">getter</code> allows us to define Class methods that we can access like attributes. Here we have the <code class="language-plaintext highlighter-rouge">.id()</code> method to be access as an attribute.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="nb">id</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bing's alexa
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">property decorator</code>can be used as a <code class="language-plaintext highlighter-rouge">deleter</code> to delete the instance attributes.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">del</span> <span class="n">alexa</span><span class="p">.</span><span class="nb">id</span>
+<span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="nb">id</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="n">ownername</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="n">robotname</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Delete Name
+None's None
+None
+None
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">property decorator</code>can be also used as a <code class="language-plaintext highlighter-rouge">setter</code> in order to update the instance attribute.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">alexa</span><span class="p">.</span><span class="nb">id</span> <span class="o">=</span> <span class="s">"Bing's alexa"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="n">ownername</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="n">robotname</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bing
+alexa
+</code></pre></div></div>
+
+<h3 id="dunder-methods">Dunder Methods</h3>
+
+<p>With the <code class="language-plaintext highlighter-rouge">__repr__()</code> and <code class="language-plaintext highlighter-rouge">__str__()</code> set in the class, we can have the unambiguous representation of the object. <code class="language-plaintext highlighter-rouge">__add__()</code> help perform the string addtion of instance attributes. <code class="language-plaintext highlighter-rouge">__len__()</code> special dunder method help perfrom the <code class="language-plaintext highlighter-rouge">len()</code> on objects.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">siri</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'alexa - Bing - 08/15'
+'siri - Bing-Je - 12/30'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># string addtion on instance attributes
+</span><span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="n">ownername</span> <span class="o">+</span> <span class="n">siri</span><span class="p">.</span><span class="n">ownername</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BingBing-Je
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># len() on the objects
+</span><span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alexa</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">siri</span><span class="p">))</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+4
+</code></pre></div></div>
+
+<h3 id="class-variable-and-instance-variables">Class Variable and Instance Variables</h3>
+
+<p><code class="language-plaintext highlighter-rouge">class variable</code> can be assigned to an instance through methods. Calling a <code class="language-plaintext highlighter-rouge">class variable</code> will not assign the <code class="language-plaintext highlighter-rouge">class variable</code> as an attribute of the instance.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call attributes
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'birth': '08/15', 
+'ownername': 'Bing', 
+'robotname': 'alexa'}
+</code></pre></div></div>
+
+<p>The class variable has not been assigned to the instance attributes for <code class="language-plaintext highlighter-rouge">alexa</code> object.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># accessing a class variable through methods
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">charge_battery</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># new attribute for the instance
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">battery_amt</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call attributes
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'battery_amt': 60,
+ 'birth': '08/15',
+ 'ownername': 'Bing',
+ 'robotname': 'alexa'}
+</code></pre></div></div>
+
+<p>Now, A new instance attribute, battery_amt, has been added for <code class="language-plaintext highlighter-rouge">alexa</code> object through accessing the class variable.</p>
+
+<p><strong>#</strong> The <code class="language-plaintext highlighter-rouge">class variable</code> can be changed through a class method.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># class attribute
+</span><span class="n">Robot</span><span class="p">.</span><span class="n">battery_amt</span>  </code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>50
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">battery_amt</code> is a class variable with e default setting as 50. Using a class method, set_battery to change the default value to 30.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># class method
+</span><span class="n">Robot</span><span class="p">.</span><span class="n">set_battery</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># class attribute
+</span><span class="n">Robot</span><span class="p">.</span><span class="n">battery_amt</span>  </code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># the instance attribute remains the same
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'battery_amt': 60,
+ 'birth': '08/15',
+ 'ownername': 'Bing',
+ 'robotname': 'alexa'}
+</code></pre></div></div>
+
+<p><strong>#</strong> Using a <code class="language-plaintext highlighter-rouge">class method</code> from an instance will not only update the <code class="language-plaintext highlighter-rouge">class variable</code> but also that <code class="language-plaintext highlighter-rouge">instance attribute</code>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># runing class method from an instance still works
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">set_battery</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="c1"># the class variable has been changed
+</span><span class="n">Robot</span><span class="p">.</span><span class="n">battery_amt</span> </code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># the class attribute for that instance has also been changed
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'battery_amt': 60,
+ 'birth': '08/15',
+ 'ownername': 'Bing',
+ 'robotname': 'alexa'}
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># assiging the class variable to a new instance with the updated class variable
+</span><span class="n">siri</span><span class="p">.</span><span class="n">battery_amt</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60
+</code></pre></div></div>
+
+<p><strong>#</strong> Using <code class="language-plaintext highlighter-rouge">class method</code> as an alternative constructor to create multipe objects/instances</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">robot_string1</span> <span class="o">=</span> <span class="s">'rbt-JJ-01/25'</span>
+<span class="n">rbt</span> <span class="o">=</span> <span class="n">Robot</span><span class="p">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">robot_string1</span><span class="p">,</span> <span class="s">'-'</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># calling the class variable
+</span><span class="n">rbt</span><span class="p">.</span><span class="n">battery_amt</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># the class variable was not assigned to the instance as an attribute
+</span><span class="n">rbt</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'birth': '01/25', 'ownername': 'JJ', 'robotname': 'rbt'}
+</code></pre></div></div>
+
+<h3 id="static-methods">Static Methods</h3>
+<p><code class="language-plaintext highlighter-rouge">staticmethods</code> do not pass any instance or class, meaning it does not access an instance or a class anywhere within a function. Call a <code class="language-plaintext highlighter-rouge">staticmethod</code> from a class.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a staticmethod
+</span><span class="n">Robot</span><span class="p">.</span><span class="n">lucky_number_1_to_10</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="class-inherent">Class Inherent</h2>
+
+<p>A <code class="language-plaintext highlighter-rouge">class</code> can inherent the attribute and method from the other <code class="language-plaintext highlighter-rouge">class</code>, parent class.  Let’s say we want to create an advance robot to have advanced functions or improved functions. Here, we are going to create a new <code class="language-plaintext highlighter-rouge">class</code>, <strong>AdvancedRobot</strong> data type. The <strong>AdvancedRobot</strong> data type can not only have the basic functions that a <strong>Robot</strong> <code class="language-plaintext highlighter-rouge">object</code> has but also have advanced functions such as playing music and reporting the location.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># child classes can inherent methods, class variables and instance attributes from parent class
+</span><span class="k">class</span> <span class="nc">AdvancedRobot</span><span class="p">(</span><span class="n">Robot</span><span class="p">):</span> 
+    <span class="c1"># use Robot class as input to inherent attributes and functions/methods
+</span>
+    <span class="n">battery_amt</span> <span class="o">=</span> <span class="mi">65</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
+        <span class="c1"># 'robotname', 'ownername', 'birth' are handled by the init method of Robot class, parent class/ base class.
+</span>        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="p">.</span><span class="n">locattion</span> <span class="o">=</span> <span class="n">location</span>
+
+    
+    <span class="c1"># change the output of time for differencing from Robot class
+</span>    <span class="o">@</span><span class="nb">staticmethod</span>    <span class="c1"># staticmethod does not access a class or an instance within the function
+</span>    <span class="k">def</span> <span class="nf">tell_me_time</span><span class="p">():</span>
+        <span class="n">current_time</span><span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">().</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Current time is {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">current_time</span><span class="p">))</span>
+        
+    <span class="o">@</span><span class="nb">staticmethod</span>    <span class="c1"># staticmethod does not access a class or an instance within the function    
+</span>    <span class="k">def</span> <span class="nf">where_am_I</span><span class="p">():</span>
+        <span class="n">place</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Japan'</span><span class="p">,</span> <span class="s">'USA'</span><span class="p">,</span> <span class="s">'Taiwan'</span><span class="p">,</span> <span class="s">'Korea'</span><span class="p">,</span> 
+               <span class="s">'Germany'</span><span class="p">,</span> <span class="s">'UK'</span><span class="p">,</span> <span class="s">'France'</span><span class="p">]</span>
+        <span class="n">myplace</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'You are in {}!'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">myplace</span><span class="p">))</span>    
+    
+    <span class="o">@</span><span class="nb">staticmethod</span>    <span class="c1"># staticmethod does not access a class or an instance within the function
+</span>    <span class="k">def</span> <span class="nf">play_music</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Playing music ..."</span><span class="p">)</span>
+    
+<span class="k">class</span> <span class="nc">RobotManager</span><span class="p">(</span><span class="n">Robot</span><span class="p">):</span>
+    <span class="n">battery_amt</span> <span class="o">=</span> <span class="mi">70</span>
+
+    <span class="c1"># always set the default value an immutable
+</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span><span class="p">,</span> <span class="n">robot_list</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span> 
+        <span class="c1"># 'robotname', 'ownername', 'birth' are handled by the init method of Robot class, parent class/ base class.
+</span>        <span class="n">Robot</span><span class="p">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span><span class="p">)</span> 
+        <span class="k">if</span> <span class="n">robot_list</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span> <span class="o">=</span> <span class="n">robot_list</span>
+        
+    <span class="c1"># add a robot into managing list; regular method
+</span>    <span class="k">def</span> <span class="nf">add_robot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robot</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">robot</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">robot</span><span class="p">)</span>
+
+    <span class="c1"># remove a robot into managing list; regular method
+</span>    <span class="k">def</span> <span class="nf">remove_robot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robot</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">robot</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">robot</span><span class="p">)</span>
+
+    <span class="c1"># print a list of robot name along with owner name managed by the robot manager; regular method
+</span>    <span class="k">def</span> <span class="nf">print_robots</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">robot</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'Robot: {} ; Owner: {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">robot</span><span class="p">.</span><span class="n">robotname</span><span class="p">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="n">robot</span><span class="p">.</span><span class="n">ownername</span><span class="p">))</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">super().__init__()</code> or <code class="language-plaintext highlighter-rouge">parent_class.init__(self,)</code> from the init method of a subclass to call the parent init method to inherits the instance attributes.</p>
+
+<p>Python will look for the chain of the inheritence to get what is inherited from the parent class. This chain is called method resolutional order. The <code class="language-plaintext highlighter-rouge">help()</code> can help visualize the method resolutional order in this case.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">help</span><span class="p">(</span><span class="n">AdvancedRobot</span><span class="p">))</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Help on class AdvancedRobot in module __main__:
+
+class AdvancedRobot(Robot)
+ |  Method resolution order:
+ |      AdvancedRobot
+ |      Robot
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, robotname, ownername, birth, location)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  play_music(self)
+ |  
+ |  tell_me_time(self)
+ |      # change the output of time for differencing from Robot class
+ |  
+ |  where_am_I(self)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  battery_amt = 65
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from Robot:
+ |  
+ |  __add__(self, other)
+ |  
+ |  __len__(self)
+ |  
+ |  __repr__(self)
+ |      Return repr(self).
+ |  
+ |  __str__(self)
+ |      Return str(self).
+ |  
+ |  charge_battery(self, amount)
+ |      # method can access a class variable as an attribute of an instance; regular method
+ |  
+ |  say_hello(self)
+ |      # saying hello with user name; regular method
+ |  
+ |  what_day_is_today(self)
+ |      # return what day is today randomly; regular method
+ |  
+ |  ----------------------------------------------------------------------
+ |  Class methods inherited from Robot:
+ |  
+ |  from_string(robot_string, separator) from builtins.type
+ |      robot_string: 'robotname-onwername-mm/dd' ; separator : '-'
+ |  
+ |  set_battery(amount) from builtins.type
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods inherited from Robot:
+ |  
+ |  lucky_number_1_to_10()
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from Robot:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  id
+
+None
+</code></pre></div></div>
+
+<p>By creating a new instance, we can prove that the AdvancedRobot <code class="language-plaintext highlighter-rouge">object</code> has perfect inherented everything from <strong>Robot</strong> <code class="language-plaintext highlighter-rouge">class</code>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># instantiate the 'RobotManager' class
+</span><span class="n">google</span> <span class="o">=</span> <span class="n">AdvancedRobot</span><span class="p">(</span><span class="s">'google'</span><span class="p">,</span> <span class="s">'BingJe'</span><span class="p">,</span> <span class="s">'08/15'</span><span class="p">,</span> <span class="s">'living room'</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># check the class variable
+</span><span class="n">google</span><span class="p">.</span><span class="n">battery_amt</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>65
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call attributes
+</span><span class="n">google</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'birth': '08/15',
+ 'locattion': 'living room',
+ 'ownername': 'BingJe',
+ 'robotname': 'google'}
+</code></pre></div></div>
+
+<p>The class variable has not been assigned to the instance attributes for google object.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># accessing a class variable through methods
+</span><span class="n">google</span><span class="p">.</span><span class="n">charge_battery</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># a new attribute for the instance
+</span><span class="n">google</span><span class="p">.</span><span class="n">battery_amt</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>75
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call attributes
+</span><span class="n">google</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'battery_amt': 75,
+ 'birth': '08/15',
+ 'locattion': 'living room',
+ 'ownername': 'BingJe',
+ 'robotname': 'google'}
+</code></pre></div></div>
+
+<p>Now, A new instance attribute, battery_amt, has been added for google object through accessing the class variable.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a static method
+</span><span class="n">google</span><span class="p">.</span><span class="n">tell_me_time</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Current time is 02:28:13.928534
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a static method
+</span><span class="n">google</span><span class="p">.</span><span class="n">what_day_is_today</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Today is Sunday!'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a static method
+</span><span class="n">google</span><span class="p">.</span><span class="n">play_music</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Playing music ...
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># instantiate the 'RobotManager' class
+</span><span class="n">jarvis</span> <span class="o">=</span> <span class="n">RobotManager</span><span class="p">(</span><span class="s">'javis'</span><span class="p">,</span> <span class="s">'BingJe'</span><span class="p">,</span> <span class="s">'08/15'</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call attributes
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'birth': '08/15',
+ 'ownername': 'BingJe',
+ 'robot_list': [],
+ 'robotname': 'javis'}
+</code></pre></div></div>
+
+<p>The robot managing list is empty. Use the regular methods to update the managing list.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a regular method
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">add_robot</span><span class="p">(</span><span class="n">alexa</span><span class="p">)</span>
+
+<span class="c1"># call a regular method
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">add_robot</span><span class="p">(</span><span class="n">siri</span><span class="p">)</span>
+
+<span class="c1"># call a regular method
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">add_robot</span><span class="p">(</span><span class="n">google</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a regular method
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">print_robots</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Robot: Alexa ; Owner: Bing
+Robot: Siri ; Owner: Bing-Je
+Robot: Google ; Owner: BingJe
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a regular method to remove a namespace from the list
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">remove_robot</span><span class="p">(</span><span class="n">siri</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a regular method
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">print_robots</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Robot: Alexa ; Owner: Bing
+Robot: Google ; Owner: BingJe
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="built-in-functions">Built-in Functions</h2>
+
+<p><code class="language-plaintext highlighter-rouge">isinstance()</code> can check if an object is an instance.<br />
+<code class="language-plaintext highlighter-rouge">issubclass()</code> can check if a subclass is of another class.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">isinstance</span><span class="p">(</span><span class="n">google</span><span class="p">,</span> <span class="n">Robot</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">issubclass</span><span class="p">(</span><span class="n">RobotManager</span><span class="p">,</span> <span class="n">Robot</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="application">Application</h2>
+<p>Multiple Choice Question Application</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># create a list of questions
+</span><span class="n">question_prompts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">"What color are apples?</span><span class="se">\n</span><span class="s">(a) Red/Green</span><span class="se">\n</span><span class="s">(b) Purple</span><span class="se">\n</span><span class="s">(c) Orange</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span>
+    <span class="s">"What color are bananas?</span><span class="se">\n</span><span class="s">(a) Teal</span><span class="se">\n</span><span class="s">(b) Magneta</span><span class="se">\n</span><span class="s">(c) Yellow</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span>
+    <span class="s">"What color are strawberries?</span><span class="se">\n</span><span class="s">(a) Yellow</span><span class="se">\n</span><span class="s">(b) Red</span><span class="se">\n</span><span class="s">(c) Blue</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span>
+    <span class="p">]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># create 'Question' class to call the question and answer as its attributes
+</span><span class="k">class</span> <span class="nc">Question</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">answer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="n">prompt</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># create a list that contains question objects and answers for each question
+</span><span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Question</span><span class="p">(</span><span class="n">question_prompts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">'a'</span><span class="p">),</span>
+    <span class="n">Question</span><span class="p">(</span><span class="n">question_prompts</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">'c'</span><span class="p">),</span>
+    <span class="n">Question</span><span class="p">(</span><span class="n">question_prompts</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s">'b'</span><span class="p">),</span>
+<span class="p">]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># check the instance attribute
+</span><span class="n">questions</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">prompt</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'What color are bananas?\n(a) Teal\n(b) Magneta\n(c) Yellow\n\n'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># create the run_question function
+</span><span class="k">def</span> <span class="nf">run_qeustions</span><span class="p">(</span><span class="n">questions</span><span class="p">):</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">questions</span><span class="p">:</span> <span class="c1"># q is Question object
+</span>        <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">prompt</span><span class="p">)</span> <span class="c1"># call the prompt attribute from the class
+</span>        <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="n">q</span><span class="p">.</span><span class="n">answer</span><span class="p">:</span>  <span class="c1"># compare the answer attribute from the class
+</span>            <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">You got {} question(s) wrong ! Sorry :('</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="n">score</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">You got {} questions right ! Congrats !!'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">score</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">run_qeustions</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>What color are apples?
+(a) Red/Green
+(b) Purple
+(c) Orange
+
+a
+What color are bananas?
+(a) Teal
+(b) Magneta
+(c) Yellow
+
+b
+What color are strawberries?
+(a) Yellow
+(b) Red
+(c) Blue
+
+c
+
+You got 2 question(s) wrong ! Sorry :(
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">run_qeustions</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>What color are apples?
+(a) Red/Green
+(b) Purple
+(c) Orange
+
+a
+What color are bananas?
+(a) Teal
+(b) Magneta
+(c) Yellow
+
+c
+What color are strawberries?
+(a) Yellow
+(b) Red
+(c) Blue
+
+b
+
+You got 3 questions right ! Congrats !!
+</code></pre></div></div>
+
+<p><br />
+Reference:</p>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=ZDa-Z5JzLYM&amp;list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc&amp;index=1">Python OOP Tutorials - Working with Classes</a></li>
+  <li><a href="https://www.w3schools.com/python/python_classes.asp">Python Classes and Objects - w3school</a></li>
+  <li><a href="https://www.geeksforgeeks.org/python-classes-and-objects/">Python Classes and Objects - geeksforgeeks</a></li>
+  <li><a href="https://www.geeksforgeeks.org/dunder-magic-methods-python/">Dunder or magic methods in Python</a></li>
+  <li><a href="https://colab.research.google.com/drive/1jgVIjPjNqJNmFhYMEyXdBv9CViIimy3E?usp=sharing">Google Colab</a></li>
+</ul>
+
+<p align="center"><a href="#top">Top</a></p>]]></content><author><name></name></author><category term="Python" /><summary type="html"><![CDATA[Classes and Objects]]></summary></entry><entry><title type="html">Python Baisc: *args and **kwargs</title><link href="http://localhost:4000/blog/python/2020/08/15/Python-basic-args-and-kwargs/" rel="alternate" type="text/html" title="Python Baisc: *args and **kwargs" /><published>2020-08-15T00:00:00+08:00</published><updated>2020-08-15T00:00:00+08:00</updated><id>http://localhost:4000/blog/python/2020/08/15/Python-basic-args-and-kwargs</id><content type="html" xml:base="http://localhost:4000/blog/python/2020/08/15/Python-basic-args-and-kwargs/"><![CDATA[<div id="top">
+  <p align="center"><img src="/assets/images/post/python/args-and-kwargs.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">*args and **kwargs</p>
+</div>
+
+<h2 id="table-of-contents">Table of contents:</h2>
+<ul>
+  <li><a href="#args">*args</a>
+    <ul>
+      <li><a href="#list-unpack">List Unpacking</a></li>
+      <li><a href="#list-concat">List Concatenation</a></li>
+    </ul>
+  </li>
+  <li><a href="#kwargs">**kwargs</a>
+    <ul>
+      <li><a href="#dict-concat">Dictionary Concatenation</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="args-and-kwargs">*args and **kwargs</h2>
+<p><b>*args</b> and <b>**kwargs</b> allow user to pass multiple arguments(args) and keyward arguments(kwargs) to a function. <b>*args</b> can unpack iterable and <b>**kwargs</b> is for unpacking dictionaries.</p>
+
+<p><br /></p>
+<h3 id="args"> <p><strong>*args</strong></p></h3>
+<p>When we declare a function to sum up numbers, we often need to pass arguments. There are several ways to do so. The most common method is using a sigle <b>list</b> as the function argument. However, using *args as the alternative method can make the code elegant.</p>
+
+<p>The first example using list as the argument::</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">sum_num</span><span class="p">(</span><span class="n">list_num</span><span class="p">):</span>
+    <span class="n">total</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">list_num</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">sum_num</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>15
+</code></pre></div></div>
+
+<p>Using *args instead of a list:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">sum_num_args</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">total</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">sum_num_args</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li>It can takes multiple arguments.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">sum_num_args</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>15
+</code></pre></div></div>
+
+<h4 id="list-unpack"><strong>List unpacking</strong></h4>
+<p>The idea of unpacking is to, well, unpack any iterable object. The single asterisk <code class="language-plaintext highlighter-rouge">*</code> is used to unpack any iterable.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">num_arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="o">*</span><span class="n">num_arr</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 2 3 4 5
+</code></pre></div></div>
+<p>The result above shows that the print function can print the element of the list by using <code class="language-plaintext highlighter-rouge">*args</code></p>
+
+<h4 id="list-concat"><strong>List concatenation</strong></h4>
+<p>Another thing that *args can do is list concatenation:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">nums1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">nums2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">nums1</span><span class="p">,</span> <span class="o">*</span><span class="n">nums2</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</code></pre></div></div>
+
+<p><br /></p>
+<h3 id="kwargs"> <strong>**kwargs</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">**kwargs</code> are used to unpack dictionaries.</p>
+
+<p>Let’s try a calculation function that take <strong>a</strong>, <strong>b</strong> and <strong>c</strong> using traditional positional arguments:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dic</span><span class="o">=</span><span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span> <span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span><span class="mi">12</span><span class="p">}</span>
+<span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="mi">10</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">calculate</span><span class="p">(</span><span class="n">dic</span><span class="p">[</span><span class="s">'a'</span><span class="p">],</span> <span class="n">dic</span><span class="p">[</span><span class="s">'b'</span><span class="p">],</span> <span class="n">dic</span><span class="p">[</span><span class="s">'c'</span><span class="p">])</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>122
+</code></pre></div></div>
+
+<p>However, if we use the <code class="language-plaintext highlighter-rouge">**kwargs</code>, we can get the same results.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">calculate</span><span class="p">(</span><span class="o">**</span><span class="n">dic</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>122
+</code></pre></div></div>
+<p>It is clear to see that using <code class="language-plaintext highlighter-rouge">**kwargs</code> is simpler, cleaner and more elegant.</p>
+
+<h4 id="dict-concat"><strong>Dictionary concatenation</strong></h4>
+<p>The dictionary concatenation is the same as the list concatenation. It will concatenate two different dictionaries into one. But, if there are duplicate keys, the value of the second dictionary will be used.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># No key duplication
+</span><span class="n">dic1</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="n">dic2</span> <span class="o">=</span> <span class="p">{</span><span class="s">'c'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">dic1</span><span class="p">,</span> <span class="o">**</span><span class="n">dic2</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'a': 1, 'b': 2, 'c': 3, 'd': 4}
+</code></pre></div></div>
+<p>The key <strong>b</strong> has the value of <code class="language-plaintext highlighter-rouge">2</code>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># key duplication
+</span><span class="n">dic1</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="n">dic2</span> <span class="o">=</span> <span class="p">{</span><span class="s">'b'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">dic1</span><span class="p">,</span> <span class="o">**</span><span class="n">dic2</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'a': 1, 'b': 3, 'c': 4}
+</code></pre></div></div>
+<p>Now, the key <strong>b</strong> has the value of <code class="language-plaintext highlighter-rouge">3</code>.</p>
+
+<p align="center"><a href="#top">Top</a></p>]]></content><author><name></name></author><category term="Python" /><summary type="html"><![CDATA[*args and **kwargs]]></summary></entry><entry><title type="html">Python Baisc: List Comprehension</title><link href="http://localhost:4000/blog/python/2020/08/13/Python-basic-list-comprehension/" rel="alternate" type="text/html" title="Python Baisc: List Comprehension" /><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><id>http://localhost:4000/blog/python/2020/08/13/Python-basic-list-comprehension</id><content type="html" xml:base="http://localhost:4000/blog/python/2020/08/13/Python-basic-list-comprehension/"><![CDATA[<div id="top">
+  <p align="center"><img src="/assets/images/post/python/list-comprehension.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">List Comprehension</p>
+</div>
+
+<h2 id="table-of-contents">Table of contents:</h2>
+<ul>
+  <li><a href="#example1">Simple List Comprehension</a></li>
+  <li><a href="#example2">Adding Condition</a></li>
+  <li><a href="#example3">Adding if… else… statement</a></li>
+  <li><a href="#example4">Nested ifs in list comprehension</a>
+    <ul>
+      <li><a href="#example4-1">1. Two ifs</a></li>
+      <li><a href="#example4-2">2. Ifs and else with three outputs</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="list-comprehension">List Comprehension</h2>
+<p>List comprehensions provide a concise way to create lists. It is frequently used to make new lists where every element is the result of some operations applied to anthor iterable object.</p>
+
+<p><br /></p>
+<h3 id="example1"> <strong>Simple List Comprehension</strong></h3>
+<p>Create a list and square the number from 0 to 9:</p>
+
+<h4 id="for-loop-method"><u>For Loop Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">Alist</span><span class="o">=</span><span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">Alist</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Alist</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</code></pre></div></div>
+
+<h4 id="list-comprehension-method"><u>List Comprehension Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">Alist</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Alist</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</code></pre></div></div>
+
+<p><br /></p>
+<h3 id="example2"> <strong>Adding Condition</strong></h3>
+<p>Square the number from 0 to 9, and store the odd number to a list:</p>
+
+<h4 id="for-loop-method-1"><u>For Loop Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">odd</span><span class="o">=</span><span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">odd</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">odd</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 9, 25, 49, 81]
+</code></pre></div></div>
+
+<h4 id="list-comprehension-method-1"><u>List Comprehension Method</u>:</h4>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">if</code> statement is put at the end</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">odd</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">odd</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 9, 25, 49, 81]
+</code></pre></div></div>
+
+<p><br /></p>
+<h3 id="example3"> <strong>Adding if... else... Statement</strong></h3>
+<p>Square the number from 0 to 9 and plus 1 for each of number. Then, create a list to store a list of strings.When the number is an odd number, store ‘odd’. Otherwise, store ‘even’.</p>
+
+<h4 id="for-loop-method-2"><u>For Loop Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">stringlist</span><span class="o">=</span><span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">stringlist</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'odd'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">stringlist</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'even'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">stringlist</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['odd', 'even', 'odd', 'even', 'odd', 'even', 'odd', 'even', 'odd', 'even']
+</code></pre></div></div>
+
+<h4 id="list-comprehension-method-2"><u>List Comprehension Method</u>:</h4>
+<p>The position of <code class="language-plaintext highlighter-rouge">if</code> statement has been moved to front and followed by the else statement</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">stringlist</span> <span class="o">=</span> <span class="p">[</span><span class="s">'odd'</span> <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span> <span class="k">else</span> <span class="s">'even'</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">stringlist</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['odd', 'even', 'odd', 'even', 'odd', 'even', 'odd', 'even', 'odd', 'even']
+</code></pre></div></div>
+
+<p><br /></p>
+<h3 id="example4"> <strong>Nested ifs in list comprehension</strong></h3>
+<h4 id="example4-1"> 1. Two ifs</h4>
+
+<h4 id="for-loop-method-3"><u>For Loop Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">str5list</span><span class="o">=</span><span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">str5list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">str5list</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[5, 65]
+</code></pre></div></div>
+
+<h4 id="list-comprehension-method-3"><u>List Comprehension Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">str5list</span> <span class="o">=</span> <span class="p">[(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span><span class="mi">0</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">str5list</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[5, 65]
+</code></pre></div></div>
+
+<h4 id="example4-2"> 2. Ifs and else with three outputs</h4>
+
+<h4 id="for-loop-method-4"><u>For Loop Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">str5list</span><span class="o">=</span><span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">str5list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'odd'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">str5list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'odd and True'</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">str5list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'false'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">str5list</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['odd',
+ 'false',
+ 'odd',
+ 'odd and True',
+ 'odd',
+ 'false',
+ 'odd',
+ 'odd and True',
+ 'odd',
+ 'false']
+</code></pre></div></div>
+
+<h4 id="list-comprehension-method-4"><u>List Comprehension Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">str5list</span> <span class="o">=</span> <span class="p">[</span><span class="s">'odd'</span>  <span class="k">if</span> <span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="s">'odd and True'</span> <span class="k">if</span> <span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="s">'false'</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">str5list</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['odd',
+ 'false',
+ 'odd',
+ 'odd and True',
+ 'odd',
+ 'false',
+ 'odd',
+ 'odd and True',
+ 'odd',
+ 'false']
+</code></pre></div></div>
+
+<p align="center"><a href="#top">Top</a></p>]]></content><author><name></name></author><category term="Python" /><summary type="html"><![CDATA[List Comprehension]]></summary></entry><entry><title type="html">Database Management: Hadoop Ecosystem</title><link href="http://localhost:4000/blog/database/2020/08/08/Hadoop-ecosystem/" rel="alternate" type="text/html" title="Database Management: Hadoop Ecosystem" /><published>2020-08-08T00:00:00+08:00</published><updated>2020-08-08T00:00:00+08:00</updated><id>http://localhost:4000/blog/database/2020/08/08/Hadoop-ecosystem</id><content type="html" xml:base="http://localhost:4000/blog/database/2020/08/08/Hadoop-ecosystem/"><![CDATA[<div id="top">
+  <p align="center"><img src="/assets/images/post/database/hadoop-ecosystem.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Hadoop Ecosystem</p>
+</div>
+
+<h2 id="hadoop">Hadoop</h2>
+<p>When we talk about <strong>big data</strong>, we often think of Hadoop. Why? Hadoop is a system for <u>storing data</u>, <u>processing data</u> and <u>managing data</u>. It can ingest data from different platform or resources. In the big data world, sometimes, the traditional DBMSs could not meet their reporting requirements. Companies may require to shorten the time to process a significant amount of data. Increasing more storage or computer power could be another benefit using Hadoop.</p>
+
+<p>Hadoop consists of three basic parts:</p>
+<ul>
+  <li><strong>HDFS</strong>: storing data</li>
+  <li><strong>YARN</strong>: managing data</li>
+  <li><strong>MapReduce</strong>: processing data</li>
+</ul>
+
+<p>Hadoop implements cluster management in the system. It stores data and process data in clusters. Each cluster contains a master node and worker nodes. The master node runs the Apache Yarn as <strong>Resource Manager</strong>. The worker node runs Apache Yarn as <strong>Node Manager</strong> to getting the information of CPU, memory, disk and network usage to the <strong>Resource Manager</strong>. The <strong>Resource Manager</strong> decides where to direct the new tasks based on the current workloads reported from <strong>Node Manager</strong> with the Scheduler and ApplicationsManager.</p>
+
+<p align="center"><img src="/assets/images/post/database/cluster.png" title="" /></p>
+
+<p>Hadoop Data are:</p>
+<ul>
+  <li>Time-variant: reflect that point in time</li>
+  <li>Non-volatile: not updated</li>
+  <li>Subject-oriented: stored by topic</li>
+</ul>
+
+<p>The example of hadoop data are web logs, sales transactions, event records, sensor data…etc</p>
+
+<p><br /></p>
+
+<h3 id="the-hadoop-philosophy">The Hadoop Philosophy</h3>
+
+<ul>
+  <li>Capture the data “as are” and store them.</li>
+  <li>Do not transform before you store them.</li>
+  <li>Store all the data, as you don’t know what you’ll need.</li>
+  <li>Transform them when you query them.</li>
+</ul>
+
+<p>This is the anti-pattern of relational modeling!</p>
+
+<p><br /></p>
+
+<h3 id="how-does-hadoop-differ-from-relational">How Does Hadoop Differ From Relational?</h3>
+
+<div id="relation_vs_hadoop">
+  <style>
+  table {border: none; width: 100%; table-layout: fixed ;}
+  </style>
+  <table cellspacing="0" cellpadding="0">
+  <thead>
+  <tr>
+  <th align="center">Relational</th>
+  <th align="center">Hadoop</th>
+  </tr>
+  </thead>
+
+  <tbody> <tr>
+  <td>
+  	<ul style="list-style: none">
+  		<li>1. Schema on write; need a table</li>
+  		<li>2. Fast reads</li>
+  		<li>3. Highly structured data</li>
+  		<li>4. Declarative data processing(SQL)</li>
+  		<li>5. Good for ACID transactions, business data</li>
+  	</ul>
+  </td>
+  <td>
+  	<ul style="list-style: none">
+  		<li>1. Schema on read; schema applied when data are read</li>
+  		<li>2. Fast writes</li>
+  		<li>3. Loosely structured data; write the data “as they are” to HDFS</li>
+  		<li>4. Declarative and procedural data processing</li>
+  		<li>5. Good for logs, data streams, unstructured data discovery</li>
+  	</ul>
+  </td>
+  </tr>  </tbody>   
+  </table>
+  </div>
+
+<p><strong>Note: ACID (Atomicity, Consistency, Isolation, Durability)</strong></p>
+
+<p><br /></p>
+
+<h3 id="mapreduce">MapReduce</h3>
+<p>MapReduce is a processing technique and a program model for distributed computing based on java. Map takes a set of data and converts it into another set of data, where individual elements are broken down into tuples (key/value pairs).</p>
+<ul>
+  <li><strong>Map</strong>: apply a transformation to a data set</li>
+  <li><strong>Shuffle</strong>: transfer output from Mapper to Reducer nodes</li>
+  <li><strong>Reduce</strong>: aggregate items into a single result</li>
+  <li><strong>Combine</strong>: output of Reducer nodes into single output</li>
+</ul>
+
+<p align="center"><img src="/assets/images/post/database/mapreduce.png" title="" style="width: 60%" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">MapReduce process</p>
+
+<p><br /></p>
+
+<h3 id="hdfs">HDFS</h3>
+<p>The Hadoop Distributed File System (HDFS) is a distributed file system designed to run on commodity hardware. It is highly fault-tolerant and is designed to be deployed on low-cost hardware. HDFS provides high throughput access to application data and is suitable for applications that have large data sets.</p>
+
+<p>HDFS is reponsible for:</p>
+<ul>
+  <li>Distributed data storage paradigm</li>
+  <li>A single file is divided into blocks</li>
+  <li>Blocks are spread across nodes</li>
+  <li>Blocks are written multiple times for redundancy</li>
+</ul>
+
+<p align="center"><img src="/assets/images/post/database/abc.png" title="" /></p>
+<p align="center"><img src="/assets/images/post/database/HDFS.png" title="" /></p>
+
+<p><br /></p>
+
+<h2 id="hadoop-ecosystem-in-action">Hadoop Ecosystem in Action</h2>
+
+<p align="center"><img src="/assets/images/post/database/ecosystem.png" title="" style="width: 90%" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Hadoop Ecosystem in Action</p>
+
+<p><br /></p>
+
+<h2 id="options-for-data-ingestion">Options for Data Ingestion</h2>
+
+<p align="center"><img src="/assets/images/post/database/data_ingestion.png" title="" style="width: 75%" /></p>
+
+<p align="center"><a href="#top">Top</a></p>]]></content><author><name></name></author><category term="Database" /><summary type="html"><![CDATA[Hadoop Ecosystem]]></summary></entry><entry><title type="html">Confusion Matrix</title><link href="http://localhost:4000/blog/data-science/2020/08/07/confusion-matrix/" rel="alternate" type="text/html" title="Confusion Matrix" /><published>2020-08-07T00:00:00+08:00</published><updated>2020-08-07T00:00:00+08:00</updated><id>http://localhost:4000/blog/data-science/2020/08/07/confusion-matrix</id><content type="html" xml:base="http://localhost:4000/blog/data-science/2020/08/07/confusion-matrix/"><![CDATA[<div id="top">
+  <p align="center"><img src="/assets/images/post/data-science/confusion_matrix0.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Confusion Matrix</p>
+</div>
+
+<h2 id="confusion-matrix">Confusion Matrix</h2>
+<p>A confusion matrix is a table that is often used to describe the performance of a classification model (classifier) on a set of test data for which the true values are known. It allows the visualization of the performance of an algorithm.</p>
+
+<p>In the confusion matrix, there are many evaluation metrics can be derived for evaluating model performance:</p>
+
+<ul>
+  <li>Accuracy</li>
+  <li>Precision</li>
+  <li>Recall/sensitivity</li>
+  <li>F1-score</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">Accuracy rate</code> is <u>focusing on the cases that were correctly predicted</u>. <code class="language-plaintext highlighter-rouge">Precision</code> is <u>focusing on the predicted cases that were truly true</u>. (When the precision is higher, it reduces the False Positive/Type I Error). <code class="language-plaintext highlighter-rouge">Recall</code>, also known as sensitivity, is <u>focusing on the true cases that were correctly found</u>. (When the recall is higher, it reduces the False Negative/Type II Error). And <code class="language-plaintext highlighter-rouge">F1-score</code> is simply <u> a harmonic mean of precision and recall</u>, a hybrid version of the overall score.</p>
+
+<p>There are four type of states to describe in confusion matrix:</p>
+
+<ul>
+  <li>TP (true positive)
+    <ul>
+      <li>An outcome where the model <strong>correctly predicts the positive</strong> class</li>
+    </ul>
+  </li>
+  <li>TN (true negative)
+    <ul>
+      <li>An outcome where the model <strong>correctly predicts the negative</strong> class</li>
+    </ul>
+  </li>
+  <li>FP (false positive / type I error)
+    <ul>
+      <li>An outcome where the model <strong>incorrectly predicts the positive</strong> class</li>
+    </ul>
+  </li>
+  <li>FN (false negative / type II error)
+    <ul>
+      <li>An outcome where the model <strong>incorrectly predicts the negative</strong> class</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+<p align="center"><img src="/assets/images/post/data-science/confusion_matrix.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Confusion Matrix Summary Table</p>
+
+<p>Recall and precision for each class:</p>
+<div id="postive" style="float: left; margin-right: 10%;">
+<ul style="list-style: none; ">
+  <li>$Recall_{class=Yes} = \frac{a}{(a + b)} $</li>
+  <li>$Precision_{class=Yes} = \frac{a}{(a + c)}$</li>
+  <li>$F_1 = \frac{2}{ \frac{1}{P} + \frac{1}{R} } = \frac{2PR}{(P+R)}$</li>
+</ul></div>
+
+<div id="negative">
+<ul style="list-style: none; display: inline;">
+  <li>$Recall_{class=No} = \frac{d}{(c + d)} $</li>
+  <li>$Precision_{class=No} = \frac{d}{(b + d)} $</li>
+  <li>where $ \text{ $P = Precision_{class}$ , and $R = Recall_{class}$ }$</li>
+</ul></div>
+
+<p><br /></p>
+
+<h2 id="example">Example:</h2>
+<p>Calculate precisions, recalls, and F-measure for the following prediction result. See result table below:</p>
+<p align="center"><img src="/assets/images/post/data-science/confusion_matrix_calculation.png" title="" style="width: 40%" /></p>
+
+<div id="postive" style="float: left; margin-right: 10%;">
+<ul style="list-style: none; ">
+  <li>Class = Positive:</li>
+  <li>$Recall_{class=positive} = \frac{a}{(a + b)} = \frac{70}{(70 + 10)} = 0.875$</li>
+  <li>$Precision_{class=positive} = \frac{a}{(a + c)} = \frac{70}{(70 + 10)} = 0.875$</li>
+  <li>$F1_{class=positive} = \frac{2}{ \frac{1}{P} + \frac{1}{R} } = \frac{2PR}{(P+R)} = \frac{2*0.875*0.875}{0.875+0.875} \approx 0.875$</li>
+</ul></div>
+
+<div id="negative">
+<ul style="list-style: none; display: inline;">
+  <li>Class = Negative:</li>
+  <li>$Recall_{class=negative} = \frac{d}{(c + d)} = \frac{10}{(10 + 10)} = 0.5$</li>
+  <li>$Precision_{class=negative} = \frac{d}{(b + d)} = \frac{10}{(10 + 10)} = 0.5$</li>
+  <li>$F1_{class=negative} = \frac{2}{ \frac{1}{P} + \frac{1}{R} } = \frac{2PR}{(P+R)} = \frac{2*0.5*0.5}{0.5+0.5} = 0.5$</li>
+</ul></div>
+
+<p><br />
+Reference: <br />
+<a href="https://en.wikipedia.org/wiki/Confusion_matrix">Confusion matrix</a><br />
+<a href="https://scikit-learn.org/stable/modules/model_evaluation.html#confusion-matrix">Metrics and scoring: quantifying the quality of predictions</a></p>
+
+<p align="center"><a href="#top">Top</a></p>]]></content><author><name></name></author><category term="Data-science" /><summary type="html"><![CDATA[Confusion Matrix]]></summary></entry></feed>

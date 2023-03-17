@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Regression: Multicollinearity</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Regression: Multicollinearity</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">25 Jun 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Math, Data-science">Math, Data-science</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/regression/Multicollinearity.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Multicollinearity Example; <a href="https://www.theanalysisfactor.com/multicollinearity-explained-visually/">Source</a></p>
+</div>
+
+<p>In statistics, <strong>multicollinearity</strong> (also <strong>collinearity</strong>) is a phenomenon in which one predictor variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy. – Wiki</p>
+
+<p>When independent variables in the regression model are highly correlated to each other, the multicollinearity usually happens. And, it could be hard to interpret models and it may face overfitting problem.</p>
+
+<p>For example, a monthly sales record for this year might be choosen to build a regression model. However, the way we choose to monthly sales record as independent variables could lead the wrong conclusion. Let’s say we have quartly sales record for 2020 and monthly sales records 2020 as our independent variables. And we will see that these features are highly correlated with each other. Because Q1 sales record consist of Jan, Feb and March records and vice versa.</p>
+
+<p><br /></p>
+
+<h2 id="what-is-the-problem-of-multi-collinearity">What is the problem of Multi-Collinearity?</h2>
+<p>When independent variables are highly correlated, any change of a variable will cause a chain rule effect on one variable to another variable. The model, then, will have misleading results for incorrect conclusion.</p>
+
+<ol>
+  <li>It would be hard to identify significant variables for the model</li>
+  <li>Coefficient Estimates would not be stable and it would be hard to interpret the model</li>
+  <li>The unstable nature of the model may cause overfitting. When out of sample data applies, the accuracy will drop significantly</li>
+</ol>
+
+<p><strong>PS</strong>: Depending on the situation, it may not be a problem if a model has slightly or moderately collinearity issue. However, it is strongly advised to solve the issue if severe collinearity issue exists (<em>e.g. Correlation &gt; 0.8 between 2 variables</em> or <em>Variance inflation factor(VIF) &gt; 20</em> )</p>
+
+<p>There are many methods to check if Multi-Collinearity occurs. The simple methods are:</p>
+<ol>
+  <li>Correlation Matrix</li>
+  <li>Variance Inglation Factor (VIF)</li>
+</ol>
+
+<p><strong>(1). Correlation Matrix:</strong></p>
+
+<p>Here, we use the toy dataset, boston house prices dataset, from sklearn as the example.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_boston</span>
+<span class="n">boston_dataset</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dict_keys(['data', 'target', 'feature_names', 'DESCR', 'filename'])
+</code></pre></div></div>
+
+<p>Use <code class="language-plaintext highlighter-rouge">DESCR</code> method can get the document of the dataset.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">DESCR</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.. _boston_dataset:
+
+Boston house prices dataset
+---------------------------
+
+**Data Set Characteristics:**  
+
+    :Number of Instances: 506 
+
+    :Number of Attributes: 13 numeric/categorical predictive. Median Value (attribute 14) is usually the target.
+
+    :Attribute Information (in order):
+        - CRIM     per capita crime rate by town
+        - ZN       proportion of residential land zoned for lots over 25,000 sq.ft.
+        - INDUS    proportion of non-retail business acres per town
+        - CHAS     Charles River dummy variable (= 1 if tract bounds river; 0 otherwise)
+        - NOX      nitric oxides concentration (parts per 10 million)
+        - RM       average number of rooms per dwelling
+        - AGE      proportion of owner-occupied units built prior to 1940
+        - DIS      weighted distances to five Boston employment centres
+        - RAD      index of accessibility to radial highways
+        - TAX      full-value property-tax rate per $10,000
+        - PTRATIO  pupil-teacher ratio by town
+        - B        1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town
+        - LSTAT    % lower status of the population
+        - MEDV     Median value of owner-occupied homes in $1000's
+
+    :Missing Attribute Values: None
+
+    :Creator: Harrison, D. and Rubinfeld, D.L.
+
+This is a copy of UCI ML housing dataset.
+https://archive.ics.uci.edu/ml/machine-learning-databases/housing/
+
+
+This dataset was taken from the StatLib library which is maintained at Carnegie Mellon University.
+
+The Boston house-price data of Harrison, D. and Rubinfeld, D.L. 'Hedonic
+prices and the demand for clean air', J. Environ. Economics &amp; Management,
+vol.5, 81-102, 1978.   Used in Belsley, Kuh &amp; Welsch, 'Regression diagnostics
+...', Wiley, 1980.   N.B. Various transformations are used in the table on
+pages 244-261 of the latter.
+
+The Boston house-price data has been used in many machine learning papers that address regression
+problems.   
+     
+.. topic:: References
+
+   - Belsley, Kuh &amp; Welsch, 'Regression diagnostics: Identifying Influential Data and Sources of Collinearity', Wiley, 1980. 244-261.
+   - Quinlan,R. (1993). Combining Instance-Based and Model-Based Learning. In Proceedings on the Tenth International Conference of Machine Learning, 236-243, University of Massachusetts, Amherst. Morgan Kaufmann.
+</code></pre></div></div>
+
+<p>Convert the toy dataset into pandas dataframe.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">boston_dataset</span><span class="p">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span></code></pre></figure>
+
+<p align="center"><img src="/assets/images/post/regression/table1.png" title="" /></p>
+
+<p>Add the dependent variable, target variable, into dataframe.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">df</span><span class="p">[</span><span class="s">'MEDV'</span><span class="p">]</span> <span class="o">=</span> <span class="n">boston_dataset</span><span class="p">.</span><span class="n">target</span>
+<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span></code></pre></figure>
+
+<p align="center"><img src="/assets/images/post/regression/table2.png" title="" /></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># plot color scaled correlation matrix
+</span><span class="n">corr</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">corr</span><span class="p">().</span><span class="nb">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Draw the heatmap with the mask and correct aspect ratio
+</span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="c1">## Generate a mask for the upper triangle
+</span><span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">mask</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">mask</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c1">## Generate a custom diverging colormap
+</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">diverging_palette</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1">## annot = True to print the values inside the square
+</span><span class="n">hm</span><span class="o">=</span><span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">corr</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="p">.</span><span class="mi">3</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+            <span class="n">square</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s">"shrink"</span><span class="p">:</span> <span class="p">.</span><span class="mi">5</span><span class="p">})</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Correlation Plot'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">();</span></code></pre></figure>
+
+<p align="center"><img src="/assets/images/post/regression/corr.png" title="" /></p>
+
+<p>Heatmap helps select variables for a regression model by looking at the <code class="language-plaintext highlighter-rouge">correlation matrix</code>. The higher absolute values of correlation between the pairs of <u>dependent variable</u> and <u>independent variable</u> could be the good indicator for choosing the predictors of a regression model.</p>
+
+<p>Usually, to identify the <code class="language-plaintext highlighter-rouge">multicollinearity</code> issue, we will check a pair of <u>independent variables</u> to see if its correlation exceeds <strong>0.8</strong>. Here, the correlation matrix shows no strong sign of <code class="language-plaintext highlighter-rouge">multicollinearity</code> issue <u>between idependent variables</u> on this dataset.</p>
+
+<p><strong>(2). Variance Inglation Factor (VIF):</strong></p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">Variance Inflation Factor (VIF)</code> for each independent variable. <u>VIF determines the strength of the correlation between the independent variables</u>. It is predicted by taking a variable and regressing it against every other variable.</p>
+
+<p>VIF formula:</p>
+<p align="center">$
+\text{VIF} = \frac{1}{1-R^2}
+$</p>
+
+<p>$R^2$ value is determined to find out how well an independent variable is described by the other independent variables (a regression that does not involve the response variable Y). A high value of $R^2$ means that the variable is highly correlated with the other variables.</p>
+
+<p>So, the closer the $R^2$ value to 1, the higher the value of VIF and the higher the multicollinearity with the particular independent variable.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Compute VIF data for each independent variable
+</span><span class="k">def</span> <span class="nf">calc_vif</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="s">"""
+    expect: X is a dataframe
+    modify: calculate the VIF values
+    return: return a dataframe
+    """</span>
+    <span class="kn">from</span> <span class="nn">statsmodels.stats.outliers_influence</span> <span class="kn">import</span> <span class="n">variance_inflation_factor</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+    <span class="c1"># Calculating VIF
+</span>    <span class="n">vif</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">vif</span><span class="p">[</span><span class="s">"features"</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">columns</span>
+    <span class="n">vif</span><span class="p">[</span><span class="s">"VIF"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">variance_inflation_factor</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">vif</span><span class="p">)</span></code></pre></figure>
+
+<p>Run the <code class="language-plaintext highlighter-rouge">calc_vif</code> function to get the VIF for each of independent variables.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">calc_vif</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></code></pre></figure>
+
+<p align="center"><img src="/assets/images/post/regression/VIF1.PNG" title="" /></p>
+
+<p>If VIF value is <u>higher than 10</u>, it is usually considered as having high correlation with other independent variables, meaning it can be predicted by other independent variables in the dataset.</p>
+
+<p><strong>PS</strong>: Although <strong>correlation matrix</strong> and <strong>scatter plots</strong> can also be used to find multicollinearity, their findings only show the bivariate relationship between the independent variables. VIF is preferred as it can show <u>the correlation of a variable with a group of other variables</u>.</p>
+
+<p><br /></p>
+
+<h2 id="how-to-fix-multi-collinearity-issue">How to fix Multi-Collinearity issue?</h2>
+<ol>
+  <li>Variable Selection</li>
+  <li>Variable Transformation</li>
+  <li>Principal Component Analysis</li>
+</ol>
+
+<p><strong>(1). Variable Selection:</strong></p>
+
+<p>Dropping one of the correlated features will help in bringing down the multicollinearity between correlated features.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'NOX'</span><span class="p">,</span><span class="s">'RM'</span><span class="p">,</span><span class="s">'PTRATIO'</span><span class="p">,</span><span class="s">'TAX'</span><span class="p">,</span><span class="s">'MEDV'</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">calc_vif</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></code></pre></figure>
+
+<p align="center"><img src="/assets/images/post/regression/VIF2.PNG" title="" /></p>
+
+<p>By removing the ‘NOX’,’RM’,’PTRATIO’,’TAX’ columns, the VIF has been reduced.</p>
+
+<p><strong>(2). Variable Transformation:</strong></p>
+
+<p>Transfromation can be done by combining two independents variables.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df2</span><span class="p">[</span><span class="s">'INDUS_at_B_and_AGE'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s">'B'</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="s">'INDUS'</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="s">'AGE'</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df2</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'INDUS'</span><span class="p">,</span><span class="s">'B'</span><span class="p">,</span><span class="s">'AGE'</span><span class="p">,</span> <span class="s">'NOX'</span><span class="p">,</span><span class="s">'RM'</span><span class="p">,</span><span class="s">'PTRATIO'</span><span class="p">,</span><span class="s">'TAX'</span><span class="p">,</span><span class="s">'MEDV'</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">calc_vif</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></code></pre></figure>
+
+<p align="center"><img src="/assets/images/post/regression/VIF3.PNG" title="" /></p>
+
+<p>Here we can see the numbers are below 10 with variable transformation.</p>
+
+<p><strong>(3). Principal Component Analysis:</strong></p>
+
+<p>Principal Component Analysis (PCA) is commonly used to reduce the dimension of data by decomposing data into the number of independent factors. It has many applications like simplifying model calculation by reducing the number of predicting factors. Here, we use the character of variable independency for PCA to remove multi-collinearity issue in the model.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Create the new data frame by transforming data using PCA
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">components</span><span class="o">=</span><span class="n">pca</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">componentsDf</span><span class="o">=</span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">components</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'component 1'</span><span class="p">,</span><span class="s">'component 2'</span><span class="p">,</span><span class="s">'component 3'</span><span class="p">,</span><span class="s">'component 4'</span><span class="p">,</span><span class="s">'component 5'</span><span class="p">,</span><span class="s">'component 6'</span><span class="p">,</span><span class="s">'component 7'</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">componentsDf</span><span class="p">)</span>
+<span class="c1"># Calculate VIF for each variable in the new data frame
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">componentsDf</span>
+<span class="n">calc_vif</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     component 1  component 2  ...  component 6  component 7
+0     -53.445128     3.473428  ...    -0.803652    -0.100734
+1     -33.515130   -13.164395  ...     1.117063    -0.054929
+2     -47.350198   -13.865980  ...     0.920758    -0.074221
+3     -69.227443   -15.620510  ...     1.955364    -0.051563
+4     -63.045406   -15.317811  ...     2.046793    -0.042474
+..           ...          ...  ...          ...          ...
+501   -33.545110   -13.279538  ...    -1.389770    -0.117042
+502   -30.888674   -13.011081  ...    -1.590357    -0.123976
+503   -16.782641   -11.514703  ...    -1.771067    -0.138481
+504   -15.013089   -11.431990  ...    -1.518889    -0.129497
+505   -26.854324   -12.550401  ...    -1.397484    -0.122386
+</code></pre></div></div>
+<p align="center"><img src="/assets/images/post/regression/VIF4.PNG" title="" /></p>
+
+<p>The PCA analysis seems to work very well on solving multi-collineartiy issue but model interpretation will be lost. And, when out of sample data is used to for predicting, the PCA transformation needs to be implemented again. Thus, we should try our best to reduce the correlation by selecting the right variables and transform them if needed.</p>
+
+<p><br /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Multicollinearity</code> may not be a problem every time. The need to fix <code class="language-plaintext highlighter-rouge">multicollinearity</code> depends primarily on the below reasons:</p>
+
+<ol>
+  <li>When you care more about how much each individual feature rather than a group of features affects the target variable, then removing multicollinearity may be a good option</li>
+  <li>If multicollinearity is not present in the features you are interested in, then multicollinearity may not be a problem.</li>
+</ol>
+
+<p>Reference: <br />
+<a href="https://towardsdatascience.com/multi-collinearity-in-regression-fe7a2c1467ea">Multicollinearity in Regression</a><br />
+<a href="https://www.analyticsvidhya.com/blog/2020/03/what-is-multicollinearity/">What is Multicollinearity?</a></p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

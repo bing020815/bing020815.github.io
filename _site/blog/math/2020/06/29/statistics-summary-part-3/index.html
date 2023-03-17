@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Statistics Summary Part 3: T-Test</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Statistics Summary Part 3: T-Test</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">29 Jun 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Math">Math</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/statistics/statistics101.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Statistics 101</p>
+</div>
+
+<h2 id="t-test">T-Test</h2>
+<p>The t-test is any statistical hypothesis test in which the test statistic follows a <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution">Student’s t-distribution</a> under the null hypothesis.</p>
+
+<p>A t-test is most commonly applied when the test statistic would follow a <code class="language-plaintext highlighter-rouge">normal distribution</code> if the value of a scaling term in the test statistic were known. When the scaling term is unknown and is replaced by an estimate based on the data or <strong>it has the small samples ($n &lt; 30$)</strong>, the test statistics (under certain conditions) follow a Student’s t distribution. The t-test can be used, for example, to determine <u>if the means of two sets of data are significantly different from each other</u>.</p>
+
+<p align="center"><img src="/assets/images/post/statistics/StudentTTable.png" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Student t distribution table; <a href="http://statcalculators.com/students-t-distribution-table/">Source</a></p>
+
+<p>The t-test can be categorized into two:</p>
+<ol>
+  <li><a href="#onesample">One-Sample</a></li>
+  <li><a href="#twosample">Two-Sample</a>
+    <ul>
+      <li>Paired</li>
+      <li>Unpaired</li>
+    </ul>
+  </li>
+</ol>
+
+<p>We are going to discuss each of cases in detail.</p>
+
+<h3 id="onesample"><strong>(1). One-Sample:</strong></h3>
+
+<p>The One-Sample Test tests whether the mean of a normally distributed population is different from a specified value.</p>
+
+<p>The workflow of the Test is as below:<br />
+<strong>Null Hypothesis ($H_0$)</strong>: states that the population mean is equal to some value ($\mu_0$)<br />
+<strong>Alternative Hypothesis ($H_a$)</strong>: states that the mean <u>does not equal</u>/<u>is greater than</u>/<u>is less than</u> $\mu_0$<br />
+<strong>t-statistic</strong>: standardizes the difference between $\bar{x}$ and $\mu_0$</p>
+
+<p style="display: inline; margin-right: 10%; margin-left: 10%">$
+t = \frac{\bar{x} - \mu_0}{ \frac{s}{\sqrt{n}} }
+$</p>
+<p style="display: inline;">Degree of freedom(df)=n-1</p>
+<p style="font-size: 0.8em; color: grey; font-style: italic; margin-left: 10%;">Formula for continuous data</p>
+
+<p>Read the table of t-distribution critical values for the p-value, probability that the sample mean was obtained by chance given $\mu_0$ is the popluation mean, using the calculated t-statistic and degrees of freedom.</p>
+
+<ul style="list-style: none;">
+  <li>$H_0: \mu \leq \mu_0 \\ H_a: \mu &gt; \mu_0   $</li>
+  <li>$\rightarrow\ \\ \text{one-tail test on right-tail; p = area right of t}$</li>
+  <br />
+  <li>$H_0: \mu \geq \mu_0 \\ H_a: \mu &lt; \mu_0  $</li>
+  <li>$\rightarrow\ \text{one-tail test on left-tail; p = area left of t}$</li>
+  <br />
+  <li>$H_0: \mu = \mu_0 \\ H_a: \mu \neq \mu_0  $</li>
+  <li>$\rightarrow\ \text{two-tail test; p = 2 * area past t}$</li>
+</ul>
+
+<p>If the p-value is less than the predetermined value for significance, called $\alpha$ and is usually <code class="language-plaintext highlighter-rouge">0.05</code>, reject the null hypothsis and accept the alternative hypothesis.</p>
+
+<p><strong>Example:</strong><br />
+You are experiencing hair loss and skin discoloration and think it might be because of selenuim toxicity. You decide to measure the selenium levles in your tap water once a day for one week. Your results are given below. The EPA maximum contaminant level for safe drinking water is 0.05 mg/L. Does the selenium level in your tap water exceed the legal limit (assuming $\alpha = 0.05$)?</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Day</th>
+      <th style="text-align: center">Selenium mg/L</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0.051</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">0.0505</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">0.049</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">0.0516</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">0.052</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">0.0508</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">0.0506</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Hypothesis:</p>
+<p align="center">$H_0: \mu \leq 0.05$</p>
+<p align="center">$H_a: \mu &gt; 0.05$</p>
+<p>Calculate the mean and standard deviation of the sample:</p>
+<p align="center">$\bar{x}=0.0508$  </p>
+<p align="center">$s^2 = \frac{\Sigma{(x-\bar{x})^2}}{n-1} = \frac{(0.051-0.0508)^2 + (0.0505-0.0508)^2 + etc}{6} = 9.15 \times 10^{-7}$  </p>
+<p align="center">$s=\sqrt{s^2}=9.56 \times 10^{-4}$</p>
+<p align="center">$n=7$</p>
+
+<p>The t-statistics is:</p>
+<p align="center">$t = \frac{\bar{x} - \mu_0}{ \frac{s}{\sqrt{n}} } = \frac{0.0508 - 0.05}{ \frac{9.56 \times 10^{-4}}{\sqrt{7}} } = 2.17$</p>
+<p>And the degrees of freedom are:</p>
+<p align="center">$n-1 = 7-1 = 6$</p>
+
+<p>By looking at the t-distribution table above, <code class="language-plaintext highlighter-rouge">2.17</code> with <code class="language-plaintext highlighter-rouge">6 degrees of freedom</code> is between $p=0.05$ and $p=0.025$. This means that the <code class="language-plaintext highlighter-rouge">p-vale</code> is less than <code class="language-plaintext highlighter-rouge">0.05</code>, so, we can reject $H_0$ and coclude that the selenium level in the tap water exceeds the legal limit.</p>
+
+<p><br /></p>
+
+<h3 id="twosample"><strong>(2). Two-Sample:</strong></h3>
+
+<p>The Two-Sample Test tests whether the means of two population are significantly different from one another. A common application is to test if a new process or treatment is superior to a current process or treatment.</p>
+
+<h4 id="paired"><strong>Paired</strong></h4>
+
+<p>Each value of one group corresponds directly to a value in the other group. <strong>ie</strong>: before and after values after drug treatment for each individual patient</p>
+
+<p>Subtract the two values for each individual to get one set of values (the differences) and use $\mu_0=0$ to perform a one-sample t-test.</p>
+
+<h4 id="unpaired"><strong>Unpaired</strong></h4>
+
+<p>Assume the two population are independent.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">$H_0: \text{means of the two population are equal}$</th>
+      <th style="text-align: center">$H_a: \text{means of the two population are unequal or one is greater than the other}$</th>
+      <th style="text-align: center">Test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">$\mu_1 = \mu_2$</td>
+      <td style="text-align: center">$\mu_1 \neq \mu_2$</td>
+      <td style="text-align: center">Two-tail test</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">$\mu_1 \leq \mu_2$</td>
+      <td style="text-align: center">$\mu_1 &gt; \mu_2$</td>
+      <td style="text-align: center">One-tail test: right-tail</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">$\mu_1 \geq \mu_2$</td>
+      <td style="text-align: center">$\mu_1 &lt; \mu_2$</td>
+      <td style="text-align: center">One-tail test: left-tail</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>t-statistic:</p>
+
+<p style="display: inline; margin-right: 10%; margin-left: 10%">$
+t = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2} }}
+$</p>
+<p style="display: inline;">Degree of freedom(df)= $ (n_1-1) + (n_2-1) = n_1 + n_2 -2$</p>
+<p style="font-size: 0.8em; color: grey; font-style: italic; margin-left: 10%;">Formula for continuous data</p>
+
+<p>Read the table of t-distribution critical values for the p-value, probability that the sample mean was obtained by chance given $\mu_0$ is the popluation mean, using the calculated t-statistic and degrees of freedom.</p>
+
+<p><strong>Example:</strong> <br />
+Consider the lifespan of 18 rats. 12 were fed a restricted calorie diet and lived an average of 700 days (standard deviation = 21 days). The other 6 had unsretricted access to food and lived an average of 668 days (standard deviation = 30 days). Does a restricted calorie diet increase the lifespan of rats (assume $\alpha = 0.05$)?</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Control Group 1</th>
+      <th style="text-align: center">Treatment Group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">$n_1=12$ <br /> $\bar{x_1}=700$ <br /> $s_1=21$</td>
+      <td style="text-align: center">$n_2=6$ <br /> $\bar{x_2}=668$ <br /> $s_2=30$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Hypothesis:</p>
+<p align="center">$H_0: \mu_1 \leq \mu_2$</p>
+<p align="center">$H_a: \mu_1 &gt; \mu_2$</p>
+<p align="center">(Because we are only asking if a restricted calorie diet increases lifespan)</p>
+
+<p>The t-statistics is:</p>
+<p align="center">$t = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2} }} = \frac{700-668}{\sqrt{\frac{21^2}{12} + \frac{30^2}{6} }} = 2.342$</p>
+<p>And the degrees of freedom are:</p>
+<p align="center">$(n_1-1) + (n_2-1) = n_1 + n_2 -2 = 12+6-2 = 16$</p>
+
+<p>From the t-distribution table, the <code class="language-plaintext highlighter-rouge">p-value</code> (t-statistic = <code class="language-plaintext highlighter-rouge">2.342</code> with <code class="language-plaintext highlighter-rouge">16 degrees of freedom</code>) falls between <code class="language-plaintext highlighter-rouge">0.01</code> and <code class="language-plaintext highlighter-rouge">0.02</code>, so, we reject $H_0$. The restricted calorie diet does increase the lifespan of rats.</p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

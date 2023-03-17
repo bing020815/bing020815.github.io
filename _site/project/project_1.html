@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>{{ page.title }}</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			
+		<div id="top" class="page">
+
+		
+		<li style="list-style: none;"><h1>Text Prediction Application on Movie Review</h1></li>
+		<p align="left"><img src="../assets/images/project/movie.png" title="", style="width: 50%; height: 80%"></p>
+		<p style="font-size: 1em; color: grey; font-style: italic;">A text prediction application for movie reviews with sentiment analysis in real-time</p>
+
+		<h2>Table of Contents</h2>
+		<ul>
+			<li><a href="#intro">Introduction</a></li>
+			<li><a href="#data">Data</a></li>
+			<li><a href="#strategy">Strategy</a></li>
+			<li><a href="#build">How To Build</a></li>
+			<li><a href="#app">Web Application</a></li>
+		</ul>
+		
+
+		<h2 id="intro">Introduction</h2>
+		The goal for this project is to build an application (potinetial AI solution) for predicting the sentiment level (positive or negative) of a movie review in real-time with the ability to recommend the next word that a user is going to enter based on the written content. 
+
+		<h2 id="data">Data</h2>
+		<p><a href="http://ai.stanford.edu/~amaas/data/sentiment/">The Large Movie Review Dataset</a> (from Stanford University) consists of 50,000 movie reviews (50% negative and 50% positive). The set is divided into training and validation datasets (each with 25000 movie reviews with an equal number of positive and negative reviews).</p>
+		
+		<p>This is a dataset for binary sentiment classification containing substantially more data than previous benchmark datasets. The Large Movie Review Dataset (often referred to as the IMDB dataset) contains 25,000 highly polar movie reviews (good or bad) for training and the same amount again for testing. The problem is to determine whether a given movie review has a positive or negative sentiment. The data was collected by Stanford researchers and was used in a 2011 paper (Learning Word Vectors for Sentiment Analysis by Andrew L. Maas, Raymond E. Daly, Peter T. Pham, Dan Huang, Andrew Y. Ng, and Christopher Potts) where a split of 50/50 of the data was used for training and test. An accuracy of 88.89% was achieved. The data was also used as the basis for a Kaggle competition titled "Bag of Words Meets Bags of Popcorn" in late 2014 to early 2015. Accuracy was achieved above 97%, with winners achieving 99%.</p>
+
+
+		<h2 id="strategy">Strategy</h2>
+		<p>The project consists of two parts, the <u>sentiment classification task</u>, and the <u>next word prediction task</u>. For the sentiment classification task, several Machine Learning algorithms, including supervised learning and unsupervised learning, were implemented for building models and having analysis. For the text prediction task, the n-gram models were built for predicting the next word. Models will be evaluated and one of the models will be selected as the best model to combine with the language model to build a web application as an AI solution. </p>
+
+		<h4>Two Major Tasks:</h4>
+		<ul>
+			<li style=""><b>Sentiment Analysis</b></li>
+			<ul>
+				<li>Naïve Bayes</li>
+				<li>Support Vector Machine</li>
+				<li>Neural Network</li>
+
+			</ul>
+			<li style=""><b>Next Word Prediction</b></li>
+			<ul>
+				<li>Language Model (n-gram)</li>
+				<ul>
+					<li>Bigram</li>
+					<li>Trigram</li>
+					<li>Fourgram</li>
+					<li>Fivegram</li>
+				</ul>
+			</ul>
+		</ul>
+	  	
+	  	<p><a href="../assets/images/project/J_Maloney_B_Wu_M_Mileva_A_Llorens.pdf">Detail Report can be found here</a></p>
+
+
+		<h2 id="build">How To Build</h2>
+		<p>The application is basically built on python. A web application interface has been built through <a href="https://anvil.works/">Anvil</a>. The python progrom is currently running on the cloud server, <a href="https://cloud.digitalocean.com/">digital ocean</a>. Due to the limitation of the instance setting, <u>3 GB Memory</u> and <u>60 GB Disk</u>, the current running version of the application implements the neural network model for sentiment classification task and n-gram model (bigram model and trigam model) for next word prediction task.</p>
+
+
+
+	  	<h2 id="app">Web Application</h2>
+	  	<li><a href="https://pdht24snt663m2h7.anvil.app/OT4EUOR5JVBBGOHFV533U2KM">Web Application</a></li>
+	    <li><a href="https://github.com/bing020815/text_prediction_application">GitHub Repository</a></li><br>
+	    <iframe width="560" height="315" src="https://www.youtube.com/embed/klcGPYj_jQk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	    
+	    <p style="font-size: 1em; color: grey; font-style: italic;">The application is a prototype. There is still room for improvement.</p>
+
+	  	<h2>Note</h2>
+  		<p> The project is own by <b>Jason Maloney</b>, <b>Bing-Je Wu</b>, <b>Maya Mileva</b> and <b>Antonio Llorens</b>. This project is inspired by <a href="https://www.dataschool.io/about/">Kevin Markham from Data School</a>. An adaptive version of the application was built based on the concept of <a href="https://justmarkham.shinyapps.io/textprediction/">this application</a>.</p>
+
+		<p align="center"><a href="#top">Top</a></p>
+		</div><!-- /.page -->
+
+
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="../assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="../assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="../assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>

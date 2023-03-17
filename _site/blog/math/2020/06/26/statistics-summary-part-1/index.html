@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Statistics Summary Part 1: Statistics Basic</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Statistics Summary Part 1: Statistics Basic</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">26 Jun 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Math">Math</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/statistics/statistics101.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Statistics 101</p>
+</div>
+
+<h2 id="statistics-basic">Statistics Basic</h2>
+<p>There are some baisc terms in the statistics:</p>
+<ol>
+  <li>Population</li>
+  <li>Sample</li>
+  <li>Mean</li>
+  <li>Median</li>
+  <li>Mode</li>
+  <li>Variance</li>
+  <li>Standard Deviation</li>
+  <li>Standard Error</li>
+</ol>
+
+<p>Among these terms,the <code class="language-plaintext highlighter-rouge">Mean</code>, <code class="language-plaintext highlighter-rouge">Mode</code> and <code class="language-plaintext highlighter-rouge">Median</code> are called <em><u><a href="https://en.wikipedia.org/wiki/Central_tendency">Measures of Central Tendency</a></u></em>. <code class="language-plaintext highlighter-rouge">Variance</code>, <code class="language-plaintext highlighter-rouge">Standard Deviation</code> and <code class="language-plaintext highlighter-rouge">Standard Error</code> are also called <em><u>Measures of Dispersion</u></em>.</p>
+
+<p><strong>(1). Population:</strong></p>
+
+<p>The entire group that one desires information about.</p>
+
+<p><strong>(2). Sample:</strong></p>
+
+<p>A subset of the population taken because the entire population is usually too large to analyze. Its characteristics are taken to be representative of the population.</p>
+
+<p><strong>(3). Mean:</strong></p>
+
+<p>Also called the arithmetic mean or average.
+The sum of all the values in the sample divided by the number of values in the sample/population. $\mu$ is the mean of the population; 	$\overline{x}$ is the mean of the sample.</p>
+
+<p><strong>(4). Median:</strong></p>
+
+<p>The value separating the higher half of a sample/population from the lower half. Found by arranging all the values from lowest to highest and taking the middle one (or the mean of the middle two if there are an even number of values)</p>
+
+<p><strong>(5). Mode:</strong></p>
+
+<p>The mode of a set of data values is the value that appears most often.</p>
+
+<p><strong>(6). Variance:</strong></p>
+
+<p>Measure dispersion around the mean. Determined by averaging the squared differences of all the values from the mean.</p>
+
+<p>Variance of a population is $\sigma^2$.</p>
+<p align="center">$
+\sigma^2 = \frac{\Sigma{(x-\mu)^2}}{n}
+$</p>
+
+<p>It can be calculated by subtracting the square of the mean from the average of the squared scores:</p>
+<p align="center">$
+\sigma^2 = \frac{\Sigma{x^2}}{n}-\mu^2
+$</p>
+
+<p>Variance of a sample is $s^2$; denominator is $n-1$.</p>
+<p align="center">$
+s^2 = \frac{\Sigma{(x-\overline{x})^2}}{n-1}
+$</p>
+
+<p>It can be calculated by:</p>
+<p align="center">$
+s^2 = \frac{\Sigma{x^2}-\frac{(\Sigma{x})^2}{n}}{n-1}
+$</p>
+
+<p><strong>(7). Standard Deviation:</strong></p>
+
+<p>Square root of the variance. Also measures dispersion around the mean. <u>It quantifies the variation within a set of measurements.</u></p>
+
+<p>$\sigma$ is the standard deviation of the population and $s$ is the standard deviation of the sample.</p>
+
+<p><strong>(8). Standard Error:</strong></p>
+
+<p><u>The standard error quantifies the variation in the means from multiple sets of measurements.</u> It is an estimate of the standard deviation of the sampling distribution - the set of all samples of size $n$ that can be taken from a population. It measures how far the sample mean of the data is likely to be from the true population mean. It is always smaller than <code class="language-plaintext highlighter-rouge">Standard Deviation</code>.</p>
+
+<p>The standard error of the mean (SEM) can be expressed as:</p>
+
+<p align="center">$
+\sigma_\bar{x} = \frac{\sigma}{\sqrt{n}}
+$</p>
+
+<p>where $\sigma$ is the <code class="language-plaintext highlighter-rouge">standard deviation of the population</code> and $n$ is the <code class="language-plaintext highlighter-rouge">size (number of observations) of the sample</code>.</p>
+
+<p>Since the <code class="language-plaintext highlighter-rouge">population standard deviation</code> is seldom known, the standard error of the mean is usually estimated as the sample standard deviation divided by the square root of the sample size (assuming statistical independence of the values in the sample).</p>
+
+<p align="center">$
+s_\bar{x} \approx \frac{s}{\sqrt{n}}
+$</p>
+
+<p>where $s$ is the <code class="language-plaintext highlighter-rouge">sample standard deviation</code> (i.e., the sample-based estimate of the standard deviation of the population), and $n$ is the <code class="language-plaintext highlighter-rouge">size (number of observations) of the sample</code>.</p>
+
+<p>In those contexts where <code class="language-plaintext highlighter-rouge">standard error of the mean</code> is defined not as the <code class="language-plaintext highlighter-rouge">standard deviation of the sample mean</code>, but as its estimate, this is the estimate typically given as its value. Thus, it is common to see standard deviation of the mean alternatively defined as:</p>
+
+<p align="center">$
+s_\bar{x} = \frac{s}{\sqrt{n}}
+$</p>
+
+<p>The standard deviation of the sample mean is equivalent to the standard deviation of the error in the sample mean with respect to the true mean, since the sample mean is an unbiased estimator. Therefore, the standard error of the mean can also be understood as the standard deviation of the error in the sample mean with respect to the true mean (or an estimate of that statistic).</p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

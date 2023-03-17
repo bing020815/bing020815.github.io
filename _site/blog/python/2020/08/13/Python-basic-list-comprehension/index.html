@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Python Baisc: List Comprehension</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Python Baisc: List Comprehension</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">13 Aug 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Python">Python</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/python/list-comprehension.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">List Comprehension</p>
+</div>
+
+<h2 id="table-of-contents">Table of contents:</h2>
+<ul>
+  <li><a href="#example1">Simple List Comprehension</a></li>
+  <li><a href="#example2">Adding Condition</a></li>
+  <li><a href="#example3">Adding if… else… statement</a></li>
+  <li><a href="#example4">Nested ifs in list comprehension</a>
+    <ul>
+      <li><a href="#example4-1">1. Two ifs</a></li>
+      <li><a href="#example4-2">2. Ifs and else with three outputs</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="list-comprehension">List Comprehension</h2>
+<p>List comprehensions provide a concise way to create lists. It is frequently used to make new lists where every element is the result of some operations applied to anthor iterable object.</p>
+
+<p><br /></p>
+<h3 id="example1"> <strong>Simple List Comprehension</strong></h3>
+<p>Create a list and square the number from 0 to 9:</p>
+
+<h4 id="for-loop-method"><u>For Loop Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">Alist</span><span class="o">=</span><span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">Alist</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Alist</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</code></pre></div></div>
+
+<h4 id="list-comprehension-method"><u>List Comprehension Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">Alist</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Alist</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+</code></pre></div></div>
+
+<p><br /></p>
+<h3 id="example2"> <strong>Adding Condition</strong></h3>
+<p>Square the number from 0 to 9, and store the odd number to a list:</p>
+
+<h4 id="for-loop-method-1"><u>For Loop Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">odd</span><span class="o">=</span><span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">odd</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">odd</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 9, 25, 49, 81]
+</code></pre></div></div>
+
+<h4 id="list-comprehension-method-1"><u>List Comprehension Method</u>:</h4>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">if</code> statement is put at the end</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">odd</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">odd</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 9, 25, 49, 81]
+</code></pre></div></div>
+
+<p><br /></p>
+<h3 id="example3"> <strong>Adding if... else... Statement</strong></h3>
+<p>Square the number from 0 to 9 and plus 1 for each of number. Then, create a list to store a list of strings.When the number is an odd number, store ‘odd’. Otherwise, store ‘even’.</p>
+
+<h4 id="for-loop-method-2"><u>For Loop Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">stringlist</span><span class="o">=</span><span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">stringlist</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'odd'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">stringlist</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'even'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">stringlist</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['odd', 'even', 'odd', 'even', 'odd', 'even', 'odd', 'even', 'odd', 'even']
+</code></pre></div></div>
+
+<h4 id="list-comprehension-method-2"><u>List Comprehension Method</u>:</h4>
+<p>The position of <code class="language-plaintext highlighter-rouge">if</code> statement has been moved to front and followed by the else statement</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">stringlist</span> <span class="o">=</span> <span class="p">[</span><span class="s">'odd'</span> <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span> <span class="k">else</span> <span class="s">'even'</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">stringlist</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['odd', 'even', 'odd', 'even', 'odd', 'even', 'odd', 'even', 'odd', 'even']
+</code></pre></div></div>
+
+<p><br /></p>
+<h3 id="example4"> <strong>Nested ifs in list comprehension</strong></h3>
+<h4 id="example4-1"> 1. Two ifs</h4>
+
+<h4 id="for-loop-method-3"><u>For Loop Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">str5list</span><span class="o">=</span><span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">str5list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">str5list</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[5, 65]
+</code></pre></div></div>
+
+<h4 id="list-comprehension-method-3"><u>List Comprehension Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">str5list</span> <span class="o">=</span> <span class="p">[(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span><span class="mi">0</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">str5list</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[5, 65]
+</code></pre></div></div>
+
+<h4 id="example4-2"> 2. Ifs and else with three outputs</h4>
+
+<h4 id="for-loop-method-4"><u>For Loop Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">str5list</span><span class="o">=</span><span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">str5list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'odd'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">str5list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'odd and True'</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">str5list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'false'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">str5list</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['odd',
+ 'false',
+ 'odd',
+ 'odd and True',
+ 'odd',
+ 'false',
+ 'odd',
+ 'odd and True',
+ 'odd',
+ 'false']
+</code></pre></div></div>
+
+<h4 id="list-comprehension-method-4"><u>List Comprehension Method</u>:</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">str5list</span> <span class="o">=</span> <span class="p">[</span><span class="s">'odd'</span>  <span class="k">if</span> <span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="s">'odd and True'</span> <span class="k">if</span> <span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="k">else</span> <span class="s">'false'</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">str5list</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['odd',
+ 'false',
+ 'odd',
+ 'odd and True',
+ 'odd',
+ 'false',
+ 'odd',
+ 'odd and True',
+ 'odd',
+ 'false']
+</code></pre></div></div>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

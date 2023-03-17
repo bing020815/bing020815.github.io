@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Python Tips: Array and List</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Python Tips: Array and List</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">01 Nov 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Python">Python</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/python/array-vs-list.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Array and List</p>
+</div>
+
+<h2 id="table-of-contents">Table of contents:</h2>
+<ul>
+  <li><a href="#array-and-list">Array and List</a></li>
+  <li><a href="#array-broadcasting">Array Broadcasting</a>
+    <ul>
+      <li><a href="#scalar-and-one-dimensional-array">Scalar and One-Dimensional Array</a></li>
+      <li><a href="#one-dimensional-array-and-two-dimensional-array">One-Dimensional Array and Two-Dimensional Array</a></li>
+      <li><a href="#more-complicated-cases-in-broadcasting-of-both-arrays">More Complicated Cases in Broadcasting of Both Arrays</a></li>
+    </ul>
+  </li>
+  <li><a href="#array-broadcasting-functionality-on-list-and-array">Array Broadcasting Functionality on List and Array</a></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="array-and-list">Array and List</h2>
+<p>As learning Python, people usually get confused between <code class="language-plaintext highlighter-rouge">Array</code> and <code class="language-plaintext highlighter-rouge">List</code>. <code class="language-plaintext highlighter-rouge">List</code> is a python built-in method and the <code class="language-plaintext highlighter-rouge">Array</code> is built in <a href="https://numpy.org/">NumPy</a>. Both are the methods that are commonly used in Python in order to store data. It can store any datatype such as numbers, string, etc. They can both be indexed and iterated. However, they do not serve the same purposes. The main difference is that the <code class="language-plaintext highlighter-rouge">Array</code> has the <b>Array Broadcasting</b> functionality in <a href="https://numpy.org/">NumPy</a> but <code class="language-plaintext highlighter-rouge">List</code> does not have.</p>
+
+<p><br /></p>
+
+<h2 id="array-broadcasting">Array Broadcasting</h2>
+<p>Broadcasting is simply a set of rules for applying binary ufuncs (e.g., addition, subtraction, multiplication, etc.) on arrays of different sizes. Broadcasting in NumPy follows a strict set of rules to determine the interaction between the two arrays:</p>
+
+<ol>
+  <li>If the two arrays differ in their number of dimensions, the shape of the one with fewer dimensions is padded with ones on its leading (left) side.</li>
+  <li>If the shape of the two arrays does not match in any dimension, the array with shape equal to 1 in that dimension is stretched to match the other shape.</li>
+  <li>If in any dimension the sizes disagree and neither is equal to 1, an error is raised.</li>
+</ol>
+
+<h3 id="scalar-and-one-dimensional-array">Scalar and One-Dimensional Array</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">b</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([5, 6, 7])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">+</span> <span class="mi">5</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([5, 6, 7])
+</code></pre></div></div>
+
+<h3 id="one-dimensional-array-and-two-dimensional-array">One-Dimensional Array and Two-Dimensional Array</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">M</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[1., 1., 1.],
+       [1., 1., 1.],
+       [1., 1., 1.]])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">M</span> <span class="o">+</span> <span class="n">a</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[1., 2., 3.],
+       [1., 2., 3.],
+       [1., 2., 3.]])
+</code></pre></div></div>
+
+<h3 id="more-complicated-cases-in-broadcasting-of-both-arrays">More Complicated Cases in Broadcasting of Both Arrays</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)[:,</span> <span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="c1"># increase a dimension and make it as a column vector
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0 1 2]
+[[0]
+ [1]
+ [2]]
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">+</span> <span class="n">b</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0, 1, 2],
+       [1, 2, 3],
+       [2, 3, 4]])
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="array-broadcasting-functionality-on-list-and-array">Array Broadcasting Functionality on List and Array</h2>
+<p>Now, we have some basic understanding on the Array Broadcasting functionality. Let’s setup a 2-d array, 1-d array and a list to do the experiment.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="c1"># create a 2-d array
+</span><span class="n">array_2d</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">array_2d</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.58758076, 0.74464029, 0.68320516],
+       [0.98230461, 0.24750985, 0.05020555]])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># create a 1-d array
+</span><span class="n">array_1d</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">array_1d</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3, 4])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># create a list
+</span><span class="n">alist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">array_1d</span><span class="p">)</span>
+<span class="n">alist</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4]
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Multiplication operation on the 2-d array
+</span><span class="n">array_2d</span><span class="o">*</span><span class="mi">2</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[1.17516152, 1.48928058, 1.36641033],
+       [1.96460922, 0.49501969, 0.1004111 ]])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Multiplication operation on the 1-d array
+</span><span class="n">array_1d</span><span class="o">*</span><span class="mi">2</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([2, 4, 6, 8])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Multiplication operation on the list
+</span><span class="n">alist</span><span class="o">*</span><span class="mi">2</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 1, 2, 3, 4]
+</code></pre></div></div>
+
+<p>The broadcasting functionality works fine on arrays but not on the list. The list was repeated with the multiplication operation.</p>
+
+<p><br /></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Division operation on the 2-d array
+</span><span class="n">array_2d</span><span class="o">/</span><span class="mi">2</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0.29379038, 0.37232015, 0.34160258],
+       [0.4911523 , 0.12375492, 0.02510277]])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Division operation on the 1-d array
+</span><span class="n">array_1d</span><span class="o">/</span><span class="mi">2</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rray([0.5, 1. , 1.5, 2. ])
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Division operation on the list
+</span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">alist</span><span class="o">/</span><span class="mi">2</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+&lt;ipython-input-15-388b6a901f4d&gt; in &lt;module&gt;
+      1 # Division operation on the list
+      2 alist = [1, 2, 3, 4]
+----&gt; 3 alist/2
+
+TypeError: unsupported operand type(s) for /: 'list' and 'int'
+</code></pre></div></div>
+
+<p>The result above shows that the broadcasting functionality cannot be applied on the list. Thus, we can see the main different between <code class="language-plaintext highlighter-rouge">Array</code> and <code class="language-plaintext highlighter-rouge">List</code>.</p>
+
+<p><br />
+Reference:</p>
+<ul>
+  <li><a href="https://machinelearningmastery.com/broadcasting-with-numpy-arrays/">A Gentle Introduction to Broadcasting with NumPy Arrays</a></li>
+  <li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/02.05-computation-on-arrays-broadcasting.html">Computation on Arrays: Broadcasting</a></li>
+</ul>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

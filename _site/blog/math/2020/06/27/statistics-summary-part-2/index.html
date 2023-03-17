@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Statistics Summary Part 2: Z-Test</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Statistics Summary Part 2: Z-Test</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">27 Jun 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Math">Math</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/statistics/statistics101.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Statistics 101</p>
+</div>
+
+<h2 id="z-test">Z-Test</h2>
+<p>Z-tests are statistical calculations that can be used to compare population means to a sample’s. The z-score tells you how far, in standard deviations, a data point is from the mean or average of a data set. A z-test compares a sample to a defined population and is typically used for dealing with problems relating to <strong>large samples (consider  $n \geq 30$ as large enough to apply Central Limit Theorem for Means for any population)</strong>. Z-tests can also be helpful when we want to test a hypothesis. Generally, they are most useful when <em>the standard deviation is known</em>.</p>
+
+<p align="center"><img src="/assets/images/post/statistics/z-table.gif" title="" /></p>
+<p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Z table; <a href="https://faculty.elgin.edu/dkernler/statistics/ch07/7-2.html">Source</a></p>
+
+<p>The t-test can be categorized into two:</p>
+<ol>
+  <li><a href="#onesample">One-Sample</a></li>
+  <li><a href="#twosample">Two-Sample</a></li>
+</ol>
+
+<p>We are going to discuss each of cases in detail.</p>
+
+<h3 id="onesample"><strong>(1). One-Sample:</strong></h3>
+
+<p>The one-sample z-test is used to test whether the mean of a population is greater than, less than, or not equal to a specific value. Because the standard normal distribution is used to calculate critical values for the test, this test is often called the one-sample z-test. The z-test assumes that the population standard deviation is known.</p>
+
+<p>The workflow of the Test is as below:<br />
+<strong>Null Hypothesis ($H_0$)</strong>: states that the population mean is equal to some value ($\mu_0$)<br />
+<strong>Alternative Hypothesis ($H_a$)</strong>: states that the mean <u>does not equal</u>/<u>is greater than</u>/<u>is less than</u> $\mu_0$<br />
+<strong>Z-statistic</strong>: standardizes the difference between $\bar{x}$ and $\mu_0$</p>
+
+<p style=" margin-left: 10%">$
+z = \frac{\bar{x} - \mu_0}{ s } = \frac{\bar{x} - \mu_0}{\frac{\sigma}{\sqrt{n}}}
+$</p>
+<p style="font-size: 0.8em; color: grey; font-style: italic; margin-left: 10%;">Formula for continuous data</p>
+
+<p>Read the z-score table the p-value, probability that the sample mean was obtained by chance given $\mu_0$ is the popluation mean, using the calculated z-statistic.</p>
+
+<ul style="list-style: none;">
+	<li>$H_0: \mu \leq \mu_0 \\ H_a: \mu &gt; \mu_0   $</li>
+	<li>$\rightarrow\ \\ \text{one-tail test on right-tail; p = area right of z}$</li>
+	<br />
+	<li>$H_0: \mu \geq \mu_0 \\ H_a: \mu &lt; \mu_0  $</li>
+	<li>$\rightarrow\ \text{one-tail test on left-tail; p = area left of z}$</li>
+	<br />
+	<li>$H_0: \mu = \mu_0 \\ H_a: \mu \neq \mu_0  $</li>
+	<li>$\rightarrow\ \text{two-tail test; p = 2 * area past z}$</li>
+</ul>
+
+<p>If the p-value is less than the predetermined value for significance, called $\alpha$ and is usually <code class="language-plaintext highlighter-rouge">0.05</code>, reject the null hypothsis and accept the alternative hypothesis.</p>
+
+<p><strong>Example:</strong><br />
+In 2015, millennials were watching 26.5 hours of TV a week with a standard deviation of 10 hours. Today, someone surveyed 50 millennials and found that they watch 24 hours of TV per week. Has the number of hours decreased?</p>
+
+<p>Hypothesis:</p>
+<p align="center">$H_0: \mu \geq 26.5$</p>
+<p align="center">$H_a: \mu &lt; 26.5$</p>
+
+<p align="center">$\bar{x}=24$</p>
+<p align="center">$n=50$</p>
+<p align="center">$s=\frac{\sigma}{\sqrt{n}}=\frac{10}{\sqrt{50}}=1.41$</p>
+
+<p>The z-statistics is:</p>
+<p align="center">$z = \frac{\bar{x} - \mu_0}{ s } = \frac{\bar{x} - \mu_0}{\frac{\sigma}{\sqrt{n}}} = \frac{24-26.5}{1.41} = -1.77$</p>
+
+<p>By looking at the z-score table above, $p(z \leq -1.77) \approx 0.0384$, p-value is less than <code class="language-plaintext highlighter-rouge">0.05</code> threshold, so, we can reject $H_0$ and coclude that the the number of hours has been decreased with 95% of confidence.</p>
+
+<p><br /></p>
+
+<h3 id="twosample"><strong>(2). Two-Sample:</strong></h3>
+
+<p>The paired z-test may be used to test whether the mean difference of two populations is greater than, less than, or not
+equal to 0. Because the standard normal distribution is used to calculate critical values for the test, this test is often
+called the paired z-test. The paired z-test assumes that the <em>population standard deviations ($\sigma$) are known</em>.</p>
+
+<p>Assume the two population are independent.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">$H_0: \text{means of the two population are equal}$</th>
+      <th style="text-align: center">$H_a: \text{means of the two population are unequal or one is greater than the other}$</th>
+      <th style="text-align: center">Test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">$\mu_1 = \mu_2$</td>
+      <td style="text-align: center">$\mu_1 \neq \mu_2$</td>
+      <td style="text-align: center">Two-tail test</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">$\mu_1 \leq \mu_2$</td>
+      <td style="text-align: center">$\mu_1 &gt; \mu_2$</td>
+      <td style="text-align: center">One-tail test: right-tail</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">$\mu_1 \geq \mu_2$</td>
+      <td style="text-align: center">$\mu_1 &lt; \mu_2$</td>
+      <td style="text-align: center">One-tail test: left-tail</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>z-statistic:</p>
+
+<p style="display: inline; margin-right: 10%; margin-left: 10%">$
+z = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2} }}
+$</p>
+<p style="font-size: 0.8em; color: grey; font-style: italic; margin-left: 10%;">Formula for continuous data</p>
+
+<p>Read the table of z-table for the p-value.</p>
+
+<p><strong>Example:</strong> <br />
+A Heart Study of Systolic Blood Pressure for men and women are shown as the table below. Suppose we now wish to assess whether there is a statistically significant difference in mean systolic blood pressures between men and women using a 5% level of significance.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Men</th>
+      <th style="text-align: center">Women</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">$n_1=1623$ <br /> $\bar{x_1}=128.2$ <br /> $s_1=17.5$</td>
+      <td style="text-align: center">$n_2=1911$ <br /> $\bar{x_2}=126.5$ <br /> $s_2=20.1$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Hypothesis:</p>
+<p align="center">$H_0: \mu_1 = \mu_2$</p>
+<p align="center">(The means of two population are equal)</p>
+<p align="center">$H_a: \mu_1 \neq \mu_2$</p>
+<p align="center">(Because we want to see if two groups are different)</p>
+
+<p>The z-statistics is:</p>
+<p align="center">$z = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2} }} = \frac{128.2-126.5}{\sqrt{\frac{17.5^2}{1623} + \frac{20.1^2}{1911} }} \approx 2.688$</p>
+
+<p>By looking at the z-score table above, $p(z \leq -2.688) \approx 0.0038$. The p-value, $2 \times p(z \leq -2.688) \approx 0.0076$, less than <code class="language-plaintext highlighter-rouge">0.05</code> threshold, so, we can reject $H_0$ and coclude that there is no statistically significant difference in mean systolic blood pressures between men and women.</p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

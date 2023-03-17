@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Descriptive Statistics: Covariance and Correlation</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Descriptive Statistics: Covariance and Correlation</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">02 Aug 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Math">Math</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/statistics/covariance_and_correlation.png" title="" style="width: 40%" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Covariance vs Correlation Coefficient</p>
+</div>
+
+<p>Before starting to talk about the <code class="language-plaintext highlighter-rouge">covariance</code> and <code class="language-plaintext highlighter-rouge">correlation coefficient</code>, the types of relationships, <code class="language-plaintext highlighter-rouge">positive relationship</code> and <code class="language-plaintext highlighter-rouge">negative relationship</code>, must be mentioned in the beginning.</p>
+
+<h2 id="types-of-relationships">Types of Relationships</h2>
+<h3 id="positive-relationship">Positive Relationship:</h3>
+
+<p>In a positive relationship, high values on one variable are associated with high values on the other and low values on one are associated with low values on the other. For instance, according to the data, we can deduce that there is a positive relationship between the salary expectation variable and years in school variable. The longer the of the years staying in school leads the higher salary expectation.</p>
+
+<p align="center"><img src="/assets/images/post/statistics/positive-relationship.png" title="" style="width: 20%" /></p>
+
+<h3 id="negative-relationship">Negative Relationship:</h3>
+
+<p>On the other hand a negative relationship implies that high values on one variable are associated with low values on the other. By using the salary expectation example, the scatter plot shown below indicates that there is a negative relationship between two variables. The longer you stay in the school, the less salary you expect to have.</p>
+<p align="center"><img src="/assets/images/post/statistics/negative-relationship.png" title="" style="width: 20%" /></p>
+
+<h2 id="covariance">Covariance</h2>
+
+<p>Covariance is a statistical tool that is used to determine the relationship between the movement of two variables. It is usually denoted as $cov(x,y)$. Here, we use $S_{xy}$ in the following.</p>
+
+<p>The value of the covariance is not standardized. It has no boundaries, ranging from negative infinity to positive infinity.  Thus, the value for a perfect linear relationship depends on the data. Because the data are not standardized, it is difficult to determine the strength of the relationship (positive/negative) between two variables.</p>
+
+<ul style="list-style: none;">
+  <li>The formula for Covariance:</li>
+  <li><br />  </li>
+  <li style="display: inline; margin-right: 10%">$
+  S_{xy} = \frac{\Sigma{ (x_i - \bar{x})(y_i - \bar{y}) }}{n-1}
+  $</li>
+  <li style="display: inline; ">$\text{where $\bar{x}$ and $\bar{y}$ are the mean of the x and y variables; $n$ is the total number of paired observations for variable x and variable y}$</li> 
+</ul>
+
+<p><br /></p>
+
+<h2 id="correlation-coefficient">Correlation Coefficient</h2>
+
+<p>Correlation is a statistical technique that can show whether and how strongly pairs of variables are related. It is usually denoted as $cor(x,y)$. Here, we use $r_{xy}$ in the following.</p>
+
+<p>Correlation coefficients are standardized. Its values are ranging from 1 to negative 1. Thus, a perfect linear relationship results in a coefficient of 1. The correlation measures both the strength and direction of the linear relationship between two variables.</p>
+
+<ul style="list-style: none;">
+  <li>The formula for Correlation Coefficient:</li>
+  <li><br /> </li>
+  <li style="display: inline; margin-right: 10%">$
+  r_{xy} = \frac{ S_{xy} }{ S_x S_y }
+  $</li>
+  <li style="display: inline; ">$\text{where $S_x$ and $S_y$ are the standard deviation of the x and y variables; $S_{xy}$ is the covariance of the x and y variables}$</li> 
+</ul>
+
+<p><br /></p>
+
+<h2 id="example">Example:</h2>
+<p>An institution wants to find out the relationship between temperature and ice cream sales. The data are collected as shown below:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Temperature</th>
+      <th style="text-align: center">Ice cream sales</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">66</td>
+      <td style="text-align: center">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">72</td>
+      <td style="text-align: center">11</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">77</td>
+      <td style="text-align: center">15</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">84</td>
+      <td style="text-align: center">20</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">83</td>
+      <td style="text-align: center">21</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">71</td>
+      <td style="text-align: center">11</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">65</td>
+      <td style="text-align: center">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">70</td>
+      <td style="text-align: center">10</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The mean and standard deviation of temperature and ice cream sales:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">Temperature</th>
+      <th style="text-align: center">Ice cream sales</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>Mean:</strong></td>
+      <td style="text-align: center">73.5</td>
+      <td style="text-align: center">13</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>Standard Deviation:</strong></td>
+      <td style="text-align: center">7.19</td>
+      <td style="text-align: center">5.13</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Covariance calculation table:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Temperature</th>
+      <th style="text-align: center">Ice cream sales</th>
+      <th style="text-align: center">Ice cream sales</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">-7.5</td>
+      <td style="text-align: center">-5</td>
+      <td style="text-align: center">37.5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">-1.5</td>
+      <td style="text-align: center">-2</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3.5</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">7</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">10.5</td>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">73.5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">9.5</td>
+      <td style="text-align: center">8</td>
+      <td style="text-align: center">76</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">-2.5</td>
+      <td style="text-align: center">-2</td>
+      <td style="text-align: center">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">-8.5</td>
+      <td style="text-align: center">-5</td>
+      <td style="text-align: center">42.5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">-3.5</td>
+      <td style="text-align: center">-3</td>
+      <td style="text-align: center">10.5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"><strong>Sub total:</strong></td>
+      <td style="text-align: center"><strong><u>255</u></strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul style="list-style: none;">
+  <li>Number of paired observation (n) = 8</li>
+  <li>Covariance:</li>
+  <li><p align="center">$
+  cov(x,y) = S_{xy} = \frac{\Sigma{ (x_i - \bar{x})(y_i - \bar{y}) }}{n-1} = \frac{255}{7} \approx 36.43
+  $</p></li>
+  <li><p align="center">There is a positive relationship between temperature and ice cream sales. But, we do not know how strong the relationship is.</p></li>
+  <li><br /></li>
+  <li>Correlation Coefficient:</li>
+  <li><p align="center">$
+  cor(x,y) = r_{xy} = \frac{ S_{xy} }{ S_x S_y } = \frac{ 36.43 }{ (7.19)(5.13) } \approx 0.99
+  $</p></li>
+  <li><p align="center">The correlation coefficient is close to 1, indicating that there is a <b>strong positive relationship</b> between temperature and ice cream sales.</p></li>
+</ul>
+
+<p><br /></p>
+
+<p>Reference: <br />
+<a href="https://www.youtube.com/watch?v=0XKIDqB4Wug">Covariance and Correlation Coefficient Video</a><br />
+<a href="https://en.wikipedia.org/wiki/Covariance_and_correlation">Covariance and correlation</a></p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

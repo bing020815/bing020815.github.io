@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Docker</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Docker</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">06 Dec 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Data-science">Data-science</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/data-science/Docker.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Docker</p>
+</div>
+
+<h2 id="what-is-docker">What is Docker?</h2>
+
+<p>Docker is a technology which simplifies the complexity of delivering software applications. It can prevents the environment setting problem on every machine and guarantee the reproducibility.</p>
+
+<p>When we develop an application, we usually need to create a project team to complete the product. The project should be covered by different roles, such as Front-end developers (Client), Backend developers (Server), Database Administrators, etc. Normally, the development team will bundle all the necessary software, packages/library dependencies, models, and components into a box called Container, and Docker will operate the application in this container on different platforms for different roles in the team.</p>
+
+<p><br /></p>
+
+<h2 id="how-does-docker-work">How does Docker work?</h2>
+
+<p>The project team will define all the requirements (software, environment, dependencies, etc.) in a file called <strong>Docker file</strong>. A <strong>Docker image</strong> is created based the <strong>Docker file</strong>. The application dependencies are bundled into an <strong>image</strong>. A <strong>container</strong> is a running instance of the <strong>image</strong>. <strong>Containers</strong> are isolated from each other and from the host computer. Team members can run an application in the container on any machine.</p>
+
+<p><br /></p>
+
+<h2 id="basic-workflow">Basic workflow</h2>
+
+<p align="center"><img style="width: 70%" src="/assets/images/post/data-science/docker_workflow.png" title="" /></p>
+
+<p><strong>Docker Hub</strong> is the official online repository where we can pull the <strong>Docker images</strong>. In order to get an <strong>image</strong> from the <strong>Docker Hub</strong>, <a href="https://docs.docker.com/get-docker/">Docker</a> needs to be installed in any computer. Then, users can use <code class="language-plaintext highlighter-rouge">docker pull</code> command in a command prompt to download an <strong>image</strong> from the <strong>Docker Hub</strong> into a computer that is running Docker. By issuing the command, <code class="language-plaintext highlighter-rouge">docker run</code>, Docker will run the <strong>image</strong> in a <strong>container</strong>. (It is possible to run several <strong>containers</strong> with the same <strong>image</strong> at the same time depends on the situation.)</p>
+
+<p>To deeply understand how the Docker works in action, check <a href="https://github.com/bing020815/Docker/blob/master/Docker-Basic-Commands.md#the-basics">Basic Docker commands</a>
+<br /></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Basic Data Science Lifecycle</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Basic Data Science Lifecycle</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">12 Jun 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Data-science">Data-science</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+</div>
+<p>The basic data science lifecycle consists of four parts, <code class="language-plaintext highlighter-rouge">Gathering Data</code>, <code class="language-plaintext highlighter-rouge">Cleaning/Formatting Data</code>, <code class="language-plaintext highlighter-rouge">Analysis</code>, and <code class="language-plaintext highlighter-rouge">Conclusion</code>. Each part is equally important and crucial.  <br />
+Here is a diagram of basic data science lifecycle:</p>
+
+<p align="center"><img src="/assets/images/post/DS_lifecycle.png" title="Basic Data Science Lifecycle" class="align-center" style="width: 80%" /></p>
+
+<h2 id="gathering-data">Gathering Data</h2>
+<p>There are two kinds of data when we talk about data collection:</p>
+<ul>
+  <li>Observational data</li>
+  <li>Experimental data</li>
+</ul>
+
+<p>The data format can also be categorized into two:</p>
+<ul>
+  <li>Structured data</li>
+  <li>Unstructured data</li>
+</ul>
+
+<p><strong>Observational data</strong> data usually are collected from Surveys, Interviews, Phone Calls, or Websites through an API. It can be both structured and unstructured type of data.<br />
+<strong>Experimental data</strong>, on the other hand, are different. It is usually in a structured format to contain the experiment records for both Control Group and Treatment Group for statistic analysis. Because data are messy, we collect dirty data easily without cautious design. An intellectual collecting method can help eliminate the risk of dirty data. It can reduce the bias, have the data that can represent the population, have good data to avoid <abbr title="Garbage in, garbage out">GIGO</abbr>.</p>
+
+<h2 id="cleaningformatting-data">Cleaning/Formatting Data</h2>
+<p>To clean and format data, some steps need to be done, such as <strong>data cleansing</strong>, <strong>data wrangling</strong>. Usually, there is a pipeline that will be built to contain the process of <strong>data cleansing</strong>, <strong>data wrangling</strong>. <strong>Data cleansing</strong> includes the job of dealing with missing values, duplicates, and inaccurate data, such as typo. <strong>Data wrangling</strong> involves <em>transforming data</em>, such as converting the data into the same unit or the same format, and <em>mapping data</em>. It includes the <em>Normalization</em>, <em>Standardization</em>, and <em>Transformation</em>.</p>
+
+<p><em>Normalization</em> is to bound values between to numbers, such as 0 and 1. The classic examples of normalization have “min-max scaler” and “z-score scaler”.</p>
+
+<p><em>Standardization</em> is to let the data have a mean of zero and variance of 1. The “standard scaler” is usually used for standardizing data.</p>
+
+<p><em>Transformation</em> is to apply math functions or other functions on data. The math functions are “log”, “square  root” or “box-cox”. Other user-defined functions can be used to achieve feature engineering.</p>
+
+<p>The last step in this part is to have <strong>visualization</strong>. <strong>visualization</strong> is important. Humans can interpret data through visualization and they are eye-catching for both technical person and non-technical person.</p>
+
+<h2 id="analysis">Analysis</h2>
+<p>This part is to build models and perform analyses based on the models performance and results. There are two type of models, <strong>Supervised</strong> and <strong>unsupervised.</strong> When we build a model, first thing to check is to see if data have labels or not. If it does not have labels, there are several ways to do here, such as using clustering technique, unsupervised learning, to have cluster labels or getting labels by hand. The purpose of supervised learning is to do modeling and classification tasks. The classic supervised learning algorithm are “logistics”, “SVM”, “Naive Bayes”, “Decision Tree” and “KNN” The purpose of unsupervised learning is to discover. The example of unsupervised learning algorithms are “K-Means”, “PCA”, “Topic Modeling”, and “Asscoiation Rule”</p>
+
+<p>The last step of analysis is to evaluate models. Having the correct evaluation metric is important. The classic evaluation metrics for classification tasks are Accuracy, Precision, Recall/Sensitivity, and F1-score derived from the confusion matrix. Some may use ROC curve as the evaluation metric as well.</p>
+
+<p>Explanation of the metric terms:</p>
+<ul>
+  <li>Accuracy Rate
+    <ul>
+      <li>It is focusing on the cases that were correctly predicted</li>
+    </ul>
+  </li>
+  <li>Precision Rate
+    <ul>
+      <li>It is focusing on the predicted cases that were truly true</li>
+    </ul>
+  </li>
+  <li>Recall/Sensitivity
+    <ul>
+      <li>It is focusing on the true cases that were correctly found</li>
+    </ul>
+  </li>
+  <li>F1-Score
+    <ul>
+      <li>Harmonic mean of precision and recall, a hybrid version of the overall score</li>
+      <li>Hybrid version of the overall score</li>
+    </ul>
+  </li>
+  <li>ROC Curve
+    <ul>
+      <li>A plot of the True Positive Rate on the y-axis versus the False Positive rate on the x-axis for every possible classification threshold</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The choice of the evaluation metric depends on the business objective.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>The last part of basic data science life cycle is to bring the conclusion on the table. Usually, a report should have the introduction of the data and the process, the methods implemented during process, results that are written for both technical person and non-technical person, and conclusion for non-technical audiencea only in order to complete a story.</p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

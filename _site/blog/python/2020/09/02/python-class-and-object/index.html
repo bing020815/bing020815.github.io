@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Python Baisc: Classes and Objects</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Python Baisc: Classes and Objects</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">02 Sep 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Python">Python</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/python/classes-objects.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">Classes and Objects</p>
+</div>
+
+<h2 id="table-of-contents">Table of contents:</h2>
+<ul>
+  <li><a href="#classes-and-objects">Classes And Objects</a></li>
+  <li><a href="#basic-python-class">Basic Python Class</a></li>
+  <li><a href="#object-methods">Object Methods</a>
+    <ul>
+      <li><a href="#getter-deletor-and-setter">Getter, Deletor and Setter</a></li>
+      <li><a href="#dunder-methods">Dunder Methods</a></li>
+      <li><a href="#class-variable-and-instance-variables">Class Variable and Instance Variables</a></li>
+      <li><a href="#static-methods">Static Methods</a></li>
+    </ul>
+  </li>
+  <li><a href="#class-inherent">Class Inherent</a></li>
+  <li><a href="#built-in-functions">Built-in Functions</a></li>
+  <li><a href="#application">Application</a></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="classes-and-objects">Classes And Objects</h2>
+<p>Python is an object oriented programming language. Almost everything in Python is an <code class="language-plaintext highlighter-rouge">object</code>, with its properties and methods. A <code class="language-plaintext highlighter-rouge">class</code> is like an <code class="language-plaintext highlighter-rouge">object</code> constructor, or a “blueprint” for creating objects.</p>
+
+<p>For example: <br />
+A factory can have a blueprint of making a car for a specific model. The blueprint is a ‘class’. <br />
+Customer can buy a customized car, leather interior, roof, navigation system …etc, for that specific model. The customized car here is an <code class="language-plaintext highlighter-rouge">object</code>.</p>
+
+<p><br /></p>
+
+<h2 id="basic-python-class">Basic Python Class</h2>
+<p>In python, there are built-in data types, such as numeric (<code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">float</code>), Boolean (<code class="language-plaintext highlighter-rouge">True</code>, <code class="language-plaintext highlighter-rouge">False</code>), Sequence Type (<code class="language-plaintext highlighter-rouge">string</code>, <code class="language-plaintext highlighter-rouge">list</code>, <code class="language-plaintext highlighter-rouge">tuple</code>) and Dictionary (<code class="language-plaintext highlighter-rouge">dict</code>). Python has an built-in function <code class="language-plaintext highlighter-rouge">type()</code> to ascertain the data type of a certain value.</p>
+
+<p>However, a custom datatype can be built by using python class.</p>
+
+<p>Let’s say we want to have a <strong>Book</strong> datatype in python. We want the <strong>Book</strong> datatype contains the information of book name, publish year, author name, book price, and if it is kindle version.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Book</span><span class="p">:</span>
+    <span class="s">'''This is the comment section that you are able to access through "__doc__" attribute.'''</span>
+
+    <span class="c1"># class variable
+</span>    <span class="n">num_of_books</span> <span class="o">=</span> <span class="mi">0</span>  
+    <span class="c1"># When access a class variable, it should be called through a class itself or an instance of a class
+</span>
+
+    <span class="c1"># The __init__ method is roughly what represents a constructor in Python
+</span>    <span class="c1"># It runs everytime when a new instance has been created 
+</span>    <span class="c1"># 'self' refers as an instance of a class
+</span>    <span class="c1"># 'name', 'publish_year', 'author', 'price', 'is_kindle' are parameters
+</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">publish_year</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">is_kindle</span><span class="p">):</span>
+    <span class="c1"># 'self.name', 'self.publish_year', 'self.author', 'self.price', 'self.is_kindle' are attributes, also called instance variables
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">publish_year</span> <span class="o">=</span> <span class="n">publish_year</span>        
+        <span class="bp">self</span><span class="p">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">author</span>        
+        <span class="bp">self</span><span class="p">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span> 
+        <span class="bp">self</span><span class="p">.</span><span class="n">is_kindle</span> <span class="o">=</span> <span class="n">is_kindle</span> 
+
+        <span class="n">Book</span><span class="p">.</span><span class="n">num_of_books</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># it increases everytime when a instance has been created
+</span>    
+    <span class="k">def</span> <span class="nf">pass_statement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1">#class definitions cannot be empty, but if you have a class definition with no content, put in the pass statement to avoid getting an error
+</span>        <span class="k">pass</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">Class</code> datatype can contain two types of variable, <code class="language-plaintext highlighter-rouge">instance variable</code> and <code class="language-plaintext highlighter-rouge">class variable</code>. <code class="language-plaintext highlighter-rouge">instance variable</code> are used for data that is unique to each instance, such as ‘name’, ‘publish_year’, ‘author’, ‘price’, ‘is_kindle’.  <code class="language-plaintext highlighter-rouge">class variables</code> are the variables that are shared among all instances of a class. The example here can be ‘num_of_books’. It can be called through a class itself or an instance of a class.</p>
+
+<p>All classes have a function called <code class="language-plaintext highlighter-rouge">__init__()</code>, which is always executed when the class is being initiated. Use the <code class="language-plaintext highlighter-rouge">__init__()</code> function to assign values to object properties, or other operations that are necessary to do when the object is being created.</p>
+
+<p>Now, the <code class="language-plaintext highlighter-rouge">__Book__</code> data type has been created. The next step is to instanciate the class to create an object, a book.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># instantiate the `Book` class
+</span><span class="n">book1</span> <span class="o">=</span> <span class="n">Book</span><span class="p">(</span><span class="s">'How to master python'</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="s">"Bing-Je"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+<span class="c1"># call the instance attribute, name
+</span><span class="n">book1</span><span class="p">.</span><span class="n">name</span>  </code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'How to master python'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call the instance attribute, publish_year 
+</span><span class="n">book1</span><span class="p">.</span><span class="n">publish_year</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2020
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call the instance attribute, price
+</span><span class="n">book1</span><span class="p">.</span><span class="n">price</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call the instance attribute, author
+</span><span class="n">book1</span><span class="p">.</span><span class="n">author</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Bing-Je'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call the instance attribute, is_kindle
+</span><span class="n">book1</span><span class="p">.</span><span class="n">is_kindle</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<p>Now, we have the first object. Let’s create another object, second book.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># instantiate the `Book` class
+</span><span class="n">book2</span> <span class="o">=</span> <span class="n">Book</span><span class="p">(</span><span class="s">'The Road Ahead: Completely Revised and Up-to-Date'</span><span class="p">,</span> <span class="mi">1996</span><span class="p">,</span> <span class="s">'Bill Gates'</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="c1"># call the instance attribute, name
+</span><span class="n">book2</span><span class="p">.</span><span class="n">name</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'The Road Ahead: Completely Revised and Up-to-Date'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call the instance attribute, is_kindle, for book2
+</span><span class="n">book2</span><span class="p">.</span><span class="n">is_kindle</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call the instance attribute, is_kindle, for book1
+</span><span class="n">book1</span><span class="p">.</span><span class="n">is_kindle</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<p>A class must be instantiated in order to get the instance attribute/instance variable.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">try</span><span class="p">:</span>
+    <span class="n">Book</span><span class="p">.</span><span class="n">is_kindle</span>
+<span class="k">except</span> <span class="nb">AttributeError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'class does not inherent from a class or does not have the instance attribute/instance variable, "is_kindle"!'</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class does not inherent from a class or does not have the instance attribute/instance variable, "is_kindle"!
+</code></pre></div></div>
+
+<p>Using <code class="language-plaintext highlighter-rouge">__dict__</code> attribute and check the current parameters that are assigined to a class or a instance.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Check the instance, book1
+</span><span class="n">book1</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'author': 'Bing-Je',
+ 'is_kindle': False,
+ 'name': 'How to master python',
+ 'price': 20,
+ 'publish_year': 2020}
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">__dict__</code> attribute only shows the instance variables when the method is called from a <code class="language-plaintext highlighter-rouge">name space</code>, book1.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Check Book class
+</span><span class="n">Book</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mappingproxy({'__dict__': &lt;attribute '__dict__' of 'Book' objects&gt;,
+              '__doc__': 'This is the comment section that you are able to access through "__doc__" attribute.',
+              '__init__': &lt;function __main__.Book.__init__&gt;,
+              '__module__': '__main__',
+              '__weakref__': &lt;attribute '__weakref__' of 'Book' objects&gt;,
+              'num_of_books': 2,
+              'pass_statement': &lt;function __main__.Book.pass_statement&gt;})
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">num_of_book</code> parameter, <code class="language-plaintext highlighter-rouge">class variable</code>, indicates the number of instances has been instanciated for the class.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">__doc__</code> attribute shows the information about the class.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">Book</span><span class="p">.</span><span class="n">__doc__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'This is the comment section that you are able to access through "__doc__" attribute.'
+</code></pre></div></div>
+
+<p>Alright, that is the basis of the python class and object.</p>
+
+<p><br /></p>
+
+<h2 id="object-methods">Object Methods</h2>
+
+<p>Within a python <code class="language-plaintext highlighter-rouge">class</code>, it can define mutiple functions as the method of an <code class="language-plaintext highlighter-rouge">object</code>. When an <code class="language-plaintext highlighter-rouge">object</code> is instantiated based on the <code class="language-plaintext highlighter-rouge">class</code>, it is automatically assigned the functions as methods that can be used in advanced.</p>
+
+<p>The methods can be categorized into three:</p>
+<ul>
+  <li><strong>Regular Method</strong>
+    <ul>
+      <li>Regular method in a class automatically take the <code class="language-plaintext highlighter-rouge">instance</code> as the first argument</li>
+      <li>By convention, we ususally call the first argument as ‘self’</li>
+    </ul>
+  </li>
+  <li><strong>Class Method</strong>
+    <ul>
+      <li>Class method will add a decorator, <code class="language-plaintext highlighter-rouge">@classmethod</code>, on the top</li>
+      <li>The method in a class automatically take the <code class="language-plaintext highlighter-rouge">class</code> as the first argument</li>
+      <li>By convention, we ususally call the first argument as ‘cls’</li>
+    </ul>
+  </li>
+  <li><strong>Static Method</strong>
+    <ul>
+      <li>Static methods will add a decorator,<code class="language-plaintext highlighter-rouge">@staticmethod</code>, on the top</li>
+      <li>Static methods do not take the <code class="language-plaintext highlighter-rouge">instance</code> or the <code class="language-plaintext highlighter-rouge">class</code> as the first argument automatically</li>
+      <li>They behave just like normal functions, yet they should have some logical connection to our class.</li>
+      <li>If a function of a class does not access the <code class="language-plaintext highlighter-rouge">instances</code> or the <code class="language-plaintext highlighter-rouge">class</code> anywhere within the function,  it should be used as a static method</li>
+    </ul>
+  </li>
+</ul>
+
+<p>There are some special methods, such as <strong>magic method</strong>, also known as <strong>dunder method</strong>. These methods allow us to emulate built-in types or implement operator overloading.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">__init__()</code>
+    <ul>
+      <li>The <code class="language-plaintext highlighter-rouge">__init__</code> method for initialization is invoked without any call, when an instance of a class is created</li>
+      <li>It contains a collection of statements(i.e. instructions) that are executed at time of object creation</li>
+      <li>The keyword <code class="language-plaintext highlighter-rouge">self</code> represents the instance of a <code class="language-plaintext highlighter-rouge">class</code> and binds the attributes with the given arguments</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">__repr__</code>
+    <ul>
+      <li>To be an unambiguous representation of the object</li>
+      <li>It should be used for debugging or logging</li>
+      <li>It is meant to be seen by other developers</li>
+      <li>This method can fix the vague object description when we use <code class="language-plaintext highlighter-rouge">print()</code> on a object</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">__str__()</code>
+    <ul>
+      <li>It is meant to be more readable representation of an object</li>
+      <li>It is meant to be used as a display to the end-user</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">__add__()</code>
+    <ul>
+      <li>Can be set to perform addition on numbers or strings</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">__len__()</code>
+    <ul>
+      <li>It help perfrom the <code class="language-plaintext highlighter-rouge">len()</code> on objects.</li>
+    </ul>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># importing datetime module and random module for the functions created in the Robot class
+# importing datetime module and random module for the functions created in the Robot class
+</span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">class</span> <span class="nc">Robot</span><span class="p">:</span>
+    
+    <span class="c1"># class variables
+</span>    <span class="n">battery_amt</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="c1"># When access a class variable, it should be called through a class itself or an instance of a class
+</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">robotname</span> <span class="o">=</span> <span class="n">robotname</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">ownername</span> <span class="o">=</span> <span class="n">ownername</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">birth</span> <span class="o">=</span> <span class="n">birth</span>
+
+    <span class="o">@</span><span class="nb">property</span>     <span class="c1"># allow user to access 'id' as an instanace attribute
+</span>    <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"{}'s {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">ownername</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">robotname</span><span class="p">)</span>
+
+    <span class="o">@</span><span class="nb">id</span><span class="p">.</span><span class="n">setter</span>  <span class="c1"># allow user to change the 'id' also change the attributes of 'robotname' and 'ownername'
+</span>    <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">identity</span><span class="p">):</span>
+        <span class="s">""" identity: 'someone's robot """</span>
+        <span class="n">owner</span><span class="p">,</span> <span class="n">robot</span> <span class="o">=</span> <span class="n">identity</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">"'s "</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">ownername</span> <span class="o">=</span> <span class="n">owner</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">robotname</span> <span class="o">=</span> <span class="n">robot</span>
+
+    <span class="o">@</span><span class="nb">id</span><span class="p">.</span><span class="n">deleter</span>  <span class="c1"># allow user to delete the attributes of 'robotname' and 'ownername'
+</span>    <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Delete Name'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">ownername</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">robotname</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="c1"># saying hello with user name; regular method
+</span>    <span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">'Hello, {}!'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">ownername</span><span class="p">)</span>
+        
+    <span class="c1"># return the current time; regular method    
+</span>    <span class="k">def</span> <span class="nf">tell_me_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">current_time</span><span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="k">return</span> <span class="s">'Current time is {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">current_time</span><span class="p">)</span>
+
+    <span class="c1"># return what day is today randomly; regular method    
+</span>    <span class="k">def</span> <span class="nf">what_day_is_today</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">day</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Monday'</span><span class="p">,</span> <span class="s">'Tuesday'</span><span class="p">,</span> <span class="s">'Wednesday'</span><span class="p">,</span> <span class="s">'Thursday'</span><span class="p">,</span> 
+               <span class="s">'Friday'</span><span class="p">,</span> <span class="s">'Saturday'</span><span class="p">,</span> <span class="s">'Sunday'</span><span class="p">]</span>
+        <span class="n">today</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s">'Today is {}!'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">day</span><span class="p">[</span><span class="n">today</span><span class="p">])</span>
+
+    <span class="c1"># method can access a class variable as an attribute of an instance; regular method
+</span>    <span class="k">def</span> <span class="nf">charge_battery</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">battery_amt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">battery_amt</span> <span class="o">+</span> <span class="n">amount</span><span class="p">)</span>
+
+    <span class="o">@</span><span class="nb">classmethod</span>    <span class="c1"># using decorator to refer a method with a class instead of instances
+</span>    <span class="k">def</span> <span class="nf">set_battery</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>   <span class="c1"># using 'cls' as convention to refer the class
+</span>        <span class="n">cls</span><span class="p">.</span><span class="n">battery_amt</span> <span class="o">=</span> <span class="n">amount</span>  <span class="c1"># call a class variable from a class
+</span>
+    <span class="o">@</span><span class="nb">classmethod</span>  <span class="c1"># using class method as an alternative constructor
+</span>    <span class="k">def</span> <span class="nf">from_string</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">robot_string</span><span class="p">,</span> <span class="n">separator</span><span class="p">):</span>
+        <span class="s">""" robot_string: 'robotname-onwername-mm/dd' ; separator : '-' """</span>
+        <span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span> <span class="o">=</span> <span class="n">robot_string</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="p">(</span><span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span><span class="p">)</span>
+
+    <span class="o">@</span><span class="nb">staticmethod</span>    <span class="c1"># staticmethod does not access a class or an instance within the function
+</span>    <span class="k">def</span> <span class="nf">lucky_number_1_to_10</span><span class="p">():</span>
+        <span class="kn">import</span> <span class="nn">random</span>
+        <span class="k">return</span> <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># at least has this method to show more infomation of an instance; dunder method
+</span>        <span class="k">return</span> <span class="s">"'{}', '{}', '{}'"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">robotname</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">ownername</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">birth</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># dunder method
+</span>        <span class="k">return</span> <span class="s">"'{} - {} - {}'"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">robotname</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">ownername</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">birth</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># dunder method
+</span>        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">say_hello</span> <span class="o">+</span> <span class="n">other</span><span class="p">.</span><span class="n">say_hello</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># dunder method
+</span>        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">robotname</span><span class="p">)</span></code></pre></figure>
+
+<p>Now, we have created a new <code class="language-plaintext highlighter-rouge">class</code>, <strong>Robot</strong> data type. We are ready to create instances, <code class="language-plaintext highlighter-rouge">objects</code>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">alexa</span> <span class="o">=</span> <span class="n">Robot</span><span class="p">(</span><span class="s">'alexa'</span><span class="p">,</span> <span class="s">'Bing'</span><span class="p">,</span> <span class="s">'08/15'</span><span class="p">)</span>
+<span class="n">siri</span> <span class="o">=</span> <span class="n">Robot</span><span class="p">(</span><span class="s">'siri'</span><span class="p">,</span> <span class="s">'Bing-Je'</span><span class="p">,</span> <span class="s">'12/30'</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">alexa</span><span class="p">.</span><span class="n">say_hello</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Hello, Bing!'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">alexa</span><span class="p">.</span><span class="n">tell_me_time</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Current time is 2020-09-02 20:44:05.000624'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">alexa</span><span class="p">.</span><span class="n">what_day_is_today</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Today is Monday!'
+</code></pre></div></div>
+
+<h3 id="getter-deletor-and-setter">Getter, Deletor and Setter</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">property decorator</code> using as a <code class="language-plaintext highlighter-rouge">getter</code> allows us to define Class methods that we can access like attributes. Here we have the <code class="language-plaintext highlighter-rouge">.id()</code> method to be access as an attribute.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="nb">id</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bing's alexa
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">property decorator</code>can be used as a <code class="language-plaintext highlighter-rouge">deleter</code> to delete the instance attributes.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">del</span> <span class="n">alexa</span><span class="p">.</span><span class="nb">id</span>
+<span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="nb">id</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="n">ownername</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="n">robotname</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Delete Name
+None's None
+None
+None
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">property decorator</code>can be also used as a <code class="language-plaintext highlighter-rouge">setter</code> in order to update the instance attribute.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">alexa</span><span class="p">.</span><span class="nb">id</span> <span class="o">=</span> <span class="s">"Bing's alexa"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="n">ownername</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="n">robotname</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bing
+alexa
+</code></pre></div></div>
+
+<h3 id="dunder-methods">Dunder Methods</h3>
+
+<p>With the <code class="language-plaintext highlighter-rouge">__repr__()</code> and <code class="language-plaintext highlighter-rouge">__str__()</code> set in the class, we can have the unambiguous representation of the object. <code class="language-plaintext highlighter-rouge">__add__()</code> help perform the string addtion of instance attributes. <code class="language-plaintext highlighter-rouge">__len__()</code> special dunder method help perfrom the <code class="language-plaintext highlighter-rouge">len()</code> on objects.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">siri</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'alexa - Bing - 08/15'
+'siri - Bing-Je - 12/30'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># string addtion on instance attributes
+</span><span class="k">print</span><span class="p">(</span><span class="n">alexa</span><span class="p">.</span><span class="n">ownername</span> <span class="o">+</span> <span class="n">siri</span><span class="p">.</span><span class="n">ownername</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BingBing-Je
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># len() on the objects
+</span><span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alexa</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">siri</span><span class="p">))</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+4
+</code></pre></div></div>
+
+<h3 id="class-variable-and-instance-variables">Class Variable and Instance Variables</h3>
+
+<p><code class="language-plaintext highlighter-rouge">class variable</code> can be assigned to an instance through methods. Calling a <code class="language-plaintext highlighter-rouge">class variable</code> will not assign the <code class="language-plaintext highlighter-rouge">class variable</code> as an attribute of the instance.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call attributes
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'birth': '08/15', 
+'ownername': 'Bing', 
+'robotname': 'alexa'}
+</code></pre></div></div>
+
+<p>The class variable has not been assigned to the instance attributes for <code class="language-plaintext highlighter-rouge">alexa</code> object.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># accessing a class variable through methods
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">charge_battery</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># new attribute for the instance
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">battery_amt</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call attributes
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'battery_amt': 60,
+ 'birth': '08/15',
+ 'ownername': 'Bing',
+ 'robotname': 'alexa'}
+</code></pre></div></div>
+
+<p>Now, A new instance attribute, battery_amt, has been added for <code class="language-plaintext highlighter-rouge">alexa</code> object through accessing the class variable.</p>
+
+<p><strong>#</strong> The <code class="language-plaintext highlighter-rouge">class variable</code> can be changed through a class method.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># class attribute
+</span><span class="n">Robot</span><span class="p">.</span><span class="n">battery_amt</span>  </code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>50
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">battery_amt</code> is a class variable with e default setting as 50. Using a class method, set_battery to change the default value to 30.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># class method
+</span><span class="n">Robot</span><span class="p">.</span><span class="n">set_battery</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># class attribute
+</span><span class="n">Robot</span><span class="p">.</span><span class="n">battery_amt</span>  </code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># the instance attribute remains the same
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'battery_amt': 60,
+ 'birth': '08/15',
+ 'ownername': 'Bing',
+ 'robotname': 'alexa'}
+</code></pre></div></div>
+
+<p><strong>#</strong> Using a <code class="language-plaintext highlighter-rouge">class method</code> from an instance will not only update the <code class="language-plaintext highlighter-rouge">class variable</code> but also that <code class="language-plaintext highlighter-rouge">instance attribute</code>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># runing class method from an instance still works
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">set_battery</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="c1"># the class variable has been changed
+</span><span class="n">Robot</span><span class="p">.</span><span class="n">battery_amt</span> </code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># the class attribute for that instance has also been changed
+</span><span class="n">alexa</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'battery_amt': 60,
+ 'birth': '08/15',
+ 'ownername': 'Bing',
+ 'robotname': 'alexa'}
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># assiging the class variable to a new instance with the updated class variable
+</span><span class="n">siri</span><span class="p">.</span><span class="n">battery_amt</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60
+</code></pre></div></div>
+
+<p><strong>#</strong> Using <code class="language-plaintext highlighter-rouge">class method</code> as an alternative constructor to create multipe objects/instances</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">robot_string1</span> <span class="o">=</span> <span class="s">'rbt-JJ-01/25'</span>
+<span class="n">rbt</span> <span class="o">=</span> <span class="n">Robot</span><span class="p">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">robot_string1</span><span class="p">,</span> <span class="s">'-'</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># calling the class variable
+</span><span class="n">rbt</span><span class="p">.</span><span class="n">battery_amt</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>60
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># the class variable was not assigned to the instance as an attribute
+</span><span class="n">rbt</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'birth': '01/25', 'ownername': 'JJ', 'robotname': 'rbt'}
+</code></pre></div></div>
+
+<h3 id="static-methods">Static Methods</h3>
+<p><code class="language-plaintext highlighter-rouge">staticmethods</code> do not pass any instance or class, meaning it does not access an instance or a class anywhere within a function. Call a <code class="language-plaintext highlighter-rouge">staticmethod</code> from a class.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a staticmethod
+</span><span class="n">Robot</span><span class="p">.</span><span class="n">lucky_number_1_to_10</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="class-inherent">Class Inherent</h2>
+
+<p>A <code class="language-plaintext highlighter-rouge">class</code> can inherent the attribute and method from the other <code class="language-plaintext highlighter-rouge">class</code>, parent class.  Let’s say we want to create an advance robot to have advanced functions or improved functions. Here, we are going to create a new <code class="language-plaintext highlighter-rouge">class</code>, <strong>AdvancedRobot</strong> data type. The <strong>AdvancedRobot</strong> data type can not only have the basic functions that a <strong>Robot</strong> <code class="language-plaintext highlighter-rouge">object</code> has but also have advanced functions such as playing music and reporting the location.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># child classes can inherent methods, class variables and instance attributes from parent class
+</span><span class="k">class</span> <span class="nc">AdvancedRobot</span><span class="p">(</span><span class="n">Robot</span><span class="p">):</span> 
+    <span class="c1"># use Robot class as input to inherent attributes and functions/methods
+</span>
+    <span class="n">battery_amt</span> <span class="o">=</span> <span class="mi">65</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
+        <span class="c1"># 'robotname', 'ownername', 'birth' are handled by the init method of Robot class, parent class/ base class.
+</span>        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="p">.</span><span class="n">locattion</span> <span class="o">=</span> <span class="n">location</span>
+
+    
+    <span class="c1"># change the output of time for differencing from Robot class
+</span>    <span class="o">@</span><span class="nb">staticmethod</span>    <span class="c1"># staticmethod does not access a class or an instance within the function
+</span>    <span class="k">def</span> <span class="nf">tell_me_time</span><span class="p">():</span>
+        <span class="n">current_time</span><span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">().</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Current time is {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">current_time</span><span class="p">))</span>
+        
+    <span class="o">@</span><span class="nb">staticmethod</span>    <span class="c1"># staticmethod does not access a class or an instance within the function    
+</span>    <span class="k">def</span> <span class="nf">where_am_I</span><span class="p">():</span>
+        <span class="n">place</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Japan'</span><span class="p">,</span> <span class="s">'USA'</span><span class="p">,</span> <span class="s">'Taiwan'</span><span class="p">,</span> <span class="s">'Korea'</span><span class="p">,</span> 
+               <span class="s">'Germany'</span><span class="p">,</span> <span class="s">'UK'</span><span class="p">,</span> <span class="s">'France'</span><span class="p">]</span>
+        <span class="n">myplace</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'You are in {}!'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">myplace</span><span class="p">))</span>    
+    
+    <span class="o">@</span><span class="nb">staticmethod</span>    <span class="c1"># staticmethod does not access a class or an instance within the function
+</span>    <span class="k">def</span> <span class="nf">play_music</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Playing music ..."</span><span class="p">)</span>
+    
+<span class="k">class</span> <span class="nc">RobotManager</span><span class="p">(</span><span class="n">Robot</span><span class="p">):</span>
+    <span class="n">battery_amt</span> <span class="o">=</span> <span class="mi">70</span>
+
+    <span class="c1"># always set the default value an immutable
+</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span><span class="p">,</span> <span class="n">robot_list</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span> 
+        <span class="c1"># 'robotname', 'ownername', 'birth' are handled by the init method of Robot class, parent class/ base class.
+</span>        <span class="n">Robot</span><span class="p">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robotname</span><span class="p">,</span> <span class="n">ownername</span><span class="p">,</span> <span class="n">birth</span><span class="p">)</span> 
+        <span class="k">if</span> <span class="n">robot_list</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span> <span class="o">=</span> <span class="n">robot_list</span>
+        
+    <span class="c1"># add a robot into managing list; regular method
+</span>    <span class="k">def</span> <span class="nf">add_robot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robot</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">robot</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">robot</span><span class="p">)</span>
+
+    <span class="c1"># remove a robot into managing list; regular method
+</span>    <span class="k">def</span> <span class="nf">remove_robot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">robot</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">robot</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">robot</span><span class="p">)</span>
+
+    <span class="c1"># print a list of robot name along with owner name managed by the robot manager; regular method
+</span>    <span class="k">def</span> <span class="nf">print_robots</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">robot</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">robot_list</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'Robot: {} ; Owner: {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">robot</span><span class="p">.</span><span class="n">robotname</span><span class="p">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="n">robot</span><span class="p">.</span><span class="n">ownername</span><span class="p">))</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">super().__init__()</code> or <code class="language-plaintext highlighter-rouge">parent_class.init__(self,)</code> from the init method of a subclass to call the parent init method to inherits the instance attributes.</p>
+
+<p>Python will look for the chain of the inheritence to get what is inherited from the parent class. This chain is called method resolutional order. The <code class="language-plaintext highlighter-rouge">help()</code> can help visualize the method resolutional order in this case.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">help</span><span class="p">(</span><span class="n">AdvancedRobot</span><span class="p">))</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Help on class AdvancedRobot in module __main__:
+
+class AdvancedRobot(Robot)
+ |  Method resolution order:
+ |      AdvancedRobot
+ |      Robot
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, robotname, ownername, birth, location)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  play_music(self)
+ |  
+ |  tell_me_time(self)
+ |      # change the output of time for differencing from Robot class
+ |  
+ |  where_am_I(self)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  battery_amt = 65
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from Robot:
+ |  
+ |  __add__(self, other)
+ |  
+ |  __len__(self)
+ |  
+ |  __repr__(self)
+ |      Return repr(self).
+ |  
+ |  __str__(self)
+ |      Return str(self).
+ |  
+ |  charge_battery(self, amount)
+ |      # method can access a class variable as an attribute of an instance; regular method
+ |  
+ |  say_hello(self)
+ |      # saying hello with user name; regular method
+ |  
+ |  what_day_is_today(self)
+ |      # return what day is today randomly; regular method
+ |  
+ |  ----------------------------------------------------------------------
+ |  Class methods inherited from Robot:
+ |  
+ |  from_string(robot_string, separator) from builtins.type
+ |      robot_string: 'robotname-onwername-mm/dd' ; separator : '-'
+ |  
+ |  set_battery(amount) from builtins.type
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods inherited from Robot:
+ |  
+ |  lucky_number_1_to_10()
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from Robot:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  id
+
+None
+</code></pre></div></div>
+
+<p>By creating a new instance, we can prove that the AdvancedRobot <code class="language-plaintext highlighter-rouge">object</code> has perfect inherented everything from <strong>Robot</strong> <code class="language-plaintext highlighter-rouge">class</code>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># instantiate the 'RobotManager' class
+</span><span class="n">google</span> <span class="o">=</span> <span class="n">AdvancedRobot</span><span class="p">(</span><span class="s">'google'</span><span class="p">,</span> <span class="s">'BingJe'</span><span class="p">,</span> <span class="s">'08/15'</span><span class="p">,</span> <span class="s">'living room'</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># check the class variable
+</span><span class="n">google</span><span class="p">.</span><span class="n">battery_amt</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>65
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call attributes
+</span><span class="n">google</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'birth': '08/15',
+ 'locattion': 'living room',
+ 'ownername': 'BingJe',
+ 'robotname': 'google'}
+</code></pre></div></div>
+
+<p>The class variable has not been assigned to the instance attributes for google object.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># accessing a class variable through methods
+</span><span class="n">google</span><span class="p">.</span><span class="n">charge_battery</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># a new attribute for the instance
+</span><span class="n">google</span><span class="p">.</span><span class="n">battery_amt</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>75
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call attributes
+</span><span class="n">google</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'battery_amt': 75,
+ 'birth': '08/15',
+ 'locattion': 'living room',
+ 'ownername': 'BingJe',
+ 'robotname': 'google'}
+</code></pre></div></div>
+
+<p>Now, A new instance attribute, battery_amt, has been added for google object through accessing the class variable.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a static method
+</span><span class="n">google</span><span class="p">.</span><span class="n">tell_me_time</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Current time is 02:28:13.928534
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a static method
+</span><span class="n">google</span><span class="p">.</span><span class="n">what_day_is_today</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Today is Sunday!'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a static method
+</span><span class="n">google</span><span class="p">.</span><span class="n">play_music</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Playing music ...
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># instantiate the 'RobotManager' class
+</span><span class="n">jarvis</span> <span class="o">=</span> <span class="n">RobotManager</span><span class="p">(</span><span class="s">'javis'</span><span class="p">,</span> <span class="s">'BingJe'</span><span class="p">,</span> <span class="s">'08/15'</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call attributes
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">__dict__</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'birth': '08/15',
+ 'ownername': 'BingJe',
+ 'robot_list': [],
+ 'robotname': 'javis'}
+</code></pre></div></div>
+
+<p>The robot managing list is empty. Use the regular methods to update the managing list.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a regular method
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">add_robot</span><span class="p">(</span><span class="n">alexa</span><span class="p">)</span>
+
+<span class="c1"># call a regular method
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">add_robot</span><span class="p">(</span><span class="n">siri</span><span class="p">)</span>
+
+<span class="c1"># call a regular method
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">add_robot</span><span class="p">(</span><span class="n">google</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a regular method
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">print_robots</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Robot: Alexa ; Owner: Bing
+Robot: Siri ; Owner: Bing-Je
+Robot: Google ; Owner: BingJe
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a regular method to remove a namespace from the list
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">remove_robot</span><span class="p">(</span><span class="n">siri</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># call a regular method
+</span><span class="n">jarvis</span><span class="p">.</span><span class="n">print_robots</span><span class="p">()</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Robot: Alexa ; Owner: Bing
+Robot: Google ; Owner: BingJe
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="built-in-functions">Built-in Functions</h2>
+
+<p><code class="language-plaintext highlighter-rouge">isinstance()</code> can check if an object is an instance.<br />
+<code class="language-plaintext highlighter-rouge">issubclass()</code> can check if a subclass is of another class.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">isinstance</span><span class="p">(</span><span class="n">google</span><span class="p">,</span> <span class="n">Robot</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="nb">issubclass</span><span class="p">(</span><span class="n">RobotManager</span><span class="p">,</span> <span class="n">Robot</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="application">Application</h2>
+<p>Multiple Choice Question Application</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># create a list of questions
+</span><span class="n">question_prompts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">"What color are apples?</span><span class="se">\n</span><span class="s">(a) Red/Green</span><span class="se">\n</span><span class="s">(b) Purple</span><span class="se">\n</span><span class="s">(c) Orange</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span>
+    <span class="s">"What color are bananas?</span><span class="se">\n</span><span class="s">(a) Teal</span><span class="se">\n</span><span class="s">(b) Magneta</span><span class="se">\n</span><span class="s">(c) Yellow</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span>
+    <span class="s">"What color are strawberries?</span><span class="se">\n</span><span class="s">(a) Yellow</span><span class="se">\n</span><span class="s">(b) Red</span><span class="se">\n</span><span class="s">(c) Blue</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span>
+    <span class="p">]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># create 'Question' class to call the question and answer as its attributes
+</span><span class="k">class</span> <span class="nc">Question</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">answer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="n">prompt</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># create a list that contains question objects and answers for each question
+</span><span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Question</span><span class="p">(</span><span class="n">question_prompts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">'a'</span><span class="p">),</span>
+    <span class="n">Question</span><span class="p">(</span><span class="n">question_prompts</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">'c'</span><span class="p">),</span>
+    <span class="n">Question</span><span class="p">(</span><span class="n">question_prompts</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s">'b'</span><span class="p">),</span>
+<span class="p">]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># check the instance attribute
+</span><span class="n">questions</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">prompt</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'What color are bananas?\n(a) Teal\n(b) Magneta\n(c) Yellow\n\n'
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># create the run_question function
+</span><span class="k">def</span> <span class="nf">run_qeustions</span><span class="p">(</span><span class="n">questions</span><span class="p">):</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">questions</span><span class="p">:</span> <span class="c1"># q is Question object
+</span>        <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">prompt</span><span class="p">)</span> <span class="c1"># call the prompt attribute from the class
+</span>        <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="n">q</span><span class="p">.</span><span class="n">answer</span><span class="p">:</span>  <span class="c1"># compare the answer attribute from the class
+</span>            <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">You got {} question(s) wrong ! Sorry :('</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="n">score</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">You got {} questions right ! Congrats !!'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">score</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">run_qeustions</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>What color are apples?
+(a) Red/Green
+(b) Purple
+(c) Orange
+
+a
+What color are bananas?
+(a) Teal
+(b) Magneta
+(c) Yellow
+
+b
+What color are strawberries?
+(a) Yellow
+(b) Red
+(c) Blue
+
+c
+
+You got 2 question(s) wrong ! Sorry :(
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">run_qeustions</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>What color are apples?
+(a) Red/Green
+(b) Purple
+(c) Orange
+
+a
+What color are bananas?
+(a) Teal
+(b) Magneta
+(c) Yellow
+
+c
+What color are strawberries?
+(a) Yellow
+(b) Red
+(c) Blue
+
+b
+
+You got 3 questions right ! Congrats !!
+</code></pre></div></div>
+
+<p><br />
+Reference:</p>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=ZDa-Z5JzLYM&amp;list=PL-osiE80TeTsqhIuOqKhwlXsIBIdSeYtc&amp;index=1">Python OOP Tutorials - Working with Classes</a></li>
+  <li><a href="https://www.w3schools.com/python/python_classes.asp">Python Classes and Objects - w3school</a></li>
+  <li><a href="https://www.geeksforgeeks.org/python-classes-and-objects/">Python Classes and Objects - geeksforgeeks</a></li>
+  <li><a href="https://www.geeksforgeeks.org/dunder-magic-methods-python/">Dunder or magic methods in Python</a></li>
+  <li><a href="https://colab.research.google.com/drive/1jgVIjPjNqJNmFhYMEyXdBv9CViIimy3E?usp=sharing">Google Colab</a></li>
+</ul>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+

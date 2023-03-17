@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Python Baisc: *args and **kwargs</title>
+			<!-- link to main stylesheet -->
+			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169635813-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-169635813-1');
+			</script>
+		</head>
+		<body>
+			<nav>
+	    		<ul>
+	        		<li><a href="/">Home</a></li>
+	        	  <li><a href="/about">About</a></li>
+        		  <li><a href="/resume">Resume</a></li>
+			        <li><a href="/academics">Academics</a></li>
+        		  <li><a href="/project">Project</a></li>
+        		  <li><a href="/blog">Blog</a></li>
+	    		</ul>
+			</nav>
+			<img src="/assets/images/site/home.jpg" alt="Home Picture" width="1200" height="400" style=" width: 100%; opacity: 90%">
+			<div class="level 1 container">    
+			<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<p hidden>https://hw311.me/en/jekyll/2019/01/23/support-latex-in-jekyll-blog/</p>
+</head>
+
+<h1>Python Baisc: *args and **kwargs</h1>
+<p class="meta" style="display: inline; margin-right: 0%;">15 Aug 2020 | </p>
+
+<div class="post-categories" style="display: inline;">
+  Categories: 
+  
+  
+  <a href="/categories/#Python">Python</a>
+  
+  
+
+</div>
+
+<div class="post">
+  <div id="top">
+  <p align="center"><img src="/assets/images/post/python/args-and-kwargs.png" title="" /></p>
+  <p align="center" style="font-size: 0.8em; color: grey; font-style: italic;">*args and **kwargs</p>
+</div>
+
+<h2 id="table-of-contents">Table of contents:</h2>
+<ul>
+  <li><a href="#args">*args</a>
+    <ul>
+      <li><a href="#list-unpack">List Unpacking</a></li>
+      <li><a href="#list-concat">List Concatenation</a></li>
+    </ul>
+  </li>
+  <li><a href="#kwargs">**kwargs</a>
+    <ul>
+      <li><a href="#dict-concat">Dictionary Concatenation</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="args-and-kwargs">*args and **kwargs</h2>
+<p><b>*args</b> and <b>**kwargs</b> allow user to pass multiple arguments(args) and keyward arguments(kwargs) to a function. <b>*args</b> can unpack iterable and <b>**kwargs</b> is for unpacking dictionaries.</p>
+
+<p><br /></p>
+<h3 id="args"> <p><strong>*args</strong></p></h3>
+<p>When we declare a function to sum up numbers, we often need to pass arguments. There are several ways to do so. The most common method is using a sigle <b>list</b> as the function argument. However, using *args as the alternative method can make the code elegant.</p>
+
+<p>The first example using list as the argument::</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">sum_num</span><span class="p">(</span><span class="n">list_num</span><span class="p">):</span>
+    <span class="n">total</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">list_num</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">sum_num</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>15
+</code></pre></div></div>
+
+<p>Using *args instead of a list:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">sum_num_args</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">total</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">sum_num_args</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li>It can takes multiple arguments.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">sum_num_args</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>15
+</code></pre></div></div>
+
+<h4 id="list-unpack"><strong>List unpacking</strong></h4>
+<p>The idea of unpacking is to, well, unpack any iterable object. The single asterisk <code class="language-plaintext highlighter-rouge">*</code> is used to unpack any iterable.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">num_arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="o">*</span><span class="n">num_arr</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 2 3 4 5
+</code></pre></div></div>
+<p>The result above shows that the print function can print the element of the list by using <code class="language-plaintext highlighter-rouge">*args</code></p>
+
+<h4 id="list-concat"><strong>List concatenation</strong></h4>
+<p>Another thing that *args can do is list concatenation:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">nums1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">nums2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">nums1</span><span class="p">,</span> <span class="o">*</span><span class="n">nums2</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</code></pre></div></div>
+
+<p><br /></p>
+<h3 id="kwargs"> <strong>**kwargs</strong></h3>
+<p><code class="language-plaintext highlighter-rouge">**kwargs</code> are used to unpack dictionaries.</p>
+
+<p>Let’s try a calculation function that take <strong>a</strong>, <strong>b</strong> and <strong>c</strong> using traditional positional arguments:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dic</span><span class="o">=</span><span class="p">{</span><span class="s">'a'</span><span class="p">:</span><span class="mi">1</span> <span class="p">,</span> <span class="s">'b'</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span><span class="mi">12</span><span class="p">}</span>
+<span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="mi">10</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">calculate</span><span class="p">(</span><span class="n">dic</span><span class="p">[</span><span class="s">'a'</span><span class="p">],</span> <span class="n">dic</span><span class="p">[</span><span class="s">'b'</span><span class="p">],</span> <span class="n">dic</span><span class="p">[</span><span class="s">'c'</span><span class="p">])</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>122
+</code></pre></div></div>
+
+<p>However, if we use the <code class="language-plaintext highlighter-rouge">**kwargs</code>, we can get the same results.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">calculate</span><span class="p">(</span><span class="o">**</span><span class="n">dic</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>122
+</code></pre></div></div>
+<p>It is clear to see that using <code class="language-plaintext highlighter-rouge">**kwargs</code> is simpler, cleaner and more elegant.</p>
+
+<h4 id="dict-concat"><strong>Dictionary concatenation</strong></h4>
+<p>The dictionary concatenation is the same as the list concatenation. It will concatenate two different dictionaries into one. But, if there are duplicate keys, the value of the second dictionary will be used.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># No key duplication
+</span><span class="n">dic1</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="n">dic2</span> <span class="o">=</span> <span class="p">{</span><span class="s">'c'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">dic1</span><span class="p">,</span> <span class="o">**</span><span class="n">dic2</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'a': 1, 'b': 2, 'c': 3, 'd': 4}
+</code></pre></div></div>
+<p>The key <strong>b</strong> has the value of <code class="language-plaintext highlighter-rouge">2</code>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># key duplication
+</span><span class="n">dic1</span> <span class="o">=</span> <span class="p">{</span><span class="s">'a'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'b'</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="n">dic2</span> <span class="o">=</span> <span class="p">{</span><span class="s">'b'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">dic1</span><span class="p">,</span> <span class="o">**</span><span class="n">dic2</span><span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span></code></pre></figure>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'a': 1, 'b': 3, 'c': 4}
+</code></pre></div></div>
+<p>Now, the key <strong>b</strong> has the value of <code class="language-plaintext highlighter-rouge">3</code>.</p>
+
+<p align="center"><a href="#top">Top</a></p>
+
+
+</div>
+
+			</div><!-- /.level 1 container -->
+			<div class="bottom">  
+			<footer>
+	    		<ul>
+				<!-- a list of icon link to other resources -->
+	        		<li>
+					<a href="mailto: bwu117@g.syr.edu"><img src="/assets/images/site/icon_email.svg" width="20px" align="top" title="Email"></a>
+				</li>
+        		  	<li>
+					<a href="https://www.linkedin.com/in/bing-je-wu"><img src="/assets/images/site/icon_linkedin.png" width="20px" align="top" title="Linkedin"></a>
+				</li>
+				<li>
+					<a href="https://github.com/bing020815"><img src="/assets/images/site/icon_GitHub.png" width="20px" align="top" title="GitHub"></a>
+				</li>
+				</ul>
+			</footer>
+			</div><!-- /.bottom -->
+		</body>
+	</html>
+
